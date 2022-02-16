@@ -58,7 +58,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
         try {
             String sql = "UPDATE avis SET commentaire=?, lecteur=?, livre=? WHERE id_Avis=?";
 
-            PreparedStatement ps = cnx.prepareStatement(sql);
+            PreparedStatement ps = cnx.prepareStatement(sql); 
             ps.setString(1, a.getCommentaire());
             ps.setInt(2, a.getId_user());
             ps.setInt(3, a.getId_livre());
