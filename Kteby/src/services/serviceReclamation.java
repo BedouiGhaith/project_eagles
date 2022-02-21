@@ -26,12 +26,14 @@ public class serviceReclamation implements Ireclamation {
         
     @Override
     public void ajouterReclamation(reclamation e) {
-        String Req = "INSERT INTO `reclamation`(`id_user`, `titre`, `description`) VALUES (?,?,?)";
+        String Req = "INSERT INTO `reclamation`(`id_user`, `titre`, `description`, `status`, `response`) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setInt(1, e.getId_user());
             ps.setString(2, e.getTitre());
             ps.setString(3, e.getDescription());
+            ps.setInt(4, e.getStatus());
+            ps.setString(5, e.getResponse());
             ps.execute();
             System.out.println(" Reclamation ajoutée avec succes");
         } catch (SQLException ex) {
@@ -58,13 +60,15 @@ public class serviceReclamation implements Ireclamation {
     @Override
     public void updateReclamation(reclamation e, String s) {
        try {
-            String sql = "UPDATE reclamation SET id_user=?, titre=?, description=? WHERE id_reclamation=?";
+            String sql = "UPDATE reclamation SET id_user=?, titre=?, description=? status=?, response=? WHERE id_reclamation=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setInt(1, e.getId_user());
             ps.setString(2, e.getTitre());
             ps.setString(3, e.getDescription());
-            ps.setString(4, s);
+            ps.setInt(4, e.getStatus());
+            ps.setString(5, e.getResponse());
+            ps.setString(6, s);
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("A reclamation user was updated successfully!");
@@ -92,15 +96,40 @@ public class serviceReclamation implements Ireclamation {
         return reclamation;
     }
     
-    public boolean Reponse (String rep, int id_reclamation) throws SQLException{
-        reclamation e = new reclamation();
-        
-        
-       
+    public reclamation getById(int id_reclamation ) throws SQLException {
+        Statement ste=cnx.createStatement();
+        String query="SELECT * FROM `reclamation`where id="+id_reclamation;
+        ResultSet rs=ste.executeQuery(query);
+        while(rs.next())
+        {
+            reclamation rec;
+            rec = new reclamation (rs.getInt("id_reclamation" ), rs.getInt("id_user"),rs.getString("titre"),rs.getString("description"));
+            return rec;
+        }
+        return null;
+    }   
+    
+    public Boolean exist(int id) throws SQLException {
+        return getById(id)!=null;
     }
+    
+
      
+     public boolean Reponse(String rep,int id_reclamation) throws SQLException {
+         
+        if(exist(id_reclamation))
+        {
+        Statement ste=cnx.createStatement();
+         String query="UPDATE reclamation set status=1 , response='"+rep+"' where id_reclamation="+id_reclamation;
+         
+         ste.execute(query);
+         return true;
+        }
+        System.out.println("Please write your response");
+        return false;
+    }
         
     }
     
-    }
+   
 
