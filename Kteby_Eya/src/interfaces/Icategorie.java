@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.categorie;
 
@@ -17,4 +18,5 @@ public interface Icategorie {
    public void deleteCategorie(String s);
    public void updateCategorie(categorie c, String s);
     public List<categorie> consulterCategorie();
+    public categorie getById(int id_categorie) throws SQLException;
 }

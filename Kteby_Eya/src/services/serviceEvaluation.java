@@ -88,13 +88,34 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return evaluation;
     }
     
+    
+    public evaluation getById(int id_evaluation) throws SQLException {
+        Statement st=cnx.createStatement();
+        String query="select * from evaluation where id_evaluation='"+id_evaluation+"'";
+        ResultSet rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            evaluation ev;
+            ev = new evaluation(rs.getInt("id_evaluation"), rs.getInt("id_livre"), rs.getInt("id_user"), rs.getInt("nb_stars"));
+            return ev;
+        }
+        return null;
+    }
+    
+    public Boolean exist(int id_evaluation) throws SQLException {
+        if(getById(id_evaluation)!=null)
+        {
+            return true;
+        }
+        return false;
+    }
     /**
      *
      * @return moyStars
      * @throws SQLException
      */
     
-     public double moyenneStars() {
+     /*public double moyenneStars() {
         
         List<evaluation> list=consulterEvaluation();
         double moyStars=0;
@@ -110,11 +131,82 @@ Connection cnx = maConnexion.getInstance().getCnx();
         System.out.println(ratingCount);
         
         return moyStars;
+    }*/
+    
+    /**
+     * 
+    @param id_livre 
+  * @return averageRating
+   */
+/*public double getAverageRating(int id_livre){
+
+   evaluation e = new evaluation();
+   ResultSet rs = null;
+    float ratingSum =0;
+    int ratingCount =0;
+    double averageRating=0.0;
+
+    try{
+        
+        String sql="Select sum(nb_stars),count(nb_stars) from evaluation  where id_livre=='\"+p.getId_livre()+\"'\" group by nb_stars ";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setInt(1,e.getId_livre());
+        rs=ps.executeQuery();
+
+        while (rs.next()) {
+            ratingSum=ratingSum+rs.getInt("sum(nb_stars)");
+            ratingCount=ratingCount+rs.getInt("count(nb_stars)");
+
+        }
+
+        averageRating=ratingSum/ratingCount;
+
+    }
+    catch(SQLException ex){
+        ex.printStackTrace();
     }
     
+
+    return averageRating;
+}*/
+
+   /*public double getAverageRating(int id_livre){
+
+   evaluation e = new evaluation();
+   ResultSet rs = null;
+    float ratingSum =0;
+    int ratingCount =0;
+    double avgR=0;
+    double averageRating=0.0;
+
+    try{
+        
+        String sql="SELECT  AVG(nb_stars)FROM evaluation  where id_livre=? group by id_evaluation ";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setInt(1,e.getId_livre());
+        rs=ps.executeQuery();
+        avgR=
+    }
+    catch(SQLException ex){
+        ex.printStackTrace();
+    }
     
-    
-    
+
+    return avgR;
+}*/
+   
+   
+  public int getAvgRates(int id_livre) throws SQLException{
+        PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT AVG(nb_stars) FROM evaluation WHERE id_livre = ?");
+        reqSelectParam.setInt(1, id_livre);
+        ResultSet res = reqSelectParam.executeQuery();
+        int avgR = 0;
+        while(res.next()){
+            avgR = res.getInt(1);
+        }
+        res.close();
+        return avgR;
+    }
     
           
     }

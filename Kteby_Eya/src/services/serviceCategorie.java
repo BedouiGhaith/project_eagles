@@ -91,6 +91,21 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return categorie;
     }
     
+    
+    
+    public categorie getById(int id_categorie) throws SQLException {
+        Statement st=cnx.createStatement();
+        String query="select * from categorie where id_categorie = '"+id_categorie+"'";
+        ResultSet rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            categorie cg;
+            cg = new categorie(rs.getInt("id_categorie"), rs.getString("nom_categorie"));
+            return cg;
+        }
+        return null;
+    }
+    
     public categorie rechercheParId(int id_categorie) {
         categorie d = new categorie();
         try {
@@ -135,6 +150,22 @@ Connection cnx = maConnexion.getInstance().getCnx();
         }
         return list;
         
+    }
+    
+    public List<categorie> getTrierParNomCat() throws SQLException {
+        List<categorie> array = new ArrayList<>();
+        String sql ="select * from categorie ORDER BY nom_categorie ASC";
+        PreparedStatement pre = cnx.prepareStatement(sql);
+        ResultSet rs = pre.executeQuery();
+         while (rs.next()) {                
+                   int id_categorie = rs.getInt(1);
+                   String nom_categorie = rs.getString(2);
+                   categorie c = new categorie(id_categorie,nom_categorie);
+            array.add(c);
+        }
+         
+        System.out.println("trié avec succés ");
+        return array;
     }
     
     

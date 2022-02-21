@@ -31,18 +31,20 @@ public class Kteby {
        
         
         //categorie
-        /*categorie c = new categorie("enfant");
+        categorie c = new categorie("enfant");
         categorie updated_c = new categorie("adulte");
         
         serviceCategorie sc = new serviceCategorie();
-        System.out.println(sc.consulterCategorie());
+        /*System.out.println(sc.consulterCategorie());
         sc.rechercheParId(5); 
-        sc.RechercheParNom("horreur").forEach(System.out::println);
+        sc.RechercheParNom("horreur").forEach(System.out::println);*/
         
         /*sc.ajouterCategorie(c);
         System.out.println(sc.consulterCategorie());
         sc.updateCategorie(updated_c, "enfant");
         sc.deleteCategorie("adulte");*/
+         /*sc.getTrierParNomCat().forEach(System.out::println);*/
+         /*System.out.println(sc.getById(7));*/
         
         
         //evaluation
@@ -57,9 +59,12 @@ public class Kteby {
         /*sev.updateEvaluation(updated_ev, "1");*/
         /*System.out.println(sev.consulterEvaluation());
         /*sev.deleteEvaluation("1");*/
-        System.out.println(sev.moyenneStars());
-       /* System.out.println(sev.getAverageRating());*/
-        
+        /*System.out.println(sev.moyenneStars(3));*/
+       /*System.out.println(sev.getAverageRating(3));*/
+        /*System.out.println(sev.getById(2));*/
+        /*System.out.println(sev.exist(8));*/
+        /*sev.AvgRate(3);*/
+        System.out.println("Le moyenne des Rates est :"+sev.getAvgRates(3));
         
         
     }

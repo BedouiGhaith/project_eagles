@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.evaluation;
 
@@ -17,6 +18,8 @@ public interface Ievaluation {
    public void deleteEvaluation(String s);
    public void updateEvaluation(evaluation e, String s);
    public List<evaluation> consulterEvaluation();
+   public evaluation getById(int id_evaluation) throws SQLException;
+   public Boolean exist(int id_evaluation)throws SQLException;
 /*
     /**
      *
