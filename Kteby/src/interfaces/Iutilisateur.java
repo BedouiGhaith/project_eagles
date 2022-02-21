@@ -17,4 +17,9 @@ public interface Iutilisateur {
    public void deleteUtilisateur(String s);
    public void updateUtilisateur(utilisateur u,String s);
    public List<utilisateur> consulterUtilisateur();
+   public utilisateur getUserById(utilisateur u);
+   public utilisateur getUserByEmail(utilisateur u);
+   public utilisateur getUserByName(utilisateur u);
+   public utilisateur getUserByUsername(utilisateur u);
+   public utilisateur getUserByAge(utilisateur u);
 }

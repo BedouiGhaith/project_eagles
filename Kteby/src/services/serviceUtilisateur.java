@@ -24,12 +24,12 @@ public class serviceUtilisateur implements Iutilisateur{
 Connection cnx = maConnexion.getInstance().getCnx();
     @Override
     public void ajouterUtilisateur(utilisateur u) {
-        String Req = "INSERT INTO `utilisateur`(`email`, `nom_utilisateur`, `mdp`,`prenom_utilisateur`,`age`,`type`) VALUES (?,?,?,?,?,?)";
+        String Req = "INSERT INTO `utilisateur`(`nom_utilisateur`, `mdp`,`email`,`prenom_utilisateur`,`age`,`type`) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
-            ps.setString(1, u.getEmail());
-            ps.setString(2, u.getNom_user());
-            ps.setString(3, u.getMot_de_passe());
+            ps.setString(1, u.getNom_user());
+            ps.setString(2, u.getMot_de_passe());
+            ps.setString(3, u.getEmail());
             ps.setString(4, u.getPrenom());
             ps.setInt(5, u.getAge());
             ps.setString(6, u.getType());
@@ -58,12 +58,13 @@ Connection cnx = maConnexion.getInstance().getCnx();
     @Override
     public void updateUtilisateur(utilisateur u, String s) {
     try {
-        String sql = "UPDATE utilisateur SET email=?, nom_utilisateur=?, mdp=?, prenom_utilisateur=?, age=?, type=? WHERE nom_utilisateur=?";
+        String sql = "UPDATE utilisateur SET nom_utilisateur=?, mdp=?, email=?, prenom_utilisateur=?, age=?, type=? WHERE nom_utilisateur=?";
         
         PreparedStatement statement = cnx.prepareStatement(sql);
-        statement.setString(1, u.getEmail());
-        statement.setString(2, u.getNom_user());
-        statement.setString(3, u.getMot_de_passe());
+        
+        statement.setString(1, u.getNom_user());
+        statement.setString(2, u.getMot_de_passe());
+        statement.setString(3, u.getEmail());
         statement.setString(4, u.getPrenom());
         statement.setInt(5, u.getAge());
         statement.setString(6, u.getType());
@@ -93,6 +94,45 @@ Connection cnx = maConnexion.getInstance().getCnx();
             ex.printStackTrace();
         }
         return utilisateur;
+    }
+
+    @Override
+    public utilisateur getUserById(utilisateur u) {
+        utilisateur user = new utilisateur();
+        
+        String query = "SELECT * FROM utilisateur where " + " id_user= "+u.getId_user();
+        
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {                
+                user = new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getInt("age"),rs.getString(7));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
+
+    @Override
+    public utilisateur getUserByEmail(utilisateur u) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public utilisateur getUserByName(utilisateur u) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public utilisateur getUserByUsername(utilisateur u) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public utilisateur getUserByAge(utilisateur u) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -5,19 +5,7 @@
  */
 package kteby;
 
-import model.Avis;
-import model.categorie;
-import model.club;
-import model.evaluation;
-import model.livre;
-import model.reclamation;
 import model.utilisateur;
-import services.serviceAvis;
-import services.serviceCategorie;
-import services.serviceClub;
-import services.serviceEvaluation;
-import services.serviceLivre;
-import services.serviceReclamation;
 import services.serviceUtilisateur;
 
 /**
@@ -32,15 +20,19 @@ public class Kteby {
     public static void main(String[] args) {
         
         //users
-        /*utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", 25, "admin");
-        utilisateur updated_user = new utilisateur("user", "11111111", "g@gmail.com", "bedoui", 25, "admin");
+        utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", 25, "admin");
+        utilisateur updated_user = new utilisateur(48,"user", "11111111", "g@gmail.com", "bedoui", 25, "admin");
 
         serviceUtilisateur su = new serviceUtilisateur();
-
+        
+        su.deleteUtilisateur("user");
         su.ajouterUtilisateur(u);
         System.out.println(su.consulterUtilisateur());
         su.updateUtilisateur(updated_user, "user");
+        System.out.println(su.getUserById(su.consulterUtilisateur().get(0)));
         su.deleteUtilisateur("user");
+        
+        /*
         
         //books
         livre li = new livre("na","na","na","na",5);
@@ -96,7 +88,6 @@ public class Kteby {
         sre.updateReclamation(updated_re, "2");
         System.out.println(sre.consulterReclamation());
         sre.deleteReclamation("2");*/
-        
         //evaluation
         /*evaluation ev= new evaluation(1,2,3);
         evaluation updated_ev = new evaluation(1,2,4);
@@ -107,6 +98,17 @@ public class Kteby {
         sev.updateEvaluation(updated_ev, "1");
         System.out.println(sev.consulterEvaluation());
         sev.deleteEvaluation("1");*/
+        
+        /*evenement evnt = new evenement("name","5161","4155",10);
+        evenement evnt_update = new evenement("a","b","c",10);
+        
+        serviceEvent svnt = new serviceEvent();
+        
+        svnt.ajouterEvenement(evnt);
+        svnt.updateEvenement(evnt_update,"name");
+        System.out.println(svnt.consulterEvenement());
+        svnt.deleteEvenement("a");*/
+        
         
     }
 
