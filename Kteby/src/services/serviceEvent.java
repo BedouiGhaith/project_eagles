@@ -26,7 +26,7 @@ public class serviceEvent implements Ievenement {
 
     @Override
     public void ajouterEvenement(evenement e) {
-        String Req = "INSERT INTO `utilisateur`(`evnt_name`, `description`, `evnt_date`,`evnt_club`) VALUES (?,?,?,?)";
+        String Req = "INSERT INTO `evenement`(`evnt_name`, `description`, `evnt_date`, `id_club`) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setString(1, e.getEvnt_name());
@@ -34,7 +34,7 @@ public class serviceEvent implements Ievenement {
             ps.setString(3, e.getEvnt_date());
             ps.setInt(4, e.getId_club());
             ps.execute();
-            System.out.println(" Utilisateur ajoutée avec succes");
+            System.out.println(" evenemt ajoutée avec succes");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -86,7 +86,7 @@ public class serviceEvent implements Ievenement {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                evnt.add(new evenement(rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("evnt_club")));
+                evnt.add(new evenement(rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("id_club")));
             }
 
         } catch (SQLException ex) {
@@ -94,4 +94,20 @@ public class serviceEvent implements Ievenement {
         }
         return evnt;
     }
+    
+    public boolean delay (evenement e ,String evnt_name ,String evnt_date)  throws SQLException  {
+        
+        String sql= "UPDATE event SET  event_date=? WHERE event_name=?";
+        PreparedStatement pre=cnx.prepareStatement(sql);        
+        pre.setString(1,e.getEvnt_date());
+        pre.setString(2, e.getEvnt_name());
+        int rowsUpdated = pre.executeUpdate();
+if (rowsUpdated > 0) {
+    System.out.println("An existing event was updated successfully!");
+        
+      
+        
+    }
+        return true;
+    }  
 }

@@ -91,5 +91,16 @@ public class serviceReclamation implements Ireclamation {
         }
         return reclamation;
     }
+    
+    public boolean Reponse (String rep, int id_reclamation) throws SQLException{
+        reclamation e = new reclamation();
+        
+        
+       
+    }
+     
+        
+    }
+    
     }
 

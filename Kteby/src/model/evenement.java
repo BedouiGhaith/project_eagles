@@ -33,6 +33,12 @@ public class evenement {
         this.id_club = id_club;
     }
 
+    public evenement(String evnt_name, String evnt_date) {
+        this.evnt_name = evnt_name;
+        this.evnt_date = evnt_date;
+    }
+    
+
     @Override
     public String toString() {
         return "evenement{" + "id_event=" + id_event + ", evnt_name=" + evnt_name + ", description=" + description + ", evnt_date=" + evnt_date + ", id_club=" + id_club + '}';
