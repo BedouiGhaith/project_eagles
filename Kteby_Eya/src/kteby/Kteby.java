@@ -48,12 +48,12 @@ public class Kteby {
         
         
         //evaluation
-        evaluation ev= new evaluation(1,2,13,3);
+        evaluation ev= new evaluation(1,2,13,10);
         evaluation updated_ev = new evaluation(1,2,4);
         
         serviceEvaluation sev = new serviceEvaluation();
         
-        /*sev.ajouterEvaluation(ev);*/
+        sev.ajouterEvaluation(ev);
         /*System.out.println(sev.CalculAvgRating());*/
         
         /*sev.updateEvaluation(updated_ev, "1");*/
