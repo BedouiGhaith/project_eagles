@@ -24,14 +24,14 @@ public class serviceAvis implements Iavis{
 Connection cnx = maConnexion.getInstance().getCnx();
     @Override
     public void ajouterAvis(Avis a) {
-       String Req = "INSERT INTO `avis`(`commentaire`, `lecteur`,`livre`) VALUES (?,?,?)";
+       String Req = "INSERT INTO `avis`(`commentaire`, `id_user`,`id_livre`) VALUES (?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setString(1, a.getCommentaire());
             ps.setInt(2, a.getId_user());
             ps.setInt(3, a.getId_livre());
             ps.execute();
-            System.out.println(" Avis ajouté avec succes");
+            System.out.println(" Avis ajoutée avec succes");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -56,7 +56,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
     @Override
     public void updateAvis(Avis a, String s) {
         try {
-            String sql = "UPDATE avis SET commentaire=?, lecteur=?, livre=? WHERE id_Avis=?";
+            String sql = "UPDATE avis SET commentaire=?, id_user=?, id_livre=? WHERE id_Avis=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, a.getCommentaire());
@@ -81,7 +81,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                avis.add(new Avis(rs.getInt("id_Avis"), rs.getString(2), rs.getInt("lecteur"), rs.getInt("livre")));
+                avis.add(new Avis(rs.getInt("id_Avis"), rs.getString(2), rs.getInt("id_user"), rs.getInt("id_livre")));
             }
 
         } catch (SQLException ex) {
@@ -90,19 +90,32 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return  avis;
     }
     
-
-public double calculAvis() {
-        int total_com=0;
-        List<Avis> list=consulterAvis();
-        for(Avis av:list)
-        {
-           total_com=list.size(); 
+    
+    public int getTotalCom(int id_livre) throws SQLException{
+        PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT count(id_avis) FROM Avis WHERE id_livre = ?");
+        reqSelectParam.setInt(1, id_livre);
+        ResultSet res = reqSelectParam.executeQuery();
+        int sumCom = 0;
+        while(res.next()){
+            sumCom = res.getInt(1);
         }
-   
-        return total_com;
+        res.close();
+        return sumCom;
     }
+    
+     public Avis getById(int id_avis) throws SQLException {
+        Statement st=cnx.createStatement();
+        String query="select * from avis where id_avis='"+id_avis+"'";
+        ResultSet rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            Avis av;
+            av = new Avis(rs.getInt("id_Avis"), rs.getString(2), rs.getInt("id_user"), rs.getInt("id_livre"));
+            return av;
+        }
+        return null;
+    }
+    
 
 
 }
-
-
