@@ -5,20 +5,16 @@
  */
 package kteby;
 
-import model.Avis;
-import model.categorie;
+
 import model.club;
-import model.evaluation;
+
 import model.livre;
-import model.reclamation;
-import model.utilisateur;
-import services.serviceAvis;
-import services.serviceCategorie;
+
+
 import services.serviceClub;
-import services.serviceEvaluation;
+
 import services.serviceLivre;
-import services.serviceReclamation;
-import services.serviceUtilisateur;
+
 
 /**
  *
