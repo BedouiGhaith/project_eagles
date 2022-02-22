@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import model.Avis;
 import util.maConnexion;
 
@@ -102,6 +103,17 @@ Connection cnx = maConnexion.getInstance().getCnx();
         res.close();
         return sumCom;
     }
+    public int getmaxCom(int id_livre) throws SQLException{
+        PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT max(id_avis) FROM Avis WHERE id_livre = ?");
+        reqSelectParam.setInt(1, id_livre);
+        ResultSet res = reqSelectParam.executeQuery();
+        int maxCom = 0;
+        while(res.next()){
+            maxCom = res.getInt(1);
+        }
+        res.close();
+        return maxCom;
+    }
     
      public Avis getById(int id_avis) throws SQLException {
         Statement st=cnx.createStatement();
@@ -116,6 +128,15 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return null;
     }
     
+     String reatComment(){
+do {
+Scanner sc=new scanner();
+System.out.println("react:like or dislike");
+String react=sc.nextLine(); 
+
+}while(!react.equals("Like")||!react.equals("Dislike"));
+return react;
+}
 
 
 }
