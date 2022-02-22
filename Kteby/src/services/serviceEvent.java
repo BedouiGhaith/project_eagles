@@ -34,7 +34,7 @@ public class serviceEvent implements Ievenement {
             ps.setString(3, e.getEvnt_date());
             ps.setInt(4, e.getId_club());
             ps.execute();
-            System.out.println(" evenemt ajoutée avec succes");
+            System.out.println(" evenement ajoutée avec succes");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class serviceEvent implements Ievenement {
     public List<evenement> consulterEvenement() {
         List<evenement> evnt = new ArrayList<>();
 
-        String query = "SELECT * FROM evenement";
+        String query = "SELECT * FROM evenement e inner join club c where e.id_club=c.id_club";
 
         try {
             Statement st = cnx.createStatement();
@@ -95,19 +95,42 @@ public class serviceEvent implements Ievenement {
         return evnt;
     }
     
-    public boolean delay (evenement e ,String evnt_name ,String evnt_date)  throws SQLException  {
-        
-        String sql= "UPDATE event SET  event_date=? WHERE event_name=?";
-        PreparedStatement pre=cnx.prepareStatement(sql);        
-        pre.setString(1,e.getEvnt_date());
-        pre.setString(2, e.getEvnt_name());
-        int rowsUpdated = pre.executeUpdate();
-if (rowsUpdated > 0) {
-    System.out.println("An existing event was updated successfully!");
-        
-      
-        
+    public evenement getById(int id_event ) throws SQLException {
+        Statement ste=cnx.createStatement();
+        String query="SELECT * FROM `evenement`where id_event="+id_event;
+        ResultSet rs=ste.executeQuery(query);
+        while(rs.next())
+        {
+            evenement rec;
+            rec = new evenement (rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("id_club"));
+            return rec;
+        }
+        return null;
+    }   
+    
+    
+    
+    public Boolean exist(int id_event) throws SQLException {
+        return getById(id_event)!=null;
     }
-        return true;
-    }  
+    
+    
+    public boolean delay ( String newdt,int id_event)  throws SQLException  {
+       if(exist(id_event))
+        {
+        Statement ste=cnx.createStatement();
+        String sql= "UPDATE evenement SET  evnt_date='"+newdt+"' where id_event="+id_event;
+         ste.execute(sql);
+    System.out.println("An existing event was updated successfully!");
+            return true; 
+        }
+        System.out.println("la réclamation n'existe pas");
+        return false;
+ 
 }
+
+    
+}
+
+
+

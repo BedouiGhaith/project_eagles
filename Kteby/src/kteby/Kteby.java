@@ -5,6 +5,7 @@
  */
 package kteby;
 
+import java.sql.SQLException;
 import model.Avis;
 import model.categorie;
 import model.club;
@@ -31,7 +32,7 @@ public class Kteby {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
         //users
         /*utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", 25, "admin");
@@ -93,10 +94,11 @@ public class Kteby {
         reclamation updated_re = new reclamation(1,"ppppp","a");*/
         
         serviceReclamation sre = new serviceReclamation();
-         //sre.Reponse("aaa",2);
+         /*System.out.println(sre.Reponse("refusée",4));*/
+         /*System.out.println(sre.getById(4));*/
         /*sre.ajouterReclamation(re);
-        /*sre.updateReclamation(updated_re, "2");
-        System.out.println(sre.consulterReclamation());
+        /*sre.updateReclamation(updated_re, "2");*/
+        /*System.out.println(sre.consulterReclamation());*/
         /*sre.deleteReclamation("2");*/
         
         //evaluation
@@ -112,14 +114,16 @@ public class Kteby {
         
         //Events
         evenement evn= new evenement("eventHarry","fans meeting","15/12/2021",1);
-        evenement delay_ev = new evenement ("eventHarry","fans meeting","20/12/2021",1);
+        evenement evn2= new evenement("EventIntelligence","intelligence people","01/12/2022",2);
+
+        /*evenement delay_ev = new evenement ("eventHarry","fans meeting","20/12/2021",1);*/
         //evenement updated_evn = new evenement("EVENT1","aabbba","15/12/2021",1);
         
         serviceEvent sev = new serviceEvent();
-        /*sev.delay(new serviceEvent("eventHarry","20/12/2021"));*/
-        
+        /*System.out.println(sev.delay("20/12/2021",4));*/
+        /*sev.ajouterEvenement(evn2);*/
         /*sev.ajouterEvenement(evn);*/
-        /*System.out.println(sev.consulterEvenement());
+        System.out.println(sev.consulterEvenement());
        
         /*sev.updateEvenement(updated_ev, "1");
         sev.deleteEvenement("1");*/
