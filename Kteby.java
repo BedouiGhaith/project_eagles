@@ -37,38 +37,42 @@ public class Kteby {
     public static void main(String[] args) throws SQLException {
         
         //users
-        /*utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", 25, "admin");
+       /* utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", 25, "admin");
         utilisateur updated_user = new utilisateur("user", "11111111", "g@gmail.com", "bedoui", 25, "admin");
 
         serviceUtilisateur su = new serviceUtilisateur();
 
         su.ajouterUtilisateur(u);
         System.out.println(su.consulterUtilisateur());
-        su.updateUtilisateur(updated_user, "user");
-        su.deleteUtilisateur("user");*/
+        /*su.updateUtilisateur(updated_user, "user");
+       /* su.deleteUtilisateur("user");*/
         
         //books
-        /*livre li = new livre("na","na","na","na",5);
+       /* livre li = new livre("na","na","na","na",5);
         livre updated_livre = new livre("a","a","a","a",5);
         
         serviceLivre sli = new serviceLivre();
         
          sli.ajouterLivre(li);
         System.out.println(sli.consulterLivre());
-       /*sli.updateLivre(updated_livre,"na");
+         sli.updateLivre(updated_livre,"na");
         /*sli.deleteLivre("na");*/
         
         //avis
-        /*Avis a = new Avis("aaaaa",5 , 25);
-        Avis updated_avis = new Avis  ("na",5 , 25);*/
+        Avis a = new Avis("interessant",5 , 25);
+       /* Avis updated_avis = new Avis  ("ce n'est pas interessant ",5 , 25); */
         
         serviceAvis  sa = new serviceAvis();
+          sa.ajouterAvis(a);
+        System.out.println(sa.consulterAvis());
+      /*  sa.updateAvis(updated_avis, "5");
+        /*sa.deleteAvis("5");*/
         System.out.println(sa.getById(3));
         System.out.println("La totale des commentaires est :"+sa.getTotalCom(25));
-        /*sa.ajouterAvis(a);
-        System.out.println(sa.consulterAvis());
-        sa.updateAvis(updated_avis, "5");*/
-        /*sa.deleteAvis("5");*/
+       
+         
+      
+        System.out.println(serviceAvis.reactComment());
         
         //categorie
         /*categorie c = new categorie("enfant");
@@ -104,7 +108,7 @@ public class Kteby {
         /*sre.deleteReclamation("2");*/
         
         //evaluation
-        evaluation ev= new evaluation(1,2,3);
+        /* evaluation ev= new evaluation(1,2,3);
         evaluation updated_ev = new evaluation(1,2,4);
         
         Ievaluation sev = new serviceEvaluation();
