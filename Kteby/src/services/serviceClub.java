@@ -95,5 +95,24 @@ public class serviceClub implements Iclub {
         }
         return club;
     }
+     public int calculemembre() {
+         
+        
+        
+        int nb =0;
+        try {
+           PreparedStatement st = cnx.prepareStatement("SELECT count(*) FROM members ");
+           
+            ResultSet rs = st.executeQuery();
+            
+            while (rs.next()) {                
+               nb = rs.getInt(1);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return nb;
+    }
 
 }
