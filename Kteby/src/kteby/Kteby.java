@@ -5,6 +5,7 @@
  */
 package kteby;
 
+import interfaces.Ireclamation;
 import java.sql.SQLException;
 import model.Avis;
 import model.categorie;
@@ -45,88 +46,41 @@ public class Kteby {
         su.updateUtilisateur(updated_user, "user");
         su.deleteUtilisateur("user");
         
-        //books
-        livre li = new livre("na","na","na","na",5);
-        livre updated_livre = new livre("a","a","a","a",5);
         
-        serviceLivre sli = new serviceLivre();
         
-        sli.ajouterLivre(li);
-        sli.updateLivre(updated_livre,"na");
-        System.out.println(sli.consulterLivre());
-        sli.deleteLivre("na");
-        
-        //avis
-        Avis a = new Avis("aaaaa",5 , 25);
-        Avis updated_avis = new Avis  ("na",5 , 25);
-        
-        serviceAvis  sa = new serviceAvis();
-        
-        sa.ajouterAvis(a);
-        sa.updateAvis(updated_avis, "11");
-        System.out.println(sa.consulterAvis());
-        sa.deleteAvis("10");
-        
-        //categorie
-        categorie c = new categorie("enfant");
-        categorie updated_c = new categorie("adulte");
-        
-        serviceCategorie sc = new serviceCategorie();
-        
-        sc.ajouterCategorie(c);
-        sc.updateCategorie(updated_c, "enfant");
-        System.out.println(sc.consulterCategorie());
-        sc.deleteCategorie("adulte");*/
-        
-        //club
-        /*club cl = new club("club","22/22/2222","me",20);
-        club updated_cl = new club("club123","11/11/1111","he",30);
-        
-        serviceClub scl = new serviceClub();
-        
-        scl.ajouterClub(cl);
-        scl.updateClub(updated_cl, "club");
-        System.out.println(scl.consulterClub());
-        scl.deleteClub("club123");*/
         
         //reclamation
-        /*reclamation re = new reclamation(1,"problem","aaaaaaaaaaaaaaaaaa");
-        reclamation updated_re = new reclamation(1,"ppppp","a");*/
+        //reclamation re = new reclamation(1,"problem","livre qui manque",0,"");
+        reclamation re1 = new reclamation(1,"test","livre c'est pour les enfants",0,"");
+
+        reclamation updated_re = new reclamation(1,"warning","pas claire",0,"");
         
-        serviceReclamation sre = new serviceReclamation();
-         /*System.out.println(sre.Reponse("refusée",4));*/
-         /*System.out.println(sre.getById(4));*/
-        /*sre.ajouterReclamation(re);
-        /*sre.updateReclamation(updated_re, "2");*/
-        /*System.out.println(sre.consulterReclamation());*/
-        /*sre.deleteReclamation("2");*/
+        Ireclamation sre = new serviceReclamation();
+         //System.out.println(sre.Reponse("refusé",5));
+         //System.out.println(sre.getById(4));
+        //sre.ajouterReclamation(re1);
+        sre.updateReclamation(updated_re,re1);
+        //System.out.println(sre.consulterReclamation());
+        //sre.deleteReclamation(re);
         
-        //evaluation
-        /*evaluation ev= new evaluation(1,2,3);
-        evaluation updated_ev = new evaluation(1,2,4);
-        
-        serviceEvaluation sev = new serviceEvaluation();
-        
-        sev.ajouterEvaluation(ev);
-        sev.updateEvaluation(updated_ev, "1");
-        System.out.println(sev.consulterEvaluation());
-        sev.deleteEvaluation("1");*/
+       
         
         //Events
         evenement evn= new evenement("eventHarry","fans meeting","15/12/2021",1);
         evenement evn2= new evenement("EventIntelligence","intelligence people","01/12/2022",2);
+        evenement evn3= new evenement("eventday","webinaire","24/02/2021",1);
 
-        /*evenement delay_ev = new evenement ("eventHarry","fans meeting","20/12/2021",1);*/
-        //evenement updated_evn = new evenement("EVENT1","aabbba","15/12/2021",1);
+        evenement delay_ev = new evenement ("eventHarry","fans meeting","20/12/2021",1);
+        evenement updated_evn = new evenement("EVENT1","aabbba","15/12/2021",1);
         
         serviceEvent sev = new serviceEvent();
-        /*System.out.println(sev.delay("20/12/2021",4));*/
+        /*System.out.println(sev.delay("20/12/2021",8));
         /*sev.ajouterEvenement(evn2);*/
-        /*sev.ajouterEvenement(evn);*/
-        System.out.println(sev.consulterEvenement());
+        //sev.ajouterEvenement(evn2);
+        //System.out.println(sev.consulterEvenement());
        
-        /*sev.updateEvenement(updated_ev, "1");
-        sev.deleteEvenement("1");*/
+        //sev.updateEvenement(updated_evn,evn);
+       // sev.deleteEvenement("1");*/
         
     }
 
