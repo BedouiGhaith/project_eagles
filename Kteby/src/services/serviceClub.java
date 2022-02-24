@@ -14,7 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.club;
-import model.utilisateur;
+
+
 import util.maConnexion;
 
 /**
@@ -27,7 +28,7 @@ public class serviceClub implements Iclub {
 
     @Override
     public void ajouterClub(club b) {
-        String Req = "INSERT INTO `club`(`nom_club`, `date_creation`, `club_owner`,`membre`) VALUES (?,?,?,?)";
+        String Req = "INSERT INTO `club`(`nom_club`,`date_creation`,`club_owner`,`membre`) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setString(1, b.getNom_club());
@@ -42,12 +43,12 @@ public class serviceClub implements Iclub {
     }
 
     @Override
-    public void deleteClub(String s) {
+    public void deleteClub(club c) {
         try {
             String sql = "DELETE FROM club WHERE nom_club=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setString(1, s);
+            statement.setString(1, c.getNom_club());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -58,7 +59,7 @@ public class serviceClub implements Iclub {
     }
 
     @Override
-    public void updateClub(club b, String s) {
+    public void updateClub(club b, club s) {
          try {
         String sql = "UPDATE club SET nom_club=?, date_creation=?, club_owner=?, membre=? WHERE nom_club=?";
         
@@ -67,7 +68,7 @@ public class serviceClub implements Iclub {
             ps.setString(2, b.getDate_de_creation());
             ps.setString(3, b.getClub_owner());
             ps.setInt(4, b.getNbr_members());
-            ps.setString(5, s);
+            ps.setString(5, s.getNom_club());
             ps.execute();
         
         int rowsUpdated = ps.executeUpdate();
@@ -95,10 +96,8 @@ public class serviceClub implements Iclub {
         }
         return club;
     }
-     public int calculemembre() {
-         
-        
-        
+   
+    public int calculemembre() {
         int nb =0;
         try {
            PreparedStatement st = cnx.prepareStatement("SELECT count(*) FROM members ");
@@ -114,5 +113,25 @@ public class serviceClub implements Iclub {
         }
         return nb;
     }
+@Override
+    public club getClubById(club c){
+        club cl = new club();
 
+        String query = "SELECT * FROM club where " + " id_club= " + c.getId_club();
+
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                cl = new club(rs.getInt("id_club"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("membre"));
+            }
+
+        } catch (SQLException ex) {
+        }
+        return cl;
+    }
+
+   
+    
+    
 }
