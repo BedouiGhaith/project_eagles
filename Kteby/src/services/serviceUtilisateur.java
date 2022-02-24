@@ -258,5 +258,22 @@ public class serviceUtilisateur implements Iutilisateur {
         }
         return bytes;
     }
+    @Override
+    public int countUsers(){
+        int c = 0;
+        
+        String query = "SELECT count(*) FROM utilisateur";
+
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                c = rs.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+        }
+        return c;
+    }
 
 }
