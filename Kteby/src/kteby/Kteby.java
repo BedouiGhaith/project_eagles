@@ -27,7 +27,6 @@ import model.utilisateur;
 import services.serviceAvis;
 import services.serviceCategorie;
 
-import services.serviceClub;
 import services.serviceEvaluation;
 import services.serviceEvent;
 import services.serviceLivre;
@@ -59,22 +58,9 @@ public class Kteby {
         sli.deleteLivre(li);
         System.out.println(sli.getLivreById(sli.consulterLivre().get(0)));
         
-         */
+         
         //club
-        Iclub scl = new serviceClub();
-
-        club c = new club("club", "10/10/1111", "me", scl.calculemembre());
-        club updated_cl = new club("club1", "11/11/1111", "he", scl.calculemembre());
-        club cl = new club();
-
-        System.out.println(scl.calculemembre());
-
-        scl.ajouterClub(c);
-
-        scl.deleteClub(c);
-        System.out.println(scl.consulterClub());
-        scl.updateClub(updated_cl,c);
-        System.out.println(scl.getClubById(scl.consulterClub().get(0)));
+       
 
         //members
         /* serviceMembers me = new serviceMembers() ;
@@ -95,17 +81,17 @@ public class Kteby {
         System.out.println(su.getUserById(su.consulterUtilisateur().get(0)));
         su.deleteUtilisateur(updated_user);
 
-        String originalPassword = "password";
+        String originalPassword = "mdp00000";
 
         String generatedSecuredPasswordHash;
-        generatedSecuredPasswordHash = serviceUtilisateur.generateStorngPasswordHash(originalPassword);
+        generatedSecuredPasswordHash = su.generateStorngPasswordHash(originalPassword);
         System.out.println(generatedSecuredPasswordHash);
 
-        boolean matched = serviceUtilisateur.validatePassword("password", generatedSecuredPasswordHash);
+        boolean matched = serviceUtilisateur.validatePassword("mdp00000", generatedSecuredPasswordHash);
         System.out.println(matched);
 
-        matched = serviceUtilisateur.validatePassword("password1", generatedSecuredPasswordHash);
-        System.out.println(matched);*/
+        matched = serviceUtilisateur.validatePassword("mdp000001", generatedSecuredPasswordHash);
+        System.out.println(matched);
 
         //reclamation
         /*reclamation re = new reclamation(1,"problem","livre qui manque",0,"");
@@ -163,22 +149,22 @@ public class Kteby {
  System.out.println(seval.consulterEvaluation());
  seval.deleteEvaluation(ev);
  System.out.println(seval.getById(seval.consulterEvaluation().get(0)));
- System.out.println("Le moyenne des Rates est :"+seval.getAvgRates(3));
+ System.out.println("Le moyenne des Rates est :"+seval.getAvgRates(3));*/
  
     Avis a = new Avis("interessant",5 , 25);
-       /* Avis updated_avis = new Avis  ("ce n'est pas interessant ",5 , 25); */
+       Avis updated_avis = new Avis  ("ce n'est pas interessant ",5 , 25); 
         
-       /* serviceAvis  sa = new serviceAvis();
+        serviceAvis  sa = new serviceAvis();
           sa.ajouterAvis(a);
         System.out.println(sa.consulterAvis());
-      /*  sa.updateAvis(updated_avis, "5");
-        /*sa.deleteAvis("5");*/
-       /* System.out.println(sa.getById(3));
+      sa.updateAvis(updated_avis, "5");
+       sa.deleteAvis("5");
+        System.out.println(sa.getById(3));
         System.out.println("La totale des commentaires est :"+sa.getTotalCom(25));
        
          
       
-        System.out.println(serviceAvis.reactComment());*/
+        System.out.println(serviceAvis.reactComment());
     }
 
 }

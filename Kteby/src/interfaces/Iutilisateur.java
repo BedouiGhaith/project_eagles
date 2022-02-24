@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import model.utilisateur;
 
@@ -23,5 +25,6 @@ public interface Iutilisateur {
    public utilisateur getUserByUsername(utilisateur u);
    public List<utilisateur> getUserByAge(utilisateur u);
    public int countUsers();
+   public String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException;
    
 }

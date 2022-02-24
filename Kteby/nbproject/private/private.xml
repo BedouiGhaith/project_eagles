@@ -3,16 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/members.java</file>
-            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceMembers.java</file>
-            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Iutilisateur.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/utilisateur.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceEvent.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Iavis.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceClub.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/kteby/Kteby.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceUtilisateur.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/build.xml</file>
-            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceCategorie.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Icategorie.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceAvis.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceEvaluation.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/Avis.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/util/maConnexion.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Ireclamation.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/members.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceMembers.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Iutilisateur.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/club.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceCategorie.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/reclamation.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Ievaluation.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Iclub.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Ievenement.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceReclamation.java</file>
         </group>
     </open-files>
 </project-private>

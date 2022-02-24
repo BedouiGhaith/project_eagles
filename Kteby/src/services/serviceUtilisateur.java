@@ -200,7 +200,8 @@ public class serviceUtilisateur implements Iutilisateur {
     }
 
     
-    public static String generateStorngPasswordHash(String password)
+    @Override
+    public String generateStorngPasswordHash(String password)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;
         char[] chars = password.toCharArray();
