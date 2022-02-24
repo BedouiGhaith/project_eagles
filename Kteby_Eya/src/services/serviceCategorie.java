@@ -41,12 +41,12 @@ Connection cnx = maConnexion.getInstance().getCnx();
     }
 
     @Override
-    public void deleteCategorie(String s) {
+    public void deleteCategorie(categorie s) {
         try {
             String sql = "DELETE FROM categorie WHERE nom_categorie=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setString(1, s);
+            statement.setString(1, s.getNom_categorie());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -57,13 +57,13 @@ Connection cnx = maConnexion.getInstance().getCnx();
     }
 
     @Override
-    public void updateCategorie(categorie c, String s) {
+    public void updateCategorie(categorie c, categorie s) {
         try {
-            String sql = "UPDATE categorie SET nom_categorie=? WHERE nom_categorie=?";
+             String sql = "UPDATE categorie SET nom_categorie =? WHERE nom_categorie=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, c.getNom_categorie());
-            ps.setString(2, s);
+            ps.setString(2, s.getNom_categorie());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing category was updated successfully!");
@@ -76,7 +76,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
     public List<categorie> consulterCategorie() {
         List<categorie> categorie = new ArrayList<>();
 
-        String query = "SELECT * FROM categorie";
+        String query = "SELECT * FROM categorie c inner join livre l where l.id_categorie=c.id_categorie";
 
         try {
             Statement st = cnx.createStatement();
@@ -93,9 +93,9 @@ Connection cnx = maConnexion.getInstance().getCnx();
     
     
     
-    public categorie getById(int id_categorie) throws SQLException {
+    public categorie getCategorieById(categorie c) throws SQLException {
         Statement st=cnx.createStatement();
-        String query="select * from categorie where id_categorie = '"+id_categorie+"'";
+        String query="select * from categorie where id_categorie = "+c.getId_categorie();
         ResultSet rs=st.executeQuery(query);
         while(rs.next())
         {
@@ -106,6 +106,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return null;
     }
     
+@Override
     public categorie rechercheParId(int id_categorie) {
         categorie d = new categorie();
         try {
@@ -168,6 +169,17 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return array;
     }
     
+    
+     public int getTotalCategorie() throws SQLException{
+        PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT COUNT(id_categorie) FROM categorie ");
+        ResultSet res = reqSelectParam.executeQuery();
+        int sumLiv = 0;
+        while(res.next()){
+            sumLiv = res.getInt(1);
+        }
+        res.close();
+        return sumLiv;
+    }
     
     
     }

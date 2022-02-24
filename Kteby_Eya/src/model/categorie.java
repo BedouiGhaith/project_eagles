@@ -12,7 +12,7 @@ package model;
 public class categorie {
     int id_categorie ;
     String nom_categorie ;
-
+    
     public categorie(int id_categorie, String nom_categorie) {
         this.id_categorie = id_categorie;
         this.nom_categorie = nom_categorie;
@@ -45,5 +45,12 @@ public class categorie {
     public String toString() {
         return "categorie{" + "id_categorie=" + id_categorie + ", nom_categorie=" + nom_categorie + '}';
     }
+
     
-}
+
+    
+
+       
+    }
+
+  

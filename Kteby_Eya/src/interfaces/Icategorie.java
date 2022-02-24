@@ -15,8 +15,28 @@ import model.categorie;
  */
 public interface Icategorie {
    public void ajouterCategorie(categorie c);
-   public void deleteCategorie(String s);
-   public void updateCategorie(categorie c, String s);
+   public void deleteCategorie(categorie s);
+   public void updateCategorie(categorie c,categorie s);
     public List<categorie> consulterCategorie();
-    public categorie getById(int id_categorie) throws SQLException;
+   public List<categorie> getTrierParNomCat() throws SQLException;
+    public categorie getCategorieById(categorie c) throws SQLException;
+
+   public List<categorie> RechercheParNom(String search);
+public categorie rechercheParId(int id_categorie);
+
+  public int getTotalCategorie() throws SQLException;
+   
+ 
+
+
+
+
+
+    
+
+  
+
+   
+
+    
 }

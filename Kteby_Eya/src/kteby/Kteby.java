@@ -5,6 +5,7 @@
  */
 package kteby;
 
+import interfaces.Icategorie;
 import interfaces.Ievaluation;
 import java.sql.SQLException;
 
@@ -31,40 +32,35 @@ public class Kteby {
        
         
         //categorie
-        categorie c = new categorie("enfant");
-        categorie updated_c = new categorie("adulte");
+        categorie c = new categorie("romantique");
+        categorie updated_c = new categorie("test");
         
-        serviceCategorie sc = new serviceCategorie();
-        /*System.out.println(sc.consulterCategorie());
-        sc.rechercheParId(5); 
-        sc.RechercheParNom("horreur").forEach(System.out::println);*/
+        Icategorie sc = new serviceCategorie();
+        System.out.println(sc.getTotalCategorie());
+        /*System.out.println(sc.consulterCategorie());*/
+        /*sc.rechercheParId(5); */
+        /*System.out.println(sc.RechercheParNom("horreur"));*/
         
-        /*sc.ajouterCategorie(c);
-        System.out.println(sc.consulterCategorie());
-        sc.updateCategorie(updated_c, "enfant");
-        sc.deleteCategorie("adulte");*/
-         /*sc.getTrierParNomCat().forEach(System.out::println);*/
-         /*System.out.println(sc.getById(7));*/
+        /*sc.ajouterCategorie(c);*/
+        /*System.out.println(sc.consulterCategorie());*/
+          /*sc.updateCategorie(updated_c,c);*/
+       /* sc.deleteCategorie(updated_c); */
+         /*System.out.println(sc.getTrierParNomCat());*/
+         /*System.out.println(sc.getCategorieById(sc.consulterCategorie().get(0)));*/
         
         
         //evaluation
-        evaluation ev= new evaluation(1,2,13,10);
-        evaluation updated_ev = new evaluation(1,2,4);
+        evaluation ev= new evaluation(11,2,13,5);
+        evaluation updated_ev = new evaluation(11,2,13,4);
         
-        serviceEvaluation sev = new serviceEvaluation();
+        Ievaluation sev = new serviceEvaluation();
         
-        sev.ajouterEvaluation(ev);
-        /*System.out.println(sev.CalculAvgRating());*/
-        
-        /*sev.updateEvaluation(updated_ev, "1");*/
-        /*System.out.println(sev.consulterEvaluation());
-        /*sev.deleteEvaluation("1");*/
-        /*System.out.println(sev.moyenneStars(3));*/
-       /*System.out.println(sev.getAverageRating(3));*/
-        /*System.out.println(sev.getById(2));*/
-        /*System.out.println(sev.exist(8));*/
-        /*sev.AvgRate(3);*/
-        System.out.println("Le moyenne des Rates est :"+sev.getAvgRates(3));
+        /*sev.ajouterEvaluation(ev);  */    
+         /*sev.updateEvaluation(updated_ev,ev);*/
+        /*System.out.println(sev.consulterEvaluation());*/
+        /*sev.deleteEvaluation(ev);*/
+        /*System.out.println(sev.getById(sev.consulterEvaluation().get(3)));*/
+        /*System.out.println("Le moyenne des Rates est :"+sev.getAvgRates(3));*/
         
         
     }

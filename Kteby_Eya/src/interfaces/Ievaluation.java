@@ -15,11 +15,11 @@ import model.evaluation;
  */
 public interface Ievaluation {
     public void ajouterEvaluation(evaluation e);
-   public void deleteEvaluation(String s);
-   public void updateEvaluation(evaluation e, String s);
+   public void deleteEvaluation(evaluation s);
+   public void updateEvaluation(evaluation e, evaluation s);
    public List<evaluation> consulterEvaluation();
-   public evaluation getById(int id_evaluation) throws SQLException;
-   public Boolean exist(int id_evaluation)throws SQLException;
+   public evaluation getById(evaluation e) throws SQLException;
+   /* public Boolean exist(evaluation e)throws SQLException;*/
 /*
     /**
      *

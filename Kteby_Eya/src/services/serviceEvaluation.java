@@ -48,12 +48,12 @@ Connection cnx = maConnexion.getInstance().getCnx();
     
 
     @Override
-    public void deleteEvaluation(String s) {
+    public void deleteEvaluation(evaluation s) {
         try {
             String sql = "DELETE FROM evaluation WHERE id_evaluation=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setString(1, s);
+            statement.setInt(1, s.getId_evaluation());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -64,13 +64,13 @@ Connection cnx = maConnexion.getInstance().getCnx();
     }
 
     @Override
-    public void updateEvaluation(evaluation e, String s) {
+    public void updateEvaluation(evaluation e, evaluation s) {
         try {
             String sql = "UPDATE evaluation SET nb_stars=? WHERE id_evaluation=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setInt(1, e.getNb_stars());
-            ps.setString(2, s);
+            ps.setInt(2, s.getId_evaluation());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing evaluation was updated successfully!");
@@ -83,7 +83,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
     public List<evaluation> consulterEvaluation() {
         List<evaluation> evaluation = new ArrayList<>();
 
-        String query = "SELECT * FROM evaluation";
+        String query = "SELECT * FROM evaluation e inner join livre l where l.id_livre=e.id_livre";
 
         try {
             Statement st = cnx.createStatement();
@@ -99,9 +99,9 @@ Connection cnx = maConnexion.getInstance().getCnx();
     }
     
     
-    public evaluation getById(int id_evaluation) throws SQLException {
+    public evaluation getById(evaluation e) throws SQLException {
         Statement st=cnx.createStatement();
-        String query="select * from evaluation where id_evaluation='"+id_evaluation+"'";
+        String query="select * from evaluation where id_evaluation="+e.getId_evaluation();
         ResultSet rs=st.executeQuery(query);
         while(rs.next())
         {
@@ -112,13 +112,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return null;
     }
     
-    public Boolean exist(int id_evaluation) throws SQLException {
-        if(getById(id_evaluation)!=null)
-        {
-            return true;
-        }
-        return false;
-    }
+    
    
    
   public int getAvgRates(int id_livre) throws SQLException{
