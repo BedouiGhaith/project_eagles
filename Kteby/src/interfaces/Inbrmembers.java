@@ -15,6 +15,8 @@ import model.members;
 public interface Inbrmembers {
     public void ajouterMember(members m);
    public void deleteMember(members m);
-   public void updateMember(members m);
+   public void updateMember(members m,members me);
    public List<members> consulterNbrMember();
+   
+   
 }
