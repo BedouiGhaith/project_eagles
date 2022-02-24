@@ -5,10 +5,14 @@
         <group>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/members.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceMembers.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/interfaces/Iutilisateur.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/kteby/Kteby.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceUtilisateur.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/build.xml</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceCategorie.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/services/serviceAvis.java</file>
             <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/model/Avis.java</file>
+            <file>file:/C:/Users/bedou/Documents/GitHub/Kteby/src/util/maConnexion.java</file>
         </group>
     </open-files>
 </project-private>
