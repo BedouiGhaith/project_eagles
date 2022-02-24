@@ -36,24 +36,25 @@ public class serviceMembers implements Inbrmembers{
 
     @Override
     public void ajouterMember(members m) {
-         String Req = "INSERT INTO `nbr_members`() VALUES (?)";
+         String Req = "INSERT INTO `members`(`id_user`,`id_club`) VALUES (?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
-            
+            ps.setInt(1, m.getId_user());
+            ps.setInt(2, m.getId_club());
             ps.execute();
-            System.out.println(" Livre ajoutée avec succes");
+            System.out.println(" member ajoutée avec succes");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
     
-    public void deleteMember(String s) {
+    public void deleteMember(members m) {
          try {
-            String sql = "DELETE FROM nbrmembers WHERE titre=?";
+            String sql = "DELETE FROM members WHERE id_user=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setString(1, s);
+            statement.setInt(1, m.getId_user());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -63,23 +64,25 @@ public class serviceMembers implements Inbrmembers{
         }
     }
 
-   /* @Override
-    public void updateMember(members m,String s) {
+    @Override
+    public void updateMember(members m,members me) {
         try {
-            String sql = "UPDATE nbr_members";
+            String sql = "UPDATE nbr_members SET id_user=?, id_club=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
-            ps.setString(6, s);
+            ps.setInt(1, m.getId_user());
+            ps.setInt(2, m.getId_club());
+            ps.setInt(3, me.getId_user());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("An existing book was updated successfully!");
+                System.out.println("An existing member was updated successfully!");
             }
         } catch (SQLException ex) {
         }
-    }*/
+    }
 
-   /* @Override
-    public List<nbrmember> consulterNbrMember() {
+/*    @Override
+    public List<members> consulterNbrMember() {
          List<livre> livre = new ArrayList<>();
 
         String query = "SELECT * FROM nbr_members";
@@ -88,7 +91,7 @@ public class serviceMembers implements Inbrmembers{
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                livre.add(new livre(rs.getInt("id_livre"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("categorie")));
+                livre.add(new livre(rs.getInt("id_user"), rs.getInt("id_club")));
             }
 
         } catch (SQLException ex) {
@@ -98,19 +101,13 @@ public class serviceMembers implements Inbrmembers{
     }*/
 
     @Override
-    public void deleteMember(members m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void updateMember(members m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<members> consulterNbrMember() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+
+    
 
 }
 
