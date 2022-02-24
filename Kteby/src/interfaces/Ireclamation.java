@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.reclamation;
 
@@ -15,10 +16,13 @@ import model.reclamation;
 public interface Ireclamation {
     public void ajouterReclamation(reclamation e);
 
-    public void deleteReclamation(String s);
+    public void deleteReclamation(reclamation s);
 
-    public void updateReclamation(reclamation e, String s);
+    public void updateReclamation(reclamation e, reclamation s);
 
     public List<reclamation> consulterReclamation();
+    public reclamation getById(int id_reclamation ) throws SQLException;
+
+    public boolean Reponse(String rep, int id_reclamation)throws SQLException;
 }
 

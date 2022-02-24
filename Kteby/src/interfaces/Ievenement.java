@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.evenement;
 
@@ -16,9 +17,10 @@ public interface Ievenement {
 
     public void ajouterEvenement(evenement e);
 
-    public void deleteEvenement(String s);
+    public void deleteEvenement(evenement s);
 
-    public void updateEvenement(evenement e, String s);
+    public void updateEvenement(evenement e, evenement s);
 
     public List<evenement> consulterEvenement();
+    
 }
