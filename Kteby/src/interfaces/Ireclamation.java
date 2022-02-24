@@ -20,5 +20,9 @@ public interface Ireclamation {
     public void updateReclamation(reclamation e, reclamation s);
 
     public List<reclamation> consulterReclamation();
+    
+    public boolean Reponse(String s, int i);
+    
+    public reclamation getById(int id_reclamation );
 }
 

@@ -199,6 +199,7 @@ public class serviceUtilisateur implements Iutilisateur {
         return user;
     }
 
+    
     public static String generateStorngPasswordHash(String password)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 1000;

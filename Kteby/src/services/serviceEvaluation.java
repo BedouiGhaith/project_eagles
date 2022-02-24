@@ -20,32 +20,30 @@ import util.maConnexion;
  *
  * @author asus
  */
-public class serviceEvaluation implements Ievaluation{
-Connection cnx = maConnexion.getInstance().getCnx();
+public class serviceEvaluation implements Ievaluation {
+
+    Connection cnx = maConnexion.getInstance().getCnx();
+
     @Override
     public void ajouterEvaluation(evaluation e) {
-        if(e.getNb_stars()<=5){
-       String Req = "INSERT INTO `evaluation`(`id_livre`, `id_user`, `nb_stars`) VALUES (?,?,?)";
-        try {
-            PreparedStatement ps = cnx.prepareStatement(Req);
-            ps.setInt(1, e.getId_livre());
-            ps.setInt(2, e.getId_user());
-            ps.setInt(3, e.getNb_stars());
-            ps.execute();
-            System.out.println(" Evaluation ajoutée avec succes");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        if (e.getNb_stars() <= 5) {
+            String Req = "INSERT INTO `evaluation`(`id_livre`, `id_user`, `nb_stars`) VALUES (?,?,?)";
+            try {
+                PreparedStatement ps = cnx.prepareStatement(Req);
+                ps.setInt(1, e.getId_livre());
+                ps.setInt(2, e.getId_user());
+                ps.setInt(3, e.getNb_stars());
+                ps.execute();
+                System.out.println(" Evaluation ajoutée avec succes");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("le nombre d'étoiles est hors limites");
+            System.out.println("Il faut choisir entre 1 et 5 étoiles !!! ");
+
         }
     }
-        else
-    {
-        System.out.println("le nombre d'étoiles est hors limites");
-        System.out.println("Il faut choisir entre 1 et 5 étoiles !!! ");
-        
-                
-    }
-    } 
-    
 
     @Override
     public void deleteEvaluation(evaluation s) {
@@ -83,7 +81,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
     public List<evaluation> consulterEvaluation() {
         List<evaluation> evaluation = new ArrayList<>();
 
-        String query = "SELECT * FROM evaluation e inner join livre l where l.id_livre=e.id_livre";
+        String query = "SELECT * FROM evaluation ";
 
         try {
             Statement st = cnx.createStatement();
@@ -97,35 +95,28 @@ Connection cnx = maConnexion.getInstance().getCnx();
         }
         return evaluation;
     }
-    
-    
+
     public evaluation getById(evaluation e) throws SQLException {
-        Statement st=cnx.createStatement();
-        String query="select * from evaluation where id_evaluation="+e.getId_evaluation();
-        ResultSet rs=st.executeQuery(query);
-        while(rs.next())
-        {
+        Statement st = cnx.createStatement();
+        String query = "select * from evaluation where id_evaluation=" + e.getId_evaluation();
+        ResultSet rs = st.executeQuery(query);
+        
             evaluation ev;
             ev = new evaluation(rs.getInt("id_evaluation"), rs.getInt("id_livre"), rs.getInt("id_user"), rs.getInt("nb_stars"));
             return ev;
-        }
-        return null;
     }
-    
-    
-   
-   
-  public int getAvgRates(int id_livre) throws SQLException{
+
+    @Override
+    public int getAvgRates(int id_livre) throws SQLException {
         PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT AVG(nb_stars) FROM evaluation WHERE id_livre = ?");
         reqSelectParam.setInt(1, id_livre);
         ResultSet res = reqSelectParam.executeQuery();
         int avgR = 0;
-        while(res.next()){
+        while (res.next()) {
             avgR = res.getInt(1);
         }
         res.close();
         return avgR;
     }
-    
-          
-    }
+
+}

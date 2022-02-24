@@ -23,4 +23,5 @@ public interface Iutilisateur {
    public utilisateur getUserByUsername(utilisateur u);
    public List<utilisateur> getUserByAge(utilisateur u);
    public int countUsers();
+   
 }

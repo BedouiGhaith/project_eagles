@@ -41,12 +41,12 @@ public class serviceEvent implements Ievenement {
     }
 
     @Override
-    public void deleteEvenement(String s) {
+    public void deleteEvenement(evenement s) {
             try {
         String sql = "DELETE FROM evenement WHERE evnt_name=?";
         
         PreparedStatement statement = cnx.prepareStatement(sql);
-        statement.setString(1, s);
+        statement.setString(1, s.getEvnt_name());
         
         int rowsDeleted = statement.executeUpdate();
         if (rowsDeleted > 0) {
@@ -56,7 +56,7 @@ public class serviceEvent implements Ievenement {
     }
 
     @Override
-    public void updateEvenement(evenement e, String s) {
+    public void updateEvenement(evenement e, evenement s) {
         try {
             String sql = "UPDATE evenement SET evnt_name=?, description=?, evnt_date=?, evnt_club=? WHERE evnt_name=?";
 
@@ -65,7 +65,7 @@ public class serviceEvent implements Ievenement {
             ps.setString(2, e.getDescription());
             ps.setString(3, e.getEvnt_date());
             ps.setInt(4, e.getId_club());
-            ps.setString(5, s);
+            ps.setString(5, s.getEvnt_name());
             ps.execute();
 
             int rowsUpdated = ps.executeUpdate();

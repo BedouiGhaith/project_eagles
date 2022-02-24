@@ -21,11 +21,13 @@ import util.maConnexion;
  *
  * @author asus
  */
-public class serviceAvis implements Iavis{
-Connection cnx = maConnexion.getInstance().getCnx();
+public class serviceAvis implements Iavis {
+
+    Connection cnx = maConnexion.getInstance().getCnx();
+
     @Override
     public void ajouterAvis(Avis a) {
-       String Req = "INSERT INTO `avis`(`commentaire`, `id_user`,`id_livre`) VALUES (?,?,?)";
+        String Req = "INSERT INTO `avis`(`commentaire`, `id_user`,`id_livre`) VALUES (?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setString(1, a.getCommentaire());
@@ -88,34 +90,33 @@ Connection cnx = maConnexion.getInstance().getCnx();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return  avis;
+        return avis;
     }
-    
-    
-    public int getTotalCom(int id_livre) throws SQLException{
+
+    public int getTotalCom(int id_livre) throws SQLException {
         PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT count(id_avis) FROM Avis WHERE id_livre = ?");
         reqSelectParam.setInt(1, id_livre);
         ResultSet res = reqSelectParam.executeQuery();
         int sumCom = 0;
-        while(res.next()){
+        while (res.next()) {
             sumCom = res.getInt(1);
         }
         res.close();
         return sumCom;
     }
-    
-     public Avis getById(int id_avis) throws SQLException {
-        Statement st=cnx.createStatement();
-        String query="select * from avis where id_avis='"+id_avis+"'";
-        ResultSet rs=st.executeQuery(query);
-        while(rs.next())
-        {
+
+    public Avis getById(int id_avis) throws SQLException {
+        Statement st = cnx.createStatement();
+        String query = "select * from avis where id_avis='" + id_avis + "'";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
             Avis av;
             av = new Avis(rs.getInt("id_Avis"), rs.getString(2), rs.getInt("id_user"), rs.getInt("id_livre"));
             return av;
         }
         return null;
     }
+
     public static String reactComment() {
 
         Scanner sc = new Scanner(System.in);
@@ -129,7 +130,26 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return react;
     }
 
+    public Avis getAvisByComment(Avis a) {
+        Avis av = new Avis();
+        String query = "SELECT * FROM avis where commentaire= '" + a.getCommentaire() + "'";
+        /* String query = "SELECT * FROM avis where commentaire= " + a.getCommentaire();*/
+
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                av.setId_Avis(rs.getInt("id_Avis"));
+                av.setId_livre(rs.getInt("id_livre"));
+                av.setId_user(rs.getInt("id_user"));
+                av.setCommentaire(rs.getString(2));
+
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return av;
+
+    }
 }
-
-
-

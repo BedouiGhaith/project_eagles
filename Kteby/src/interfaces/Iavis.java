@@ -17,4 +17,5 @@ public interface Iavis {
    public void deleteAvis(String s);
    public void updateAvis(Avis a, String s);
    public List<Avis> consulterAvis();
+   
 }
