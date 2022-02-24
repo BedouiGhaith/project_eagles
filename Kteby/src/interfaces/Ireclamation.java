@@ -17,7 +17,7 @@ public interface Ireclamation {
 
     public void deleteReclamation(String s);
 
-    public void updateReclamation(reclamation e, String s);
+    public void updateReclamation(reclamation e, reclamation s);
 
     public List<reclamation> consulterReclamation();
 }

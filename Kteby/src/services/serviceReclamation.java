@@ -58,7 +58,7 @@ public class serviceReclamation implements Ireclamation {
     }
 
     @Override
-    public void updateReclamation(reclamation e, String s) {
+    public void updateReclamation(reclamation e, reclamation s) {
        try {
             String sql = "UPDATE reclamation SET id_user=?, titre=?, description=? status=?, response=? WHERE id_reclamation=?";
 
@@ -68,7 +68,7 @@ public class serviceReclamation implements Ireclamation {
             ps.setString(3, e.getDescription());
             ps.setInt(4, e.getStatus());
             ps.setString(5, e.getResponse());
-            ps.setString(6, s);
+            ps.setInt(6, s.getId_user());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("A reclamation user was updated successfully!");

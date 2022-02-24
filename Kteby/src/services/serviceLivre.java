@@ -42,12 +42,12 @@ public class serviceLivre implements Ilivre {
     }
 
     @Override
-    public void deleteLivre(String s) {
+    public void deleteLivre(livre li) {
         try {
             String sql = "DELETE FROM livre WHERE titre=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setString(1, s);
+            statement.setString(1, li.getTitre());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -58,7 +58,7 @@ public class serviceLivre implements Ilivre {
     }
 
     @Override
-    public void updateLivre(livre li, String s) {
+    public void updateLivre(livre li, livre l) {
         try {
             String sql = "UPDATE livre SET titre=?, auteur=?, description=?, image=?, categorie=? WHERE titre=?";
 
@@ -68,7 +68,7 @@ public class serviceLivre implements Ilivre {
             ps.setString(3, li.getDescription());
             ps.setString(4, li.getImage());
             ps.setInt(5, li.getId_cat());
-            ps.setString(6, s);
+            ps.setString(6, l.getTitre());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing book was updated successfully!");
@@ -95,5 +95,39 @@ public class serviceLivre implements Ilivre {
         }
         return livre;
     }
+    @Override
+    public livre getLivreById(livre l){
+        livre li = new livre();
 
+        String query = "SELECT * FROM utilisateur where " + " id_user= " + l.getId_livre() ;
+
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                li = new livre(rs.getInt("id_livre"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("categorie"));
+            }
+
+        } catch (SQLException ex) {
+        }
+        return li;
+    }
+
+     public int calculelivre() {
+        
+        int nb =0;
+        try {
+           PreparedStatement st = cnx.prepareStatement("SELECT count(*) FROM livre ");
+           
+            ResultSet rs = st.executeQuery();
+            
+            while (rs.next()) {                
+               nb = rs.getInt(1);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return nb;
+    }
 }

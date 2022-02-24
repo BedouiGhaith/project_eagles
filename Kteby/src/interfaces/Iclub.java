@@ -6,8 +6,9 @@
 package interfaces;
 
 import java.util.List;
-import model.Avis;
+
 import model.club;
+import model.livre;
 
 /**
  *
@@ -15,7 +16,9 @@ import model.club;
  */
 public interface Iclub {
      public void ajouterClub(club b);
-   public void deleteClub(String s);
-   public void updateClub(club b, String s);
+   public void deleteClub(club c);
+   public void updateClub(club b , club s);
    public List<club> consulterClub();
+   public club getClubById(club c);
+   public int calculemembre() ;
 }
