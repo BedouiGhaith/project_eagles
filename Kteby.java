@@ -59,20 +59,21 @@ public class Kteby {
         /*sli.deleteLivre("na");*/
         
         //avis
-        Avis a = new Avis("interessant",5 , 25);
-       /* Avis updated_avis = new Avis  ("ce n'est pas interessant ",5 , 25); */
-        
-        serviceAvis  sa = new serviceAvis();
-          sa.ajouterAvis(a);
-        System.out.println(sa.consulterAvis());
-      /*  sa.updateAvis(updated_avis, "5");
-        /*sa.deleteAvis("5");*/
-        System.out.println(sa.getById(3));
-        System.out.println("La totale des commentaires est :"+sa.getTotalCom(25));
+      Avis a = new Avis("grave",5 , 25);
+       Avis updated_avis = new Avis  ("grave ",5 , 25); 
        
-         
-      
+        serviceAvis  sa = new serviceAvis();
+     /*  sa.ajouterAvis(a);  */
+        System.out.println(sa.consulterAvis());
+      /* sa.updateAvis(updated_avis, "11");*/
+     /* sa.deleteAvis("5"); */
+        System.out.println(sa.getById(3));
+          System.out.println(sa.getbooksComments(updated_avis));
+        System.out.println(sa.getAvisByComment(updated_avis ));  
+        System.out.println("La totale des commentaires est :"+sa.getTotalCom(25));
         System.out.println(serviceAvis.reactComment());
+       
+        
         
         //categorie
         /*categorie c = new categorie("enfant");

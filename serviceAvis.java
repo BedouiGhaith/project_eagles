@@ -116,6 +116,46 @@ Connection cnx = maConnexion.getInstance().getCnx();
         }
         return null;
     }
+   /*  public Avis getAvisByComment(Avis a) {
+     Avis av = new Avis();
+
+        String query = "SELECT * FROM avis where " + " commentaire= " + a.getCommentaire();
+
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                av = new Avis(rs.getInt("id_Avis"), rs.getString(2), rs.getInt("id_user"), rs.getInt("id_livre"));
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return av;
+    }*/
+     public Avis getAvisByComment(Avis a) {
+     Avis av = new Avis();
+     String query = "SELECT * FROM avis where commentaire= '" + a.getCommentaire() + "'" ;
+        /* String query = "SELECT * FROM avis where commentaire= " + a.getCommentaire();*/
+
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                av.setId_Avis(rs.getInt("id_Avis"));
+                av.setCommentaire(rs.getString(2));
+                av.setId_livre(rs.getInt("id_livre"));
+                av.setId_user(rs.getInt("id_user"));
+             
+                        
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return av;
+    }
+
     public static String reactComment() {
 
         Scanner sc = new Scanner(System.in);
@@ -128,7 +168,26 @@ Connection cnx = maConnexion.getInstance().getCnx();
         }
         return react;
     }
-
+ public ArrayList<Avis> getbooksComments(Avis a){
+        ArrayList<Avis> commentsList = new ArrayList();
+        try {            
+            Statement st = cnx.createStatement();
+            
+              String query = "SELECT * FROM avis where commentaire= '" + a.getCommentaire() + "'" ;
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                Avis av = new Avis();
+                av.setId_Avis(rs.getInt("id_Avis"));
+                av.setCommentaire(rs.getString(2));
+                av.setId_livre(rs.getInt("id_livre"));
+                av.setId_user(rs.getInt("id_user"));
+                commentsList.add(av);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return commentsList;
+} 
 }
 
 
