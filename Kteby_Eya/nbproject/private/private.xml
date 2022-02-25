@@ -5,12 +5,16 @@
         <group>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/categorie.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/kteby/Kteby.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/questions.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/userdata.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/services/serviceEvaluation.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/evaluation.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/interfaces/Icategorie.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/interfaces/Ievaluation.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/services/serviceCategorie.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/util/maConnexion.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/services/serviceQuiz.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/interfaces/IQuiz.java</file>
         </group>
     </open-files>
 </project-private>

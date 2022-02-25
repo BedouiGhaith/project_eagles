@@ -112,9 +112,8 @@ Connection cnx = maConnexion.getInstance().getCnx();
         return null;
     }
     
-    
-   
-   
+
+@Override
   public int getAvgRates(int id_livre) throws SQLException{
         PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT AVG(nb_stars) FROM evaluation WHERE id_livre = ?");
         reqSelectParam.setInt(1, id_livre);

@@ -19,6 +19,7 @@ public interface Ievaluation {
    public void updateEvaluation(evaluation e, evaluation s);
    public List<evaluation> consulterEvaluation();
    public evaluation getById(evaluation e) throws SQLException;
+   public int getAvgRates(int id_livre) throws SQLException;
    /* public Boolean exist(evaluation e)throws SQLException;*/
 /*
     /**
