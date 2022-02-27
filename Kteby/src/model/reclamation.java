@@ -37,6 +37,20 @@ public class reclamation {
     public reclamation() {
     }
 
+    public reclamation(int id_reclamation, String titre, String description) {
+        this.id_reclamation = id_reclamation;
+        this.titre = titre;
+        this.description = description;
+    }
+
+    public reclamation(int id_reclamation) {
+        this.id_reclamation = id_reclamation;
+    }
+
+    
+
+   
+
     public int getId_reclamation() {
         return id_reclamation;
     }

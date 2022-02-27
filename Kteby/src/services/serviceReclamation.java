@@ -42,12 +42,12 @@ public class serviceReclamation implements Ireclamation {
     }
 
     @Override
-    public void deleteReclamation(reclamation s) {
+    public void deleteReclamation(reclamation e) {
         try {
             String sql = "DELETE FROM reclamation WHERE id_reclamation=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setInt(1, s.getId_reclamation());
+            statement.setInt(1, e.getId_reclamation());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -58,17 +58,15 @@ public class serviceReclamation implements Ireclamation {
     }
 
     @Override
-    public void updateReclamation(reclamation e, reclamation s) {
+    public void updateReclamation(reclamation e) {
        try {
-            String sql = "UPDATE reclamation SET id_user=?, titre=?, description=? status=?, response=? WHERE id_reclamation=?";
+            String sql = "UPDATE reclamation SET  titre=?, description=? WHERE id_reclamation=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
-            ps.setInt(1, e.getId_user());
-            ps.setString(2, e.getTitre());
-            ps.setString(3, e.getDescription());
-            ps.setInt(4, e.getStatus());
-            ps.setString(5, e.getResponse());
-            ps.setInt(6, s.getId_reclamation());
+            
+            ps.setString(1, e.getTitre());
+            ps.setString(2, e.getDescription());
+            ps.setInt(3, e.getId_reclamation());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("A reclamation user was updated successfully!");

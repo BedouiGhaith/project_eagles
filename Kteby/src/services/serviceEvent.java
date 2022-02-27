@@ -124,7 +124,7 @@ public class serviceEvent implements Ievenement {
     System.out.println("An existing event was updated successfully!");
             return true; 
         }
-        System.out.println("la réclamation n'existe pas");
+        System.out.println("l'evenement n'existe pas");
         return false;
  
 }

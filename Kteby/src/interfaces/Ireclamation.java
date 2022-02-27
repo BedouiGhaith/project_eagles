@@ -16,9 +16,9 @@ import model.reclamation;
 public interface Ireclamation {
     public void ajouterReclamation(reclamation e);
 
-    public void deleteReclamation(reclamation s);
+    public void deleteReclamation(reclamation e);
 
-    public void updateReclamation(reclamation e, reclamation s);
+    public void updateReclamation(reclamation e);
 
     public List<reclamation> consulterReclamation();
     public reclamation getById(int id_reclamation ) throws SQLException;
