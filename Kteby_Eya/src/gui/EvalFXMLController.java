@@ -6,13 +6,20 @@
 package gui;
 
 import interfaces.Ievaluation;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.evaluation;
 import services.serviceEvaluation;
@@ -39,6 +46,10 @@ public class EvalFXMLController implements Initializable {
     private Label list_lab;
     @FXML
     private TextField idevalTF;
+    @FXML
+    private Button returnB;
+    @FXML
+    private Label lab_title_eval;
 
     /**
      * Initializes the controller class.
@@ -74,5 +85,34 @@ public class EvalFXMLController implements Initializable {
     private void afficherAction(ActionEvent event) {
         list_lab.setText(sev.consulterEvaluation().toString());
     }
-    
+
+    @FXML
+    private void returnAction(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("CategFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                CategFXMLController ctc=loader.getController();
 }
+
+    @FXML
+    private void calculPage(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("CalculRatesFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                CategFXMLController ctc=loader.getController();
+    }
+}
+    
+

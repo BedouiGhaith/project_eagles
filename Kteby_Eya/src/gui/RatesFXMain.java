@@ -20,15 +20,15 @@ import javafx.stage.Stage;
  *
  * @author eya
  */
-public class CatFXMain extends Application {
+public class RatesFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root=FXMLLoader.load(getClass().getResource("CategFXML.fxml"));
-
+         Parent root= FXMLLoader.load(getClass().getResource("CalculRatesFXML.fxml"));
+        
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("CRUD JavaFX");
+        primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

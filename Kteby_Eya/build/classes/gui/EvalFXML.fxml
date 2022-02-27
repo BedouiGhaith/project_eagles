@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EvalFXMLController">
    <children>
@@ -20,5 +21,12 @@
       <Button layoutX="416.0" layoutY="303.0" mnemonicParsing="false" onAction="#afficherAction" text="Afficher" />
       <Label layoutX="21.0" layoutY="86.0" prefHeight="17.0" prefWidth="123.0" text="Identifiant évaluation" />
       <TextField fx:id="idevalTF" layoutX="141.0" layoutY="82.0" prefHeight="25.0" prefWidth="39.0" />
+      <Button fx:id="returnB" layoutX="527.0" layoutY="361.0" mnemonicParsing="false" onAction="#returnAction" text="Catégorie" />
+      <Label fx:id="lab_title_eval" layoutX="120.0" layoutY="14.0" prefHeight="42.0" prefWidth="345.0" text="            Gestion des évaluations" textFill="#cf13bf">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Button layoutX="17.0" layoutY="361.0" mnemonicParsing="false" onAction="#calculPage" text="Calculer moyenne des livres" />
    </children>
 </AnchorPane>

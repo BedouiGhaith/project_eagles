@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CalculRatesFXMLController">
+   <children>
+      <Label layoutX="207.0" layoutY="31.0" prefHeight="17.0" prefWidth="187.0" text="Calcul des Rates" textFill="#cd2890">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="102.0" prefHeight="11.0" prefWidth="133.0" text="Identifiant de livre :" />
+      <TextField fx:id="idLivTF" layoutX="226.0" layoutY="98.0" />
+      <Label layoutX="93.0" layoutY="153.0" prefHeight="11.0" prefWidth="133.0" text="Moyenne de Livre :" />
+      <Button layoutX="257.0" layoutY="200.0" mnemonicParsing="false" onAction="#calculAction" text="Calculer" />
+      <Label fx:id="resmoy" layoutX="273.0" layoutY="153.0" />
+      <Button layoutX="526.0" layoutY="345.0" mnemonicParsing="false" onAction="#returnAction" text="Retour" />
+   </children>
+</AnchorPane>

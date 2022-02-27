@@ -5,10 +5,13 @@
  */
 package gui;
 
-import interfaces.Icategorie;
+import interfaces.Ievaluation;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,33 +19,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
-import model.categorie;
-import services.serviceCategorie;
+import model.evaluation;
+import services.serviceEvaluation;
 
 /**
  * FXML Controller class
  *
  * @author eya
  */
-public class CategFXMLController implements Initializable {
-    
-    Icategorie sc= new serviceCategorie();
+public class CalculRatesFXMLController implements Initializable {
+    Ievaluation sev=new serviceEvaluation();
 
     @FXML
-    private TextField idCatg;
+    private TextField idLivTF;
     @FXML
-    private TextField nomCatg;
-    @FXML
-    private Label lab_list;
-    @FXML
-    private Button returnB;
-    @FXML
-    private Label lab_title_catg;
+    private Label resmoy;
 
     /**
      * Initializes the controller class.
@@ -53,29 +47,36 @@ public class CategFXMLController implements Initializable {
     }    
 
     @FXML
-    private void ajouterAction(ActionEvent event) {
-        sc.ajouterCategorie(new categorie(nomCatg.getText()));
-        JOptionPane.showMessageDialog(null, "Catégorie ajoutée avec succés !");
-    }
+    private void calculAction(ActionEvent event) throws SQLException {
+        int moy=0;
+         moy=sev.getAvgRates(Integer.valueOf(idLivTF.getText()));
+         
+          if(moy >=0 && moy < 1)
+            {
+                resmoy.setText("");
+            }
+            if(moy >=1 && moy < 2)
+            {
+                resmoy.setText("★");
+            }
+            if(moy >=2 && moy < 3)
+            {
+                resmoy.setText("★★");
+            }
+            if(moy >=3 && moy < 4)
+            {
+                resmoy.setText("★★★");
+            }
+            if(moy >=4 && moy< 5)
+            {
+                resmoy.setText("★★★★");
+            }
+            if(moy==5 )
+            {
+                resmoy.setText("★★★★★");
+            }
+        } 
 
-    @FXML
-    private void updateAction(ActionEvent event) {
-        sc.updateCategorie(new categorie(Integer.valueOf(idCatg.getText()),nomCatg.getText()));
-        JOptionPane.showMessageDialog(null, "Catégorie modifiée avec succés !");
-    }
-
-    @FXML
-    private void deleteAction(ActionEvent event) {
-        sc.deleteCategorie(new categorie(Integer.valueOf(idCatg.getText()),nomCatg.getText()));
-        JOptionPane.showMessageDialog(null, "Catégorie supprimée avec succés !");
-    }
-
-    @FXML
-    private void afficherAction(ActionEvent event) {
-        lab_list.setText(sc.consulterCategorie().toString());
-    }
-    
-    
     @FXML
     private void returnAction(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader
@@ -88,5 +89,9 @@ public class CategFXMLController implements Initializable {
                     window.setScene(homescene);
                     window.show();
                 EvalFXMLController ctc=loader.getController();
-}
-}
+    }
+    
+       
+    }
+    
+
