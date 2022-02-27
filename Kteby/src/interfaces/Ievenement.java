@@ -17,9 +17,9 @@ public interface Ievenement {
 
     public void ajouterEvenement(evenement e);
 
-    public void deleteEvenement(evenement s);
+    public void deleteEvenement(evenement e);
 
-    public void updateEvenement(evenement e, evenement s);
+    public void updateEvenement(evenement e);
 
     public List<evenement> consulterEvenement();
     public evenement getById(int id_event ) throws SQLException;

@@ -37,6 +37,12 @@ public class evenement {
         this.evnt_name = evnt_name;
         this.evnt_date = evnt_date;
     }
+
+    public evenement(int id_event) {
+        this.id_event = id_event;
+    }
+    
+    
     
 
     @Override
