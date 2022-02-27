@@ -41,12 +41,12 @@ Connection cnx = maConnexion.getInstance().getCnx();
     }
 
     @Override
-    public void deleteCategorie(categorie s) {
+    public void deleteCategorie(categorie c) {
         try {
-            String sql = "DELETE FROM categorie WHERE nom_categorie=?";
+            String sql = "DELETE FROM categorie WHERE id_categorie=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setString(1, s.getNom_categorie());
+            statement.setInt(1, c.getId_categorie());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -57,13 +57,13 @@ Connection cnx = maConnexion.getInstance().getCnx();
     }
 
     @Override
-    public void updateCategorie(categorie c, categorie s) {
+    public void updateCategorie(categorie c) {
         try {
-             String sql = "UPDATE categorie SET nom_categorie =? WHERE nom_categorie=?";
+             String sql = "UPDATE categorie SET nom_categorie =? WHERE id_categorie=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, c.getNom_categorie());
-            ps.setString(2, s.getNom_categorie());
+            ps.setInt(2, c.getId_categorie());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing category was updated successfully!");

@@ -15,8 +15,8 @@ import model.categorie;
  */
 public interface Icategorie {
    public void ajouterCategorie(categorie c);
-   public void deleteCategorie(categorie s);
-   public void updateCategorie(categorie c,categorie s);
+   public void deleteCategorie(categorie c);
+   public void updateCategorie(categorie c);
     public List<categorie> consulterCategorie();
    public List<categorie> getTrierParNomCat() throws SQLException;
     public categorie getCategorieById(categorie c) throws SQLException;

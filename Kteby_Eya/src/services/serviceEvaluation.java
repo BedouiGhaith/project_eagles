@@ -48,29 +48,28 @@ Connection cnx = maConnexion.getInstance().getCnx();
     
 
     @Override
-    public void deleteEvaluation(evaluation s) {
+    public void deleteEvaluation(evaluation e) {
         try {
             String sql = "DELETE FROM evaluation WHERE id_evaluation=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setInt(1, s.getId_evaluation());
-
+            statement.setInt(1, e.getId_evaluation());
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("A book was deleted successfully!");
+                System.out.println("An evaluation was deleted successfully!");
             }
         } catch (SQLException ex) {
         }
     }
 
     @Override
-    public void updateEvaluation(evaluation e, evaluation s) {
+    public void updateEvaluation(evaluation e) {
         try {
-            String sql = "UPDATE evaluation SET nb_stars=? WHERE id_evaluation=?";
+            String sql = "UPDATE evaluation SET nb_stars=?  WHERE id_evaluation=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setInt(1, e.getNb_stars());
-            ps.setInt(2, s.getId_evaluation());
+            ps.setInt(2, e.getId_evaluation());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing evaluation was updated successfully!");

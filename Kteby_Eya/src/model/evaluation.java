@@ -29,6 +29,16 @@ public class evaluation {
         this.nb_stars = nb_stars;
     }
 
+      public evaluation(int id_evaluation, int nb_stars) {
+        this.id_evaluation = id_evaluation;
+        this.nb_stars = nb_stars;
+    }
+
+    public evaluation(int id_evaluation) {
+        this.id_evaluation = id_evaluation;
+    }
+      
+
 
     public evaluation() {
     }

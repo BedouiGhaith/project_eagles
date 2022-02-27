@@ -16,7 +16,7 @@ import model.evaluation;
 public interface Ievaluation {
     public void ajouterEvaluation(evaluation e);
    public void deleteEvaluation(evaluation s);
-   public void updateEvaluation(evaluation e, evaluation s);
+   public void updateEvaluation(evaluation e);
    public List<evaluation> consulterEvaluation();
    public evaluation getById(evaluation e) throws SQLException;
    public int getAvgRates(int id_livre) throws SQLException;
