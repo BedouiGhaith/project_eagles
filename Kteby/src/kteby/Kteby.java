@@ -5,8 +5,11 @@
  */
 package kteby;
 
+import interfaces.Ievenement;
 import interfaces.Ireclamation;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import model.Avis;
 import model.categorie;
 import model.club;
@@ -44,13 +47,13 @@ public class Kteby {
         su.ajouterUtilisateur(u);
         System.out.println(su.consulterUtilisateur());
         su.updateUtilisateur(updated_user, "user");
-        su.deleteUtilisateur("user");
+        su.deleteUtilisateur("user");*/
         
         
         
         
         //reclamation
-        //reclamation re = new reclamation(1,"problem","livre qui manque",0,"");
+        reclamation re = new reclamation(1,"problem","livre qui manque",0,"");
         reclamation re1 = new reclamation(1,"test","livre c'est pour les enfants",0,"");
 
         reclamation updated_re = new reclamation(1,"warning","pas claire",0,"");
@@ -59,28 +62,33 @@ public class Kteby {
          //System.out.println(sre.Reponse("refusé",5));
          //System.out.println(sre.getById(4));
         //sre.ajouterReclamation(re1);
-        sre.updateReclamation(updated_re,re1);
+        //sre.updateReclamation(updated_re,re1);
         //System.out.println(sre.consulterReclamation());
         //sre.deleteReclamation(re);
         
        
         
         //Events
-        evenement evn= new evenement("eventHarry","fans meeting","15/12/2021",1);
-        evenement evn2= new evenement("EventIntelligence","intelligence people","01/12/2022",2);
-        evenement evn3= new evenement("eventday","webinaire","24/02/2021",1);
+       // evenement evn= new evenement("eventHarry","fans meeting","15/12/2021",1);
+       //evenement evn2= new evenement("EventIntelligence","intelligence people","01/12/2022",2);
+       //evenement evn3= new evenement("eventday","webinaire","24/02/2021",1);
 
-        evenement delay_ev = new evenement ("eventHarry","fans meeting","20/12/2021",1);
-        evenement updated_evn = new evenement("EVENT1","aabbba","15/12/2021",1);
-        
-        serviceEvent sev = new serviceEvent();
-        /*System.out.println(sev.delay("20/12/2021",8));
+         //evenement delay_ev = new evenement ("eventHarry","fans meeting","20/12/2021",1);
+        //evenement updated_evn = new evenement("EVENT1","aabbba","15/12/2021",1);
+        //1
+        Ievenement sev = new serviceEvent();
+        //2
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        java.util.Date myDate = new java.util.Date("2022/02/28");
+        evenement even = new evenement("enement", "Fans meet",myDate, 1);
+        //System.out.println(sre.getById(5));
+        //System.out.println(sev.delay("20/12/2021",8));
         /*sev.ajouterEvenement(evn2);*/
         //sev.ajouterEvenement(evn2);
         //System.out.println(sev.consulterEvenement());
        
         //sev.updateEvenement(updated_evn,evn);
-       // sev.deleteEvenement("1");*/
+       // sev.deleteEvenement("1");
         
     }
 

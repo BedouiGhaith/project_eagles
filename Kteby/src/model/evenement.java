@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package model;
-
-import java.util.Date;
+ import java.sql.Date;
 
 /**
  *
@@ -15,17 +14,17 @@ public class evenement {
     int id_event ; 
     String evnt_name ;
     String description ;
-    String evnt_date ;
+    Date evnt_date ;
     int id_club ;
 
-    public evenement(String evnt_name, String description, String evnt_date, int id_club) {
+    public evenement(String evnt_name, String description, Date evnt_date, int id_club) {
         this.evnt_name = evnt_name;
         this.description = description;
         this.evnt_date = evnt_date;
         this.id_club = id_club;
     }
 
-    public evenement(int id_event, String evnt_name, String description, String evnt_date, int id_club) {
+    public evenement(int id_event, String evnt_name, String description, Date evnt_date, int id_club) {
         this.id_event = id_event;
         this.evnt_name = evnt_name;
         this.description = description;
@@ -33,7 +32,7 @@ public class evenement {
         this.id_club = id_club;
     }
 
-    public evenement(String evnt_name, String evnt_date) {
+    public evenement(String evnt_name, Date evnt_date) {
         this.evnt_name = evnt_name;
         this.evnt_date = evnt_date;
     }
@@ -65,9 +64,11 @@ public class evenement {
         this.description = description;
     }
 
-    public void setEvnt_date(String evnt_date) {
+    public void setEvnt_date(Date evnt_date) {
         this.evnt_date = evnt_date;
     }
+
+    
 
     public void setId_club(int id_club) {
         this.id_club = id_club;
@@ -85,9 +86,11 @@ public class evenement {
         return description;
     }
 
-    public String getEvnt_date() {
+    public Date getEvnt_date() {
         return evnt_date;
     }
+
+    
 
     public int getId_club() {
         return id_club;
