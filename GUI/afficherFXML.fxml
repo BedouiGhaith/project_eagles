@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherFXMLController">
+   <children>
+      <Button layoutX="249.0" layoutY="254.0" mnemonicParsing="false" onAction="#afficher" prefHeight="31.0" prefWidth="89.0" text="Afficher" />
+      <Label fx:id="lab_list" layoutX="127.0" layoutY="58.0" prefHeight="227.0" prefWidth="333.0" text="--- les commentaires ---" textFill="#0d0a3f" />
+      <Label layoutX="209.0" prefHeight="65.0" prefWidth="170.0" text="Les avis " textFill="#3a2da1">
+         <font>
+            <Font name="Baskerville Old Face" size="47.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
