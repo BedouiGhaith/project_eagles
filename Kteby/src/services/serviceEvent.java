@@ -32,7 +32,7 @@ public class serviceEvent implements Ievenement {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setString(1, e.getEvnt_name());
             ps.setString(2, e.getDescription());
-            ps.setDate(3, e.getEvnt_date());
+            ps.setString(3, e.getEvnt_date());
             ps.setInt(4, e.getId_club());
             ps.execute();
             System.out.println(" evenement ajoutée avec succes");
@@ -64,7 +64,7 @@ public class serviceEvent implements Ievenement {
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, e.getEvnt_name());
             ps.setString(2, e.getDescription());
-            ps.setDate(3, e.getEvnt_date());
+            ps.setString(3, e.getEvnt_date());
             ps.setInt(4, e.getId_club());
             ps.setInt(5, e.getId_event());
             ps.execute();
@@ -87,7 +87,7 @@ public class serviceEvent implements Ievenement {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                evnt.add(new evenement(rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt("id_club")));
+                evnt.add(new evenement(rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("id_club")));
             }
 
         } catch (SQLException ex) {
@@ -103,7 +103,7 @@ public class serviceEvent implements Ievenement {
         while(rs.next())
         {
             evenement rec;
-            rec = new evenement (rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt("id_club"));
+            rec = new evenement (rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("id_club"));
             return rec;
         }
         return null;
@@ -116,13 +116,13 @@ public class serviceEvent implements Ievenement {
     }
     
     
-    public boolean delay ( Date newdt,int id_event)  throws SQLException  {
+    public boolean delay ( String newdt,int id_event)  throws SQLException  {
        if(exist(id_event))
         {
         Statement ste=cnx.createStatement();
         String sql= "UPDATE evenement SET  evnt_date='"+newdt+"' where id_event="+id_event;
          ste.execute(sql);
-    System.out.println("An existing event was updated successfully!");
+    System.out.println("la date de l'evenement a modifié");
             return true; 
         }
         System.out.println("l'evenement n'existe pas");

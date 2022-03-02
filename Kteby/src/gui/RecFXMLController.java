@@ -6,13 +6,19 @@
 package gui;
 
 import interfaces.Ireclamation;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.reclamation;
 import services.serviceReclamation;
 
@@ -51,25 +57,49 @@ public class RecFXMLController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void submitaction(ActionEvent event) {
-        rec.ajouterReclamation(new reclamation(Integer.valueOf(iduserRec.getText()),titreRec.getText(),descRec.getText(),Integer.valueOf(statutRec.getText()),reponseRes.getText()));
-    }
+    
 
     @FXML
     private void afficheraction(ActionEvent event) {
         listRec.setText(rec.consulterReclamation().toString());
     }
 
-    @FXML
-    private void updateaction(ActionEvent event) {
-        
-    rec.updateReclamation(new reclamation(Integer.valueOf(idrec.getText()),titreRec.getText(),descRec.getText()));
-    }
-
+    
     @FXML
     private void deleteaction(ActionEvent event) {
         rec.deleteReclamation(new reclamation(Integer.valueOf(idrec.getText())));
     }
+
+    @FXML
+    private void gotoadd(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("ajouterFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                AjouterFXMLController ctc=loader.getController();
+    }
+
+    @FXML
+    private void gotoupdate(ActionEvent event) throws IOException  {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("modifierFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                ModifierController ctc=loader.getController();
+        
+        
+    }
+
+  
     
 }

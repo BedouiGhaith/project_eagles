@@ -26,25 +26,37 @@ public class reclamation {
         this.response = response;
     }
 
-    public reclamation(int id_user, String titre, String description, int status, String response) {
+    /*public reclamation( int id_user,String titre, String description) {
+        this.id_user = id_user;
+        this.titre = titre;
+        this.description = description;
+    
+    }*/
+
+   public reclamation(int id_reclamation, String titre, String description) {
+        this.id_reclamation = id_reclamation;
+        this.titre = titre;
+        this.description = description;
+    }
+
+    public reclamation(int id_user, String titre, String description, int status) {
         this.id_user = id_user;
         this.titre = titre;
         this.description = description;
         this.status = status;
-        this.response = response;
     }
-
+   
+  
     public reclamation() {
-    }
-
-    public reclamation(int id_reclamation, String titre, String description) {
-        this.id_reclamation = id_reclamation;
-        this.titre = titre;
-        this.description = description;
     }
 
     public reclamation(int id_reclamation) {
         this.id_reclamation = id_reclamation;
+    }
+
+    public reclamation(int id_reclamation, String response) {
+        this.id_reclamation = id_reclamation;
+        this.response = response;
     }
 
     
