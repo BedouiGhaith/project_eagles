@@ -66,7 +66,7 @@ public class Kteby {
         
        /* serviceMembers me = new serviceMembers() ;
         members m1 = new members(4,3);
-        members m2 = new members(5,5);
+      //  members m2 = new members(5,5);
         me.ajouterMember(m1);
         me.ajouterMember(m2);
         System.out.println(scl.calculemembre());*/
