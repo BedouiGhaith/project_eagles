@@ -15,17 +15,15 @@
             <Image url="@../images/book2.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="42.0" layoutY="128.0" prefHeight="17.0" prefWidth="109.0" text="Identifiant Livre" />
-      <Label layoutX="43.0" layoutY="179.0" prefHeight="17.0" prefWidth="92.0" text="Identifiant User" />
-      <Label layoutX="42.0" layoutY="225.0" prefHeight="25.0" prefWidth="109.0" text="Nombre des stars" />
-      <TextField fx:id="idlivTF" layoutX="141.0" layoutY="124.0" prefHeight="17.0" prefWidth="39.0" />
-      <TextField fx:id="iduserTF" layoutX="141.0" layoutY="175.0" prefHeight="17.0" prefWidth="39.0" />
-      <TextField fx:id="nbstarsTF" layoutX="141.0" layoutY="225.0" prefHeight="17.0" prefWidth="39.0" />
-      <Button layoutX="274.0" layoutY="95.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="25.0" prefWidth="77.0" text="Ajouter" />
-      <Button layoutX="273.0" layoutY="137.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="25.0" prefWidth="77.0" text="Modifier" />
-      <Button layoutX="273.0" layoutY="180.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="25.0" prefWidth="77.0" text="Supprimer" />
-      <Label layoutX="21.0" layoutY="86.0" prefHeight="17.0" prefWidth="123.0" text="Identifiant évaluation" />
-      <TextField fx:id="idevalTF" layoutX="141.0" layoutY="82.0" prefHeight="25.0" prefWidth="39.0" />
+      <Label layoutX="40.0" layoutY="100.0" prefHeight="17.0" prefWidth="109.0" text="Nom de Livre :" />
+      <Label layoutX="28.0" layoutY="159.0" prefHeight="25.0" prefWidth="109.0" text="Nombre des stars :" />
+      <TextField fx:id="nomlivTF" layoutX="24.0" layoutY="125.0" prefHeight="25.0" prefWidth="109.0" />
+      <TextField fx:id="nbstarsTF" layoutX="40.0" layoutY="193.0" prefHeight="25.0" prefWidth="77.0" />
+      <Button layoutX="162.0" layoutY="121.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="25.0" prefWidth="77.0" text="Ajouter" />
+      <Button layoutX="162.0" layoutY="172.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="25.0" prefWidth="77.0" text="Modifier" />
+      <Button layoutX="490.0" layoutY="138.0" mnemonicParsing="false" onAction="#deleteAction" prefHeight="25.0" prefWidth="77.0" text="Supprimer" />
+      <Label layoutX="493.0" layoutY="68.0" prefHeight="17.0" prefWidth="123.0" text=" Evaluation :" />
+      <TextField fx:id="idevalTF" layoutX="509.0" layoutY="96.0" prefHeight="25.0" prefWidth="39.0" />
       <Button fx:id="returnB" layoutX="489.0" layoutY="374.0" mnemonicParsing="false" onAction="#returnAction" text="Diriger vers catégorie" />
       <Label fx:id="lab_title_eval" layoutX="120.0" layoutY="14.0" prefHeight="42.0" prefWidth="345.0" text="            Gestion des évaluations" textFill="#cf13bf">
          <font>

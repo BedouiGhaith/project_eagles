@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.evaluation;
 import services.serviceEvaluation;
+import util.JavaMailUtil;
 
 /**
  * FXML Controller class
@@ -32,18 +33,16 @@ import services.serviceEvaluation;
 public class EvalFXMLController implements Initializable {
     
     //VAR
-    Ievaluation sev=new serviceEvaluation();
+ 
     
     
     //WIDGETS
     @FXML
-    private TextField idlivTF;
+    private TextField nomlivTF;
     @FXML
     private TextField iduserTF;
     @FXML
     private TextField nbstarsTF;
-    @FXML
-    private Label list_lab;
     @FXML
     private TextField idevalTF;
     @FXML
@@ -60,21 +59,24 @@ public class EvalFXMLController implements Initializable {
     }    
 
     @FXML
-    private void submitAction(ActionEvent event) {
-        sev.ajouterEvaluation(new evaluation(Integer.parseInt(idlivTF.getText()),Integer.parseInt(iduserTF.getText()),Integer.parseInt(nbstarsTF.getText())));
+    private void submitAction(ActionEvent event) throws Exception {
+        serviceEvaluation sev = new serviceEvaluation();
+        sev.ajouterEvaluation(new evaluation((nomlivTF.getText()),Integer.valueOf(nbstarsTF.getText())));
         JOptionPane.showMessageDialog(null, "Evaluation ajoutée avec succés !");
+        JavaMailUtil.sendMail("eyabouazyzy420@gmail.com");
     }
 
     @FXML
     private void updateAction(ActionEvent event) {
         serviceEvaluation sev = new serviceEvaluation();
-        sev.updateEvaluation(new evaluation(Integer.valueOf(idevalTF.getText()),Integer.valueOf(nbstarsTF.getText())));
+        sev.updateEvaluation(new evaluation((nomlivTF.getText()),Integer.valueOf(nbstarsTF.getText())));
         JOptionPane.showMessageDialog(null, "Evaluation modifiée avec succés !");
     
     }
 
     @FXML
     private void deleteAction(ActionEvent event) {
+           Ievaluation sev=new serviceEvaluation();
         /*sev.deleteEvaluation(new evaluation(Integer.valueOf(idevalTF.getText()),Integer.valueOf(idlivTF.getText()),Integer.valueOf(iduserTF.getText()),Integer.valueOf(nbstarsTF.getText())));
         JOptionPane.showMessageDialog(null, "Evaluation supprimée avec succés !");*/
         sev.deleteEvaluation(new evaluation(Integer.valueOf(idevalTF.getText())));

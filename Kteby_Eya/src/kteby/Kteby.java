@@ -17,6 +17,7 @@ import model.evaluation;
 import services.serviceCategorie;
 
 import services.serviceEvaluation;
+import util.JavaMailUtil;
 
 
 
@@ -29,7 +30,7 @@ public class Kteby {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, Exception {
         
        
         
@@ -67,7 +68,7 @@ public class Kteby {
         //System.out.println("Le moyenne des Rates est :"+sev.getAvgRates(3));
         
        
-
+//JavaMailUtil.sendMail("eyabouazyzy420@gmail.com");
         
         
         

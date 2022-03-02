@@ -4,12 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/RatingFXMain.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/questions.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/kteby/Kteby.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/AffiCatgFXMain.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/instructions.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/images/tick.png</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/QuizPageFXMLController.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/util/JavaMailUtil.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/CatFXMain.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/categorie.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/AffiEvalFXMLController.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/model/evaluation.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/AffiEvalFXML.fxml</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/QuizPageFXML.fxml</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/AffiCatgFXMLController.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/RatesFXMain.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/services/serviceCategorie.java</file>
@@ -24,6 +31,7 @@
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/EvalFXMLController.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/util/ShowNotification.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/CalculRatesFXMLController.java</file>
+            <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/interfaces/Ievaluation.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/RatingFXML.fxml</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/util/maConnexion.java</file>
             <file>file:/C:/Users/eya/Documents/NetBeansProjects/Kteby_Eya/src/gui/CategFXML.fxml</file>

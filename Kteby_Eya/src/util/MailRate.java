@@ -31,8 +31,8 @@ public class MailRate {
     properties.put("mail.smtp.starttls.enable","true");
     properties.put("mail.smtp.host", "smtp.gmail.com");
     properties.put("mail.smtp.port", "587");
-    String myAccount="mohamedsayed.tourabi@esprit.tn";
-    String password="182JMT0297";
+    String myAccount="eya.bouazizi@esprit.tn";
+    String password="213JFT4201";
     
     Session session=Session.getInstance(properties, new Authenticator() {
         @Override

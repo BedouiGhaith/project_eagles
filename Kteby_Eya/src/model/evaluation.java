@@ -12,25 +12,29 @@ package model;
 public class evaluation {
 
     int id_evaluation;
-    int id_livre;
+    String nom_livre;
     int id_user;
     int nb_stars;
 
-    public evaluation(int id_evaluation, int id_livre, int id_user, int nb_stars) {
+    public evaluation(int id_evaluation, String nom_livre, int id_user, int nb_stars) {
         this.id_evaluation = id_evaluation;
-        this.id_livre = id_livre;
+        this.nom_livre = nom_livre;
         this.id_user = id_user;
         this.nb_stars = nb_stars;
     }
 
-    public evaluation(int id_livre, int id_user, int nb_stars) {
-        this.id_livre = id_livre;
-        this.id_user = id_user;
+    public evaluation(String nom_livre, int nb_stars) {
+        this.nom_livre = nom_livre;
         this.nb_stars = nb_stars;
     }
 
       public evaluation(int id_evaluation, int nb_stars) {
         this.id_evaluation = id_evaluation;
+        this.nb_stars = nb_stars;
+    }
+      public evaluation(int id_evaluation,String nom_livre, int nb_stars) {
+        this.id_evaluation = id_evaluation;
+        this.nom_livre = nom_livre;
         this.nb_stars = nb_stars;
     }
 
@@ -49,9 +53,7 @@ public class evaluation {
         return id_evaluation;
     }
 
-    public int getId_livre() {
-        return id_livre;
-    }
+    
 
     public int getNb_stars() {
         return nb_stars;
@@ -68,9 +70,15 @@ public class evaluation {
         this.id_evaluation = id_evaluation;
     }
 
-    public void setId_livre(int id_livre) {
-        this.id_livre = id_livre;
+    public String getNom_livre() {
+        return nom_livre;
     }
+
+    public void setNom_livre(String nom_livre) {
+        this.nom_livre = nom_livre;
+    }
+
+   
 
     public void setId_user(int id_user) {
         this.id_user = id_user;
@@ -82,7 +90,7 @@ public class evaluation {
 
     @Override
     public String toString() {
-        return "evaluation{" + "id_evaluation=" + id_evaluation + ", id_livre=" + id_livre + ", id_user=" + id_user + ", star=" + nb_stars + '}';
+        return "evaluation{" + "id_evaluation=" + id_evaluation + ", nom_livre=" + nom_livre + ", id_user=" + id_user + ", star=" + nb_stars + '}';
     }
 
 }

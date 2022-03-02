@@ -25,12 +25,12 @@ Connection cnx = maConnexion.getInstance().getCnx();
     @Override
     public void ajouterEvaluation(evaluation e) {
         if(e.getNb_stars()<=5){
-       String Req = "INSERT INTO `evaluation`(`id_livre`, `id_user`, `nb_stars`) VALUES (?,?,?)";
+       String Req = "INSERT INTO `evaluation`(`nom_livre`, `nb_stars`) VALUES (?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
-            ps.setInt(1, e.getId_livre());
-            ps.setInt(2, e.getId_user());
-            ps.setInt(3, e.getNb_stars());
+            ps.setString(1, e.getNom_livre());
+     
+            ps.setInt(2, e.getNb_stars());
             ps.execute();
             System.out.println(" Evaluation ajoutée avec succes");
         } catch (SQLException ex) {
@@ -65,11 +65,11 @@ Connection cnx = maConnexion.getInstance().getCnx();
     @Override
     public void updateEvaluation(evaluation e) {
         try {
-            String sql = "UPDATE evaluation SET nb_stars=?  WHERE id_evaluation=?";
+            String sql = "UPDATE evaluation SET nb_stars=?  WHERE nom_livre=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setInt(1, e.getNb_stars());
-            ps.setInt(2, e.getId_evaluation());
+            ps.setString(2, e.getNom_livre());
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing evaluation was updated successfully!");
@@ -82,13 +82,13 @@ Connection cnx = maConnexion.getInstance().getCnx();
     public List<evaluation> consulterEvaluation() {
         List<evaluation> evaluation = new ArrayList<>();
 
-        String query = "SELECT * FROM evaluation e inner join livre l where l.id_livre=e.id_livre";
+        String query = "SELECT * FROM evaluation ";
 
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                evaluation.add(new evaluation(rs.getInt("id_evaluation"), rs.getInt("id_livre"), rs.getInt("id_user"), rs.getInt("nb_stars")));
+                evaluation.add(new evaluation(rs.getInt("id_evaluation"), rs.getString("nom_livre"), rs.getInt("nb_stars")));
             }
 
         } catch (SQLException ex) {
@@ -105,7 +105,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
         while(rs.next())
         {
             evaluation ev;
-            ev = new evaluation(rs.getInt("id_evaluation"), rs.getInt("id_livre"), rs.getInt("id_user"), rs.getInt("nb_stars"));
+            ev = new evaluation(rs.getInt("id_evaluation"), rs.getString("nom_livre"), rs.getInt("id_user"), rs.getInt("nb_stars"));
             return ev;
         }
         return null;
@@ -113,9 +113,9 @@ Connection cnx = maConnexion.getInstance().getCnx();
     
 
 @Override
-  public int getAvgRates(int id_livre) throws SQLException{
-        PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT AVG(nb_stars) FROM evaluation WHERE id_livre = ?");
-        reqSelectParam.setInt(1, id_livre);
+  public int getAvgRates(String nom_livre) throws SQLException{
+        PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT AVG(nb_stars) FROM evaluation WHERE nom_livre = ?");
+        reqSelectParam.setString(1, nom_livre);
         ResultSet res = reqSelectParam.executeQuery();
         int avgR = 0;
         while(res.next()){

@@ -50,7 +50,7 @@ public class CalculRatesFXMLController implements Initializable {
     @FXML
     private void calculAction(ActionEvent event) throws SQLException {
         int moy=0;
-         moy=sev.getAvgRates(Integer.valueOf(idLivTF.getText()));
+         moy=sev.getAvgRates(idLivTF.getText());
          
           if(moy >=0 && moy < 1)
             {
