@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.Date;
 import java.util.List;
 import model.utilisateur;
 
@@ -22,4 +23,7 @@ public interface Iutilisateur {
    public List<utilisateur> getUserByName(utilisateur u);
    public utilisateur getUserByUsername(utilisateur u);
    public List<utilisateur> getUserByAge(utilisateur u);
+   public List<utilisateur> login(String u,String p);
+   public java.sql.Date tosqldate(java.util.Date date);
+   public java.util.Date StringToDate(String s);
 }

@@ -11,12 +11,17 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import model.utilisateur;
@@ -36,15 +41,19 @@ public class serviceUtilisateur implements Iutilisateur {
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setString(1, u.getNom_user());
-            ps.setString(2, u.getMot_de_passe());
+            ps.setString(2, generateStorngPasswordHash(u.getMot_de_passe()));
             ps.setString(3, u.getEmail());
             ps.setString(4, u.getPrenom());
-            ps.setInt(5, u.getAge());
+            ps.setDate(5, tosqldate(u.getAge()));
             ps.setString(6, u.getType());
             ps.execute();
             System.out.println(" Utilisateur ajoutée avec succes");
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -72,10 +81,10 @@ public class serviceUtilisateur implements Iutilisateur {
             PreparedStatement statement = cnx.prepareStatement(sql);
 
             statement.setString(1, u.getNom_user());
-            statement.setString(2, u.getMot_de_passe());
+            statement.setString(2, generateStorngPasswordHash(u.getMot_de_passe()));
             statement.setString(3, u.getEmail());
             statement.setString(4, u.getPrenom());
-            statement.setInt(5, u.getAge());
+            statement.setDate(5, tosqldate(u.getAge()));
             statement.setString(6, u.getType());
             statement.setString(7, s.getNom_user());
 
@@ -84,6 +93,10 @@ public class serviceUtilisateur implements Iutilisateur {
                 System.out.println("An existing user was updated successfully!");
             }
         } catch (SQLException ex) {
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -97,7 +110,7 @@ public class serviceUtilisateur implements Iutilisateur {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                utilisateur.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("age"), rs.getString(7)));
+                utilisateur.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7)));
             }
 
         } catch (SQLException ex) {
@@ -115,7 +128,7 @@ public class serviceUtilisateur implements Iutilisateur {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                user = new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("age"), rs.getString(7));
+                user = new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7));
             }
 
         } catch (SQLException ex) {
@@ -133,7 +146,7 @@ public class serviceUtilisateur implements Iutilisateur {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                user = new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("age"), rs.getString(7));
+                user = new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7));
             }
 
         } catch (SQLException ex) {
@@ -152,7 +165,7 @@ public class serviceUtilisateur implements Iutilisateur {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                user.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("age"), rs.getString(7)));
+                    user.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7)));
             }
 
         } catch (SQLException ex) {
@@ -171,7 +184,7 @@ public class serviceUtilisateur implements Iutilisateur {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                user = new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("age"), rs.getString(7));
+                user = new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getString(7));
             }
 
         } catch (SQLException ex) {
@@ -191,7 +204,7 @@ public class serviceUtilisateur implements Iutilisateur {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                user.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt("age"), rs.getString(7)));
+                user.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7)));
             }
 
         } catch (SQLException ex) {
@@ -258,5 +271,69 @@ public class serviceUtilisateur implements Iutilisateur {
         }
         return bytes;
     }
+
+    @Override
+    public List<utilisateur> login(String u,String p) {
+        List<utilisateur> user = new ArrayList<>();
+
+        String query = "SELECT * FROM utilisateur WHERE (nom_utilisateur = '"+u+"')";
+        
+        System.out.println(query);
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next()) {
+                user.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7)));
+            } else {
+            }
+
+        } catch (SQLException ex) {
+        }
+        boolean b = false;
+        try {
+            b = validatePassword(p,user.get(0).getMot_de_passe());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (b)
+        return user;
+        else{
+            user.clear();
+            return user;
+        }
+    }
+    @Override
+    public java.sql.Date tosqldate(java.util.Date date){
+        
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        String formattedDate = simpleDateFormat.format(date);
+        
+        System.out.println("Date: " + date);
+
+        java.sql.Date date1 = java.sql.Date.valueOf(formattedDate);
+
+        System.out.println("SQL Date: " + date1);
+        
+        return date1;
+    }
+    @Override
+    public java.util.Date StringToDate(String s){
+
+    java.util.Date result = null;
+    try{
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        result  = dateFormat.parse(s);
+    }
+
+    catch(ParseException e){
+        e.printStackTrace();
+
+    }
+    return result ;
+}
 
 }

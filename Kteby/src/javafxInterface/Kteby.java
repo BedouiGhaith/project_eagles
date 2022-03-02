@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kteby;
+package javafxInterface;
 
 import interfaces.Iutilisateur;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -23,30 +21,36 @@ import services.serviceUtilisateur;
  *
  * @author asus
  */
-public class Kteby {
+public class Kteby extends Application {
     /**
      * @param stage
      * @throws java.lang.Exception
      */
 
-  
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getResource("UserTable.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-            
-         Iutilisateur su = new serviceUtilisateur();
+        launch(args);
         //users
-       
-        utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", su.StringToDate("22-12-2000"), "admin");
-        utilisateur updated_user = new utilisateur(48, "user", "11111111", "g@gmail.com", "bedoui", su.StringToDate("22-10-2000"), "admin");
+        /* utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", 25, "admin");
+        utilisateur updated_user = new utilisateur(48, "user", "11111111", "g@gmail.com", "bedoui", 25, "admin");
 
-       
+        Iutilisateur su = new serviceUtilisateur();
 
         su.deleteUtilisateur(updated_user);
         su.ajouterUtilisateur(u);
         System.out.println(su.consulterUtilisateur());
-        /*su.updateUtilisateur(updated_user, u);
+        su.updateUtilisateur(updated_user, u);
         System.out.println(su.getUserById(su.consulterUtilisateur().get(0)));
         su.deleteUtilisateur(updated_user);
         
