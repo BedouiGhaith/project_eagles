@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.QuizPageFXMLController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/quiz.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="47.0" layoutY="85.0" prefHeight="71.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="Question" textFill="#0526ed" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="rba" focusTraversable="false" layoutX="47.0" layoutY="172.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 1">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </RadioButton>
+      <RadioButton fx:id="rbb" focusTraversable="false" layoutX="47.0" layoutY="202.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 2">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </RadioButton>
+      <RadioButton fx:id="rbc" focusTraversable="false" layoutX="47.0" layoutY="236.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 3">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </RadioButton>
+      <RadioButton fx:id="rbd" focusTraversable="false" layoutX="47.0" layoutY="267.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 4">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </RadioButton>
+      <Button fx:id="bNext" focusTraversable="false" layoutX="504.0" layoutY="351.0" mnemonicParsing="false" onAction="#goNext" prefHeight="25.0" prefWidth="62.0" text="Next">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <HBox fx:id="timerBox" layoutX="414.0" layoutY="36.0" prefHeight="34.0" prefWidth="185.0" />
+      <Button layoutX="47.0" layoutY="351.0" mnemonicParsing="false" text="Back" />
+      <Label layoutX="227.0" layoutY="24.0" text="Commencer le Quiz">
+         <font>
+            <Font name="Calibri Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="490.0" layoutY="16.0" text="Time">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

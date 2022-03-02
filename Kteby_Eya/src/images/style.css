@@ -1,0 +1,10 @@
+.root{
+    -fx_background-image:url('images/book1.jpg');
+    -fx_background-size:cover;
+}
+.ajoutB{
+    -fx-background-color:#ff0000;
+}
+.rechCatg{
+    -fx_background-image:url('images/book2.jpg');
+}

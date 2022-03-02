@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AffiEvalFXMLController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="604.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/book2.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="215.0" layoutY="26.0" text="Les évaluations">
+         <font>
+            <Font name="Calibri Bold" size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="list_lab" layoutX="48.0" layoutY="123.0" prefHeight="178.0" prefWidth="435.0" />
+      <Button layoutX="7.0" layoutY="80.0" mnemonicParsing="false" onAction="#afficherAction" text="Afficher" />
+      <Button layoutX="441.0" layoutY="14.0" mnemonicParsing="false" onAction="#calculPage" text="Calculer moyenne des livres" />
+   </children>
+</AnchorPane>

@@ -141,9 +141,9 @@ Connection cnx = maConnexion.getInstance().getCnx();
             }
             
             if(list.isEmpty()){
-                System.out.println("N'existe pas dans la base de donnée");
+                System.out.println("N'existe pas dans la base des données");
             }else{
-                System.out.println("Categorie Trouvé!");
+                System.out.println("Categorie trouvée ");
             }
 
         } catch (SQLException ex) {

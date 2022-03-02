@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.categorie;
 import services.serviceCategorie;
+import util.ShowNotification;
 
 /**
  * FXML Controller class
@@ -30,7 +31,7 @@ import services.serviceCategorie;
  * @author eya
  */
 public class CategFXMLController implements Initializable {
-    
+    ShowNotification sn = new ShowNotification();
     Icategorie sc= new serviceCategorie();
 
     @FXML
@@ -38,11 +39,14 @@ public class CategFXMLController implements Initializable {
     @FXML
     private TextField nomCatg;
     @FXML
-    private Label lab_list;
-    @FXML
     private Button returnB;
     @FXML
     private Label lab_title_catg;
+    @FXML
+    private Label lab_list;
+    @FXML
+    private Button ajoutB;
+    
 
     /**
      * Initializes the controller class.
@@ -56,24 +60,22 @@ public class CategFXMLController implements Initializable {
     private void ajouterAction(ActionEvent event) {
         sc.ajouterCategorie(new categorie(nomCatg.getText()));
         JOptionPane.showMessageDialog(null, "Catégorie ajoutée avec succés !");
+        sn.showConfirm("Confirmation ! ", " Ajout de catégorie réussi");
     }
 
     @FXML
     private void updateAction(ActionEvent event) {
         sc.updateCategorie(new categorie(Integer.valueOf(idCatg.getText()),nomCatg.getText()));
         JOptionPane.showMessageDialog(null, "Catégorie modifiée avec succés !");
+        sn.showInformation("Mise à jour réussie", "Catégorie modifiée");
     }
 
-    @FXML
     private void deleteAction(ActionEvent event) {
         sc.deleteCategorie(new categorie(Integer.valueOf(idCatg.getText()),nomCatg.getText()));
         JOptionPane.showMessageDialog(null, "Catégorie supprimée avec succés !");
     }
 
-    @FXML
-    private void afficherAction(ActionEvent event) {
-        lab_list.setText(sc.consulterCategorie().toString());
-    }
+   
     
     
     @FXML
@@ -89,4 +91,21 @@ public class CategFXMLController implements Initializable {
                     window.show();
                 EvalFXMLController ctc=loader.getController();
 }
+
+    
+
+    @FXML
+    private void goAffAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("AffiCatgFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                EvalFXMLController ctc=loader.getController();
+    }
+
 }

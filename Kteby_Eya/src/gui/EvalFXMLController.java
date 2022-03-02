@@ -81,10 +81,7 @@ public class EvalFXMLController implements Initializable {
         JOptionPane.showMessageDialog(null, "Evaluation supprimée avec succés !");
     }
 
-    @FXML
-    private void afficherAction(ActionEvent event) {
-        list_lab.setText(sev.consulterEvaluation().toString());
-    }
+   
 
     @FXML
     private void returnAction(ActionEvent event) throws IOException {
@@ -100,18 +97,19 @@ public class EvalFXMLController implements Initializable {
                 CategFXMLController ctc=loader.getController();
 }
 
+    
     @FXML
-    private void calculPage(ActionEvent event) throws IOException {
+    private void goAffAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader
                         (getClass()
-                         .getResource("CalculRatesFXML.fxml"));
+                         .getResource("AffiEvalFXML.fxml"));
                                          Stage primaryStage=new Stage();
                 Parent root = loader.load();
                 Scene homescene=new Scene(root);
                     Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                     window.setScene(homescene);
                     window.show();
-                CategFXMLController ctc=loader.getController();
+                EvalFXMLController ctc=loader.getController();
     }
 }
     

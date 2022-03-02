@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import model.evaluation;
 import services.serviceEvaluation;
 
@@ -53,7 +54,8 @@ public class CalculRatesFXMLController implements Initializable {
          
           if(moy >=0 && moy < 1)
             {
-                resmoy.setText("");
+                JOptionPane.showMessageDialog(null, "Ce livre n'a pas une évaluation!");
+                resmoy.setText("Ce livre n'a pas une évaluation");
             }
             if(moy >=1 && moy < 2)
             {
