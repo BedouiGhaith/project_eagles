@@ -30,7 +30,7 @@
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font></Button>
-      <Button layoutX="461.0" layoutY="336.0" mnemonicParsing="false" onAction="#goAffAction" text="Supprimer">
+      <Button layoutX="461.0" layoutY="336.0" mnemonicParsing="false" onAction="#deleteAction" text="Supprimer">
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font></Button>

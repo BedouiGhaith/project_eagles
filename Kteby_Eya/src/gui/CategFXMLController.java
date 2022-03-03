@@ -67,7 +67,7 @@ public class CategFXMLController implements Initializable {
         JOptionPane.showMessageDialog(null, "Catégorie modifiée avec succés !");
         sn.showInformation("Mise à jour réussie", "Catégorie modifiée");
     }
-
+    @FXML
     private void deleteAction(ActionEvent event) {
         sc.deleteCategorie(new categorie(Integer.valueOf(idCatg.getText()),nomCatg.getText()));
         JOptionPane.showMessageDialog(null, "Catégorie supprimée avec succés !");

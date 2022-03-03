@@ -51,7 +51,7 @@ public class MailRate {
     {
         try {
             Message message= new MimeMessage(session);
-            message.setFrom(new InternetAddress(myAccount,"HuntKingDom"));
+            message.setFrom(new InternetAddress(myAccount,"kteby"));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject("Admin message");
             String htmlCode = "";
