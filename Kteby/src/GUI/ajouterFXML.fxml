@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="474.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterFXMLController">
+   <children>
+      <ImageView fitHeight="474.0" fitWidth="756.0" layoutX="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../iimg/book-stack.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="11.0" layoutY="89.0" text="Identifiant utiisateur :" textFill="#0d0a3f" />
+      <Label layoutX="46.0" layoutY="140.0" text="Identifiant livre :" textFill="#0d0a3f" />
+      <Label layoutX="50.0" layoutY="171.0" text="Commentaire :" textFill="#0d0a3f" />
+      <TextField fx:id="idUser" layoutX="163.0" layoutY="85.0" promptText="id_User" />
+      <TextField fx:id="idLivre" layoutX="163.0" layoutY="135.0" promptText="id_livre" />
+      <TextField fx:id="idComment" layoutX="40.0" layoutY="210.0" prefHeight="104.0" prefWidth="417.0" promptText="écrire commentaire ....." />
+      <Button layoutX="368.0" layoutY="340.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="31.0" prefWidth="89.0" text="Ajouter" />
+      <Button layoutX="34.0" layoutY="416.0" mnemonicParsing="false" onAction="#goToAvis" text="Retour" />
+      <Label layoutX="65.0" layoutY="36.0" text="Ajouter un commentaire">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

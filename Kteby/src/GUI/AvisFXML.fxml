@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="681.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AvisFXMLController">
+   <children>
+      <ImageView fitHeight="681.0" fitWidth="979.0" pickOnBounds="true">
+         <image>
+            <Image url="@../iimg/aaR_1.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="89.0" layoutY="341.0" mnemonicParsing="false" onAction="#goToAjouter" prefHeight="41.0" prefWidth="130.0" text="Modifier" />
+      <Button layoutX="89.0" layoutY="274.0" mnemonicParsing="false" onAction="#goToAjouter" prefHeight="41.0" prefWidth="130.0" text="Ajouter" />
+      <Button layoutX="89.0" layoutY="404.0" mnemonicParsing="false" onAction="#goToDelete" prefHeight="41.0" prefWidth="130.0" text="Supprimer" />
+      <Button layoutX="89.0" layoutY="208.0" mnemonicParsing="false" onAction="#goToafficher" prefHeight="41.0" prefWidth="130.0" text="Afficher" />
+      <Button layoutX="89.0" layoutY="543.0" mnemonicParsing="false" onAction="#goTcalculer" prefHeight="41.0" prefWidth="130.0" text="Calculer" />
+      <Button layoutX="89.0" layoutY="481.0" mnemonicParsing="false" onAction="#react" prefHeight="41.0" prefWidth="130.0" text="React" />
+      <Label layoutX="210.0" layoutY="26.0" prefHeight="65.0" prefWidth="409.0" text="Gestion des avis">
+         <font>
+            <Font name="Bodoni MT Black" size="47.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
