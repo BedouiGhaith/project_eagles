@@ -126,7 +126,7 @@ public class serviceLivre implements Ilivre {
             }
             
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            ex.printStackTrace(); 
         }
         return nb;
     }

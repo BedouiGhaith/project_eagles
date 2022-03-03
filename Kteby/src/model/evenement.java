@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package model;
-
-import java.util.Date;
+ 
 
 /**
  *
@@ -37,6 +36,12 @@ public class evenement {
         this.evnt_name = evnt_name;
         this.evnt_date = evnt_date;
     }
+
+    public evenement(int id_event) {
+        this.id_event = id_event;
+    }
+    
+    
     
 
     @Override
@@ -63,6 +68,8 @@ public class evenement {
         this.evnt_date = evnt_date;
     }
 
+    
+
     public void setId_club(int id_club) {
         this.id_club = id_club;
     }
@@ -82,6 +89,8 @@ public class evenement {
     public String getEvnt_date() {
         return evnt_date;
     }
+
+    
 
     public int getId_club() {
         return id_club;

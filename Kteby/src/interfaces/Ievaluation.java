@@ -16,8 +16,19 @@ import model.evaluation;
 public interface Ievaluation {
     public void ajouterEvaluation(evaluation e);
    public void deleteEvaluation(evaluation s);
-   public void updateEvaluation(evaluation e, evaluation s);
+   public void updateEvaluation(evaluation e);
    public List<evaluation> consulterEvaluation();
    public evaluation getById(evaluation e) throws SQLException;
-   public int getAvgRates(int id_livre)throws SQLException;
+   public int getAvgRates(String nom_livre) throws SQLException;
+   /* public Boolean exist(evaluation e)throws SQLException;*/
+/*
+    /**
+     *
+     * @param e
+     * @return moyStars
+     
+    public double moyenneStars(evaluation e);*/
+
+  
+   
 }

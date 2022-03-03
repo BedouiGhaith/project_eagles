@@ -5,8 +5,7 @@
  */
 package interfaces;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
+import java.sql.Date;
 import java.util.List;
 import model.utilisateur;
 
@@ -24,7 +23,7 @@ public interface Iutilisateur {
    public List<utilisateur> getUserByName(utilisateur u);
    public utilisateur getUserByUsername(utilisateur u);
    public List<utilisateur> getUserByAge(utilisateur u);
-   public int countUsers();
-   public String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException;
-   
+   public List<utilisateur> login(String u,String p);
+   public java.sql.Date tosqldate(java.util.Date date);
+   public java.util.Date StringToDate(String s);
 }

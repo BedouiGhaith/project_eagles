@@ -25,6 +25,8 @@ public class categorie {
     public categorie() {
     }
 
+   
+
     public void setId_categorie(int id_categorie) {
         this.id_categorie = id_categorie;
     }

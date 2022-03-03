@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ReactFXMLController">
+   <children>
+      <ImageView fitHeight="406.0" fitWidth="660.0" pickOnBounds="true">
+         <image>
+            <Image url="@../iimg/book-stack.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="15.0" layoutY="96.0" text="Identifiant utiisateur :" textFill="#0d0a3f" />
+      <Label layoutX="46.0" layoutY="159.0" text="Identifiant livre :" textFill="#0d0a3f" />
+      <TextField fx:id="idUser" layoutX="159.0" layoutY="93.0" promptText="id_User" />
+      <Button layoutX="134.0" layoutY="222.0" mnemonicParsing="false" onAction="#React" prefHeight="42.0" prefWidth="89.0" text="React" />
+      <TextField fx:id="idLivre" layoutX="158.0" layoutY="155.0" promptText="id_livre" />
+      <Button layoutX="41.0" layoutY="349.0" mnemonicParsing="false" onAction="#goToAvis" text="Retour" />
+      <Label layoutX="65.0" layoutY="36.0" text="Réagir sur un commentaire">
+         <font>
+            <Font name="Cooper Black" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

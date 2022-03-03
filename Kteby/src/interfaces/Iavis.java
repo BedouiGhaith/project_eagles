@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 import model.Avis;
 
@@ -14,8 +15,11 @@ import model.Avis;
  */
 public interface Iavis {
    public void ajouterAvis(Avis a);
-   public void deleteAvis(String s);
-   public void updateAvis(Avis a, String s);
+   public void deleteAvis(Avis a);
+   public void updateAvis(Avis a);
    public List<Avis> consulterAvis();
-   
+
+    public int getTotalCom(int id_livre)throws SQLException;
+    
+ 
 }

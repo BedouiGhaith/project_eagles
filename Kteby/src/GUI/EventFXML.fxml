@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EventFXMLController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="612.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/book1.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="355.0" layoutY="87.0" mnemonicParsing="false" onAction="#gotoaddEvent" prefHeight="31.0" prefWidth="89.0" text="Ajouter" />
+      <Button layoutX="471.0" layoutY="152.0" mnemonicParsing="false" onAction="#gotoafficherEvent" prefHeight="31.0" prefWidth="77.0" text="Afficher" />
+      <Button layoutX="355.0" layoutY="152.0" mnemonicParsing="false" onAction="#gotodeleteEvent" text="Supprimer" />
+      <Button layoutX="469.0" layoutY="87.0" mnemonicParsing="false" onAction="#gotoupdateEvent" prefHeight="31.0" prefWidth="77.0" text="Modifier" />
+      <Label layoutX="51.0" layoutY="45.0" text="Gestion Des Evenement">
+         <font>
+            <Font name="Baskerville Old Face" size="28.0" />
+         </font>
+      </Label>
+      <Button layoutX="420.0" layoutY="211.0" mnemonicParsing="false" onAction="#gotoDelay" text="Rapporter" />
+   </children>
+</AnchorPane>

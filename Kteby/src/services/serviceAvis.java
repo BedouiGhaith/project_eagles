@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Avis;
 import util.maConnexion;
 
@@ -41,12 +43,12 @@ public class serviceAvis implements Iavis {
     }
 
     @Override
-    public void deleteAvis(String s) {
+    public void deleteAvis(Avis a) {
         try {
             String sql = "DELETE FROM avis WHERE id_Avis=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setString(1, s);
+            statement.setInt(1, a.getId_Avis());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -57,15 +59,16 @@ public class serviceAvis implements Iavis {
     }
 
     @Override
-    public void updateAvis(Avis a, String s) {
+    public void updateAvis(Avis a) {
         try {
-            String sql = "UPDATE avis SET commentaire=?, id_user=?, id_livre=? WHERE id_Avis=?";
+            String sql = "UPDATE avis SET commentaire=? WHERE id_Avis=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, a.getCommentaire());
-            ps.setInt(2, a.getId_user());
+            ps.setInt(2, a.getId_Avis());
+            /*ps.setInt(2, a.getId_user());
             ps.setInt(3, a.getId_livre());
-            ps.setString(4, s);
+            ps.setString(4, s);*/
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing opinion was updated successfully!");
@@ -93,6 +96,7 @@ public class serviceAvis implements Iavis {
         return avis;
     }
 
+    @Override
     public int getTotalCom(int id_livre) throws SQLException {
         PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT count(id_avis) FROM Avis WHERE id_livre = ?");
         reqSelectParam.setInt(1, id_livre);
@@ -117,6 +121,28 @@ public class serviceAvis implements Iavis {
         return null;
     }
 
+    public Avis getAvisByComment(Avis a) {
+        Avis av = new Avis();
+        String query = "SELECT * FROM avis where commentaire= '" + a.getCommentaire() + "'";
+        /* String query = "SELECT * FROM avis where commentaire= " + a.getCommentaire();*/
+
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                av.setId_Avis(rs.getInt("id_Avis"));
+                av.setCommentaire(rs.getString(2));
+                av.setId_livre(rs.getInt("id_livre"));
+                av.setId_user(rs.getInt("id_user"));
+
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return av;
+    }
+
     public static String reactComment() {
 
         Scanner sc = new Scanner(System.in);
@@ -130,26 +156,72 @@ public class serviceAvis implements Iavis {
         return react;
     }
 
-    public Avis getAvisByComment(Avis a) {
-        Avis av = new Avis();
-        String query = "SELECT * FROM avis where commentaire= '" + a.getCommentaire() + "'";
-        /* String query = "SELECT * FROM avis where commentaire= " + a.getCommentaire();*/
-
+    public void like(int id_user, int id_livre) {
         try {
             Statement st = cnx.createStatement();
+            // System.out.println(id_user+ " | " + id_livre);
+            String query = "SELECT * FROM react WHERE id_user = " + id_user + "AND id_livre = " + id_livre;
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next() == false) {
+                String query2 = "INSERTE INTO react (id_user,id_livre,opinion) VALUES(?,?,1)";
+                PreparedStatement ps = cnx.prepareStatement(query2);
+                ps.setInt(1, id_user);
+                ps.setInt(2, id_livre);
+
+                ps.execute();
+            } else {
+                String query2 = "UPDATE react  Set opinion = 1 where id_user = ? and id_livre = ?";
+                PreparedStatement ps = cnx.prepareStatement(query2);
+                ps.setInt(1, id_user);
+                ps.setInt(2, id_livre);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceAvis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+        public void dislike(int id_user, int id_livre) {
+        try {
+            Statement st = cnx.createStatement();
+            // System.out.println(id_user+ " | " + id_livre);
+            String query = "SELECT * FROM react WHERE id_user = " + id_user + "AND id_livre = " + id_livre;
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next() == false) {
+                String query2 = "INSERTE INTO react (id_user,id_livre,opinion) VALUES(?,?,-1)";
+                PreparedStatement ps = cnx.prepareStatement(query2);
+                ps.setInt(1, id_user);
+                ps.setInt(2, id_livre);
+
+                ps.execute();
+            } else {
+                String query2 = "UPDATE react  Set opinion = -1 where id_user = ? and id_livre = ?";
+                PreparedStatement ps = cnx.prepareStatement(query2);
+                ps.setInt(1, id_user);
+                ps.setInt(2, id_livre);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceAvis.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public ArrayList<Avis> getbooksComments(Avis a) {
+        ArrayList<Avis> commentsList = new ArrayList();
+        try {
+            Statement st = cnx.createStatement();
+
+            String query = "SELECT * FROM avis where commentaire= '" + a.getCommentaire() + "'";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
+                Avis av = new Avis();
                 av.setId_Avis(rs.getInt("id_Avis"));
+                av.setCommentaire(rs.getString(2));
                 av.setId_livre(rs.getInt("id_livre"));
                 av.setId_user(rs.getInt("id_user"));
-                av.setCommentaire(rs.getString(2));
-
+                commentsList.add(av);
             }
-
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
-        return av;
-
+        return commentsList;
     }
 }

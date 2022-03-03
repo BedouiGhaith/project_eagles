@@ -22,9 +22,20 @@ public class Avis {
         this.id_livre = id_livre;
     }
 
+    public Avis(int id_Avis, String commentaire) {
+        this.id_Avis = id_Avis;
+        this.commentaire = commentaire;
+    }
+
+    public Avis(int id_Avis) {
+        this.id_Avis = id_Avis;
+    }
+    
+
     public Avis() {
     }
 
+    
     @Override
     public String toString() {
         return "Avis{" + "id_Avis=" + id_Avis + ", commentaire=" + commentaire + ", id_user=" + id_user + ", id_livre=" + id_livre + '}';

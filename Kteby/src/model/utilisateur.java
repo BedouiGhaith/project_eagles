@@ -5,6 +5,10 @@
  */
 package model;
 
+import java.util.Date;
+
+
+
 /**
  *
  * @author asus
@@ -15,10 +19,10 @@ public class utilisateur {
     String mot_de_passe ;
     String email ;
     String prenom ;
-    int age ;
+    Date age ;
     String type ;
 
-    public utilisateur(String nom_user, String mot_de_passe, String email, String prenom, int age, String type) {
+    public utilisateur(String nom_user, String mot_de_passe, String email, String prenom, Date age, String type) {
         this.nom_user = nom_user;
         this.mot_de_passe = mot_de_passe;
         this.email = email;
@@ -32,7 +36,7 @@ public class utilisateur {
         return "utilisateur{" + "id_user=" + id_user + ", nom_user=" + nom_user + ", mot_de_passe=" + mot_de_passe + ", email=" + email + ", prenom=" + prenom + ", age=" + age + ", type=" + type + '}';
     }
 
-    public utilisateur(int id_user, String nom_user, String mot_de_passe, String email, String prenom, int age, String type) {
+    public utilisateur(int id_user, String nom_user, String mot_de_passe, String email, String prenom, Date age, String type) {
         this.id_user = id_user;
         this.nom_user = nom_user;
         this.mot_de_passe = mot_de_passe;
@@ -71,7 +75,7 @@ public class utilisateur {
         this.prenom = prenom;
     }
 
-    public void setAge(int age) {
+    public void setAge(Date age) {
         this.age = age;
     }
 
@@ -95,7 +99,7 @@ public class utilisateur {
         return prenom;
     }
 
-    public int getAge() {
+    public Date getAge() {
         return age;
     }
 

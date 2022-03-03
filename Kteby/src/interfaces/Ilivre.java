@@ -11,7 +11,7 @@ import model.livre;
 /**
  *
  * @author asus
- */
+ */ 
 public interface Ilivre {
      public void ajouterLivre(livre li);
    public void deleteLivre(livre li);
