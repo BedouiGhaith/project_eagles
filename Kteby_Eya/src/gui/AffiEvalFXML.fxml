@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,13 +15,17 @@
             <Image url="@../images/book2.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="215.0" layoutY="26.0" text="Les évaluations">
+      <Label layoutX="197.0" layoutY="12.0" text="Les évaluations" textFill="#573dae">
          <font>
-            <Font name="Calibri Bold" size="29.0" />
+            <Font name="Broadway" size="25.0" />
          </font>
       </Label>
       <Label fx:id="list_lab" layoutX="48.0" layoutY="123.0" prefHeight="178.0" prefWidth="435.0" />
-      <Button layoutX="7.0" layoutY="80.0" mnemonicParsing="false" onAction="#afficherAction" text="Afficher" />
-      <Button layoutX="441.0" layoutY="14.0" mnemonicParsing="false" onAction="#calculPage" text="Calculer moyenne des livres" />
+      <Button layoutX="441.0" layoutY="374.0" mnemonicParsing="false" onAction="#calculPage" text="Calculer moyenne des livres" />
+      <Hyperlink layoutX="8.0" layoutY="96.0" onAction="#afficherAction" text="Cliquer ici !" textFill="#006ad3">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>

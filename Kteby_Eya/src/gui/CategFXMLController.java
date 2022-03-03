@@ -39,8 +39,6 @@ public class CategFXMLController implements Initializable {
     @FXML
     private TextField nomCatg;
     @FXML
-    private Button returnB;
-    @FXML
     private Label lab_title_catg;
     @FXML
     private Label lab_list;

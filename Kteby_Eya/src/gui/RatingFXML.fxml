@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RatingFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="404.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RatingFXMLController">
    <children>
-      <ImageView fitHeight="404.0" fitWidth="1048.0" layoutX="9.0" pickOnBounds="true">
+      <ImageView fitHeight="404.0" fitWidth="1035.0" pickOnBounds="true">
          <image>
             <Image url="@../images/bleu.jpg" />
          </image>
@@ -40,7 +40,7 @@
             <Image url="@../images/icons8-add-to-favorites-64.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="238.0" fitWidth="174.0" layoutX="9.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="238.0" fitWidth="174.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/livreharry.jpg" />
          </image>
@@ -55,7 +55,7 @@
             <Font name="Calibri Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="190.0" layoutY="107.0" prefHeight="89.0" prefWidth="565.0" text="Harry Potter et les Reliques de la Mort est le septième et dernier roman de la série littéraire centrée sur le personnage de Harry Potter créé par J. K. Rowling.">
+      <Label layoutX="184.0" layoutY="79.0" prefHeight="174.0" prefWidth="575.0" text="Harry Potter et les Reliques de la Mort est le septième et dernier roman de la série littéraire centrée sur le personnage de Harry Potter créé par J. K. Rowling.">
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font>
@@ -65,7 +65,7 @@
             <Font name="Calibri Bold" size="13.0" />
          </font>
       </Label>
+      <TextField fx:id="tf_nom_livre" layoutX="290.0" layoutY="228.0" />
       <Button layoutX="977.0" layoutY="365.0" mnemonicParsing="false" onAction="#gotoeval" text="Retour" />
-      <TextField fx:id="tf_nom_livre" layoutX="271.0" layoutY="190.0" />
    </children>
 </AnchorPane>

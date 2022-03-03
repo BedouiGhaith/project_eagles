@@ -40,13 +40,9 @@ public class EvalFXMLController implements Initializable {
     @FXML
     private TextField nomlivTF;
     @FXML
-    private TextField iduserTF;
-    @FXML
     private TextField nbstarsTF;
     @FXML
     private TextField idevalTF;
-    @FXML
-    private Button returnB;
     @FXML
     private Label lab_title_eval;
 

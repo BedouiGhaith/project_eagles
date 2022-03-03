@@ -2,22 +2,22 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.QuizPageFXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.QuizPageFXMLController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true">
          <image>
-            <Image url="@../images/quiz.jpg" />
+            <Image url="@../images/bleu.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="47.0" layoutY="82.0" prefHeight="71.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="Question 1" textFill="#0526ed" wrapText="true">
+      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="26.0" layoutY="101.0" prefHeight="71.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="Par combien de salles la pierre philosophale se trouve protégée dans le premier tome ?" textFill="#2f2a2f" wrapText="true">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -25,42 +25,54 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="a1" focusTraversable="false" layoutX="47.0" layoutY="172.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 1">
+      <RadioButton fx:id="a1" focusTraversable="false" layoutX="47.0" layoutY="172.0" mnemonicParsing="false" onAction="#gochoice1" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="4 salles">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="b1" focusTraversable="false" layoutX="47.0" layoutY="202.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 2">
+      <RadioButton fx:id="b1" focusTraversable="false" layoutX="47.0" layoutY="202.0" mnemonicParsing="false" onAction="#gochoice2" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="5 salles">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="c1" focusTraversable="false" layoutX="47.0" layoutY="236.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 3">
+      <RadioButton fx:id="c1" focusTraversable="false" layoutX="47.0" layoutY="236.0" mnemonicParsing="false" onAction="#gochoice3" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="7 salles">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="d1" focusTraversable="false" layoutX="47.0" layoutY="267.0" mnemonicParsing="false" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="option 4">
+      <RadioButton fx:id="d1" focusTraversable="false" layoutX="47.0" layoutY="267.0" mnemonicParsing="false" onAction="#gochoice4" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="8 salles">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <Button fx:id="bNext" focusTraversable="false" layoutX="504.0" layoutY="351.0" mnemonicParsing="false" onAction="#goNext1" prefHeight="25.0" prefWidth="62.0" text="Next">
+      <Button fx:id="bNext" focusTraversable="false" layoutX="100.0" layoutY="351.0" mnemonicParsing="false" onAction="#submitAction2" prefHeight="25.0" prefWidth="62.0" text="Check">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <font>
+            <Font name="Calibri Bold" size="13.0" />
+         </font>
       </Button>
-      <HBox fx:id="timerBox" layoutX="414.0" layoutY="36.0" prefHeight="34.0" prefWidth="185.0" />
-      <Label layoutX="227.0" layoutY="24.0" text="Commencer le Quiz">
+      <Label layoutX="216.0" layoutY="24.0" text=" Quiz Time !">
          <font>
-            <Font name="Calibri Bold" size="18.0" />
+            <Font name="Broadway" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="490.0" layoutY="16.0" text="Time">
+      <Button layoutX="20.0" layoutY="351.0" mnemonicParsing="false" onAction="#submitAction" prefHeight="27.0" prefWidth="62.0" text="Submit">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="534.0" layoutY="354.0" mnemonicParsing="false" onAction="#gotoQ2" text="Next &gt;&gt;">
+         <font>
+            <Font name="Calibri Bold" size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="26.0" layoutY="68.0" text="Question 1" textFill="#0000c9" underline="true">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
          </font>
       </Label>
-      <RadioButton layoutX="63.0" layoutY="118.0" mnemonicParsing="false" text="RadioButton" />
+      <Hyperlink layoutX="10.0" layoutY="13.0" onAction="#backhome" text="Retour à la page d'accueil" textFill="#1e1e1e" underline="true" />
    </children>
 </AnchorPane>
