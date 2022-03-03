@@ -30,18 +30,6 @@ import services.serviceEvent;
 public class EventFXMLController implements Initializable {
 
     Ievenement evn = new serviceEvent();
-    @FXML
-    private TextField idevent;
-    @FXML
-    private TextField idclub;
-    @FXML
-    private TextField ideventdate;
-    @FXML
-    private TextField idDescription;
-    @FXML
-    private TextField ideventname;
-    @FXML
-    private Label listEvent;
     
     /**
      * Initializes the controller class.
@@ -109,6 +97,21 @@ public class EventFXMLController implements Initializable {
                     window.setScene(homescene);
                     window.show();
                 AfficherEventFXMLController ctc=loader.getController();
+        
+    }
+
+    @FXML
+    private void gotoDelay(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("DelayEventFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                DelayEventFXMLController ctc=loader.getController();
         
     }
     }

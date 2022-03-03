@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class maConnexion {
     
     //DB
-    final static String URL = "jdbc:mysql://127.0.0.1:3306/workshop3a19";
+    final static String URL = "jdbc:mysql://127.0.0.1:3306/kteby";
     final static String USERNAME = "root";
     final static String PWD = "";
     
