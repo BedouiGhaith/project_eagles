@@ -57,5 +57,10 @@
          <font>
             <Font name="Calibri Bold Italic" size="12.0" />
          </font></Hyperlink>
+      <Hyperlink layoutX="546.0" layoutY="367.0" onAction="#startQuiz" text="QUIZ" textFill="#b56666" underline="true">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>

@@ -26,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import util.ShowNotification;
 import util.maConnexion;
 
 /**
@@ -66,11 +67,11 @@ public class QuizPageFXMLController implements Initializable {
     @FXML
     private void rbClicked(MouseEvent event) {
     }
-
-
+    
     @FXML
     private void submitAction(ActionEvent event) {
-    
+        
+
         try {
         String submitquery ="INSERT INTO submittedanswer(sa) VALUES (?)";
        pst=cnx.prepareStatement(submitquery);

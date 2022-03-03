@@ -24,6 +24,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import util.ShowNotification;
 import util.maConnexion;
 
 /**
@@ -32,7 +33,7 @@ import util.maConnexion;
  * @author eya
  */
 public class QuizPage4FXMLController implements Initializable {
-    
+    ShowNotification sn = new ShowNotification();
     Connection cnx = maConnexion.getInstance().getCnx();
     PreparedStatement pst=null;
     ResultSet rs =null;
@@ -151,6 +152,7 @@ public class QuizPage4FXMLController implements Initializable {
                     window.setScene(homescene);
                     window.show();
                 EvalFXMLController ctc=loader.getController();
+                sn.showConfirm("Au revoir! ", " Merci de faire le Quiz ! ");
     }
     
 }

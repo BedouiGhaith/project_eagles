@@ -21,7 +21,7 @@
             <Font name="Broadway" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="lab_list" layoutX="20.0" layoutY="176.0" prefHeight="111.0" prefWidth="561.0" />
+      <Label fx:id="lab_list" layoutX="14.0" layoutY="193.0" prefHeight="111.0" prefWidth="561.0" />
       <Button layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#gotocatg" text="&lt;&lt;Retour au catégories">
          <font>
             <Font name="System Bold" size="9.0" />
@@ -35,7 +35,7 @@
          <font>
             <Font name="System Bold" size="11.0" />
          </font></Label>
-      <Label fx:id="searchlab" layoutX="23.0" layoutY="123.0" prefHeight="79.0" prefWidth="319.0" />
+      <Label fx:id="searchlab" layoutX="135.0" layoutY="123.0" prefHeight="79.0" prefWidth="319.0" />
       <Hyperlink layoutX="477.0" layoutY="1.0" onAction="#afficherAction" text="Cliquer pour afficher !" underline="true">
          <font>
             <Font name="System Bold" size="11.0" />
