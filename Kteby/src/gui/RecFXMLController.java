@@ -34,20 +34,6 @@ public class RecFXMLController implements Initializable {
     
     
   
-    @FXML
-    private TextField titreRec;
-    @FXML
-    private TextField descRec;
-    @FXML
-    private TextField statutRec;
-    @FXML
-    private TextField reponseRes;
-    @FXML
-    private TextField iduserRec;
-    @FXML
-    private Label listRec;
-    @FXML
-    private TextField idrec;
 
     /**
      * Initializes the controller class.
@@ -57,19 +43,9 @@ public class RecFXMLController implements Initializable {
         // TODO
     }    
 
-    
-
-    @FXML
-    private void afficheraction(ActionEvent event) {
-        listRec.setText(rec.consulterReclamation().toString());
-    }
 
     
-    @FXML
-    private void deleteaction(ActionEvent event) {
-        rec.deleteReclamation(new reclamation(Integer.valueOf(idrec.getText())));
-    }
-
+   
     @FXML
     private void gotoadd(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader
@@ -100,6 +76,52 @@ public class RecFXMLController implements Initializable {
         
     }
 
+    @FXML
+    private void gotodelete(ActionEvent event) throws IOException  {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("deleteFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                DeleteFXMLController ctc=loader.getController();
+        
+    }
+
+    @FXML
+    private void gotoafficher(ActionEvent event) throws IOException  {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("afficherFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                AfficherFXMLController ctc=loader.getController();
+        
+    }
+
+    @FXML
+    private void gotoReponse(ActionEvent event) throws IOException  {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("ReponseRecFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                ReponseRecFXMLController ctc=loader.getController();
+        
+    }
+    }
+
   
     
-}
+

@@ -16,9 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import model.reclamation;
 import services.serviceReclamation;
 
 /**
@@ -26,17 +25,11 @@ import services.serviceReclamation;
  *
  * @author Lenovo
  */
-public class AjouterFXMLController implements Initializable {
-    Ireclamation rec = new serviceReclamation();
+public class AfficherFXMLController implements Initializable {
+     Ireclamation rec = new serviceReclamation();
 
     @FXML
-    private TextField titreRec;
-    @FXML
-    private TextField descRec;
-    @FXML
-    private TextField statutRec;
-    @FXML
-    private TextField iduserRec;
+    private Label ListRec;
 
     /**
      * Initializes the controller class.
@@ -47,9 +40,8 @@ public class AjouterFXMLController implements Initializable {
     }    
 
     @FXML
-    private void submit(ActionEvent event) {
-                rec.ajouterReclamation(new reclamation(Integer.valueOf(iduserRec.getText()),titreRec.getText(),descRec.getText(),Integer.valueOf(statutRec.getText())));
-
+    private void afficher(ActionEvent event) {
+          ListRec.setText(rec.consulterReclamation().toString());
     }
 
     @FXML
@@ -65,6 +57,5 @@ public class AjouterFXMLController implements Initializable {
                     window.show();
                 RecFXMLController ctc=loader.getController();
     }
-
-   
+    
 }

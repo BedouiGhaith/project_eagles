@@ -26,17 +26,11 @@ import services.serviceReclamation;
  *
  * @author Lenovo
  */
-public class AjouterFXMLController implements Initializable {
+public class DeleteFXMLController implements Initializable {
     Ireclamation rec = new serviceReclamation();
 
     @FXML
-    private TextField titreRec;
-    @FXML
-    private TextField descRec;
-    @FXML
-    private TextField statutRec;
-    @FXML
-    private TextField iduserRec;
+    private TextField Idreclamation;
 
     /**
      * Initializes the controller class.
@@ -47,8 +41,8 @@ public class AjouterFXMLController implements Initializable {
     }    
 
     @FXML
-    private void submit(ActionEvent event) {
-                rec.ajouterReclamation(new reclamation(Integer.valueOf(iduserRec.getText()),titreRec.getText(),descRec.getText(),Integer.valueOf(statutRec.getText())));
+    private void delete(ActionEvent event) {
+                rec.deleteReclamation(new reclamation(Integer.valueOf(Idreclamation.getText())));
 
     }
 
@@ -65,6 +59,5 @@ public class AjouterFXMLController implements Initializable {
                     window.show();
                 RecFXMLController ctc=loader.getController();
     }
-
-   
+    
 }

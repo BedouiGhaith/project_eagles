@@ -6,12 +6,18 @@
 package gui;
 
 import interfaces.Ireclamation;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.reclamation;
 import services.serviceReclamation;
 
@@ -43,6 +49,20 @@ public class ModifierController implements Initializable {
     @FXML
     private void validerAction(ActionEvent event) {
           rec.updateReclamation(new reclamation(Integer.valueOf(idrec.getText()),titre.getText(),description.getText()));
+    }
+
+    @FXML
+    private void gotoReclamation(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("RecFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                RecFXMLController ctc=loader.getController();
     }
     
 }

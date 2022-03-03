@@ -17,10 +17,10 @@
       <TextField fx:id="ideventdate" layoutX="125.0" layoutY="212.0" />
       <TextField fx:id="idDescription" layoutX="125.0" layoutY="153.0" />
       <TextField fx:id="ideventname" layoutX="125.0" layoutY="102.0" />
-      <Label fx:id="listEvent" layoutX="352.0" layoutY="27.0" prefHeight="281.0" prefWidth="237.0" />
-      <Button layoutX="40.0" layoutY="329.0" mnemonicParsing="false" onAction="#submitaction" text="submit" />
-      <Button layoutX="342.0" layoutY="329.0" mnemonicParsing="false" onAction="#afficheraction" text="affiche" />
-      <Button layoutX="225.0" layoutY="329.0" mnemonicParsing="false" onAction="#deleteaction" text="delete" />
-      <Button layoutX="133.0" layoutY="329.0" mnemonicParsing="false" onAction="#updateaction" text="update" />
+      <Label fx:id="listEvent" layoutX="349.0" layoutY="38.0" prefHeight="281.0" prefWidth="237.0" />
+      <Button layoutX="40.0" layoutY="329.0" mnemonicParsing="false" onAction="#gotoaddEvent" text="submit" />
+      <Button layoutX="342.0" layoutY="329.0" mnemonicParsing="false" onAction="#gotoafficherEvent" text="affiche" />
+      <Button layoutX="225.0" layoutY="329.0" mnemonicParsing="false" onAction="#gotodeleteEvent" text="delete" />
+      <Button layoutX="133.0" layoutY="329.0" mnemonicParsing="false" onAction="#gotoupdateEvent" text="update" />
    </children>
 </AnchorPane>

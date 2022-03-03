@@ -6,13 +6,19 @@
 package gui;
 
 import interfaces.Ievenement;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.evenement;
 import services.serviceEvent;
 
@@ -45,27 +51,68 @@ public class EventFXMLController implements Initializable {
         // TODO
     }   
 
+    
+
     @FXML
-    private void submitaction(ActionEvent event) {
-        evn.ajouterEvenement(new evenement(ideventname.getText(),idDescription.getText(),ideventdate.getText(),Integer.valueOf(idclub.getText())));
-   
+    private void gotoaddEvent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("ajouterEventFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                AjouterEventFXMLController ctc=loader.getController();
     }
 
     @FXML
-    private void afficheraction(ActionEvent event) {
-        listEvent.setText(evn.consulterEvenement().toString());
+    private void gotoupdateEvent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("updateEventFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                UpdateEventFXMLController ctc=loader.getController();
+        
     }
 
     @FXML
-    private void deleteaction(ActionEvent event) {
-        evn.deleteEvenement(new evenement(Integer.valueOf(idevent.getText())));
+    private void gotodeleteEvent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("deleteEventFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                DeleteEventFXMLController ctc=loader.getController();
+        
     }
 
     @FXML
-    private void updateaction(ActionEvent event) {
-        evn.updateEvenement(new evenement(Integer.valueOf(idevent.getText()),ideventname.getText(),idDescription.getText(),ideventdate.getText(),Integer.valueOf(idclub.getText())));   
+    private void gotoafficherEvent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("afficherEventFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                AfficherEventFXMLController ctc=loader.getController();
+        
+    }
     }
     
     
     
-}
+

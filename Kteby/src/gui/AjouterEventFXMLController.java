@@ -5,7 +5,7 @@
  */
 package gui;
 
-import interfaces.Ireclamation;
+import interfaces.Ievenement;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,25 +18,25 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.reclamation;
-import services.serviceReclamation;
+import model.evenement;
+import services.serviceEvent;
 
 /**
  * FXML Controller class
  *
  * @author Lenovo
  */
-public class AjouterFXMLController implements Initializable {
-    Ireclamation rec = new serviceReclamation();
+public class AjouterEventFXMLController implements Initializable {
+    Ievenement evn = new serviceEvent();
 
     @FXML
-    private TextField titreRec;
+    private TextField id_club;
     @FXML
-    private TextField descRec;
+    private TextField event_date;
     @FXML
-    private TextField statutRec;
+    private TextField event_description;
     @FXML
-    private TextField iduserRec;
+    private TextField event_name;
 
     /**
      * Initializes the controller class.
@@ -47,24 +47,23 @@ public class AjouterFXMLController implements Initializable {
     }    
 
     @FXML
-    private void submit(ActionEvent event) {
-                rec.ajouterReclamation(new reclamation(Integer.valueOf(iduserRec.getText()),titreRec.getText(),descRec.getText(),Integer.valueOf(statutRec.getText())));
+    private void ajouterevent(ActionEvent event) {
+                evn.ajouterEvenement(new evenement(event_name.getText(),event_description.getText(),event_date.getText(),Integer.valueOf(id_club.getText())));
 
     }
 
     @FXML
-    private void gotoReclamation(ActionEvent event) throws IOException {
+    private void backtoEvent(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader
                         (getClass()
-                         .getResource("RecFXML.fxml"));
+                         .getResource("EventFXML.fxml"));
                                          Stage primaryStage=new Stage();
                 Parent root = loader.load();
                 Scene homescene=new Scene(root);
                     Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
                     window.setScene(homescene);
                     window.show();
-                RecFXMLController ctc=loader.getController();
+                EventFXMLController ctc=loader.getController();
     }
-
-   
+    
 }
