@@ -5,19 +5,21 @@
 package javafxInterface;
 
 import interfaces.Iutilisateur;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import model.utilisateur;
 import services.serviceUtilisateur;
 
@@ -31,7 +33,7 @@ public class UserTableController implements Initializable {
     Iutilisateur su = new serviceUtilisateur();
 
     @FXML
-    private TableView<utilisateur> usertable;
+    private ListView<utilisateur> usertable;
     @FXML
     private Button btnAdd;
     @FXML
@@ -46,52 +48,42 @@ public class UserTableController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-       TableColumn id = new TableColumn("ID");
-        TableColumn username = new TableColumn("Nom Utilisateur");
-        TableColumn pwd = new TableColumn("Mot de Passe");
-        TableColumn email = new TableColumn("Email"); 
-        TableColumn fullname = new TableColumn("Nom et Prenom");
-        TableColumn bday = new TableColumn("Date de Naissance");
-        TableColumn state = new TableColumn("Etat");
-        
-   
-       
-        
-       
-        usertable.getColumns().addAll(id, username, pwd, email, fullname, bday, state);
-        
-        
-        //Step : 1# Create a person class that will represtent data
-        
-        //Step : 2# Define data in an Observable list and add data as you want to show inside table    
-         final ObservableList<utilisateur> data = FXCollections.observableArrayList(su.consulterUtilisateur())   ;
+        final ObservableList<utilisateur> data = FXCollections.observableArrayList(su.consulterUtilisateur());
+        usertable.setItems(data);
 
-        
-        //Step : 3#  Associate data with columns  
-            id.setCellValueFactory(new PropertyValueFactory<utilisateur,String>("id_user"));
-        
-            username.setCellValueFactory(new PropertyValueFactory<utilisateur,String>("nom_user"));
+        usertable.setCellFactory(lv -> new ListCell<utilisateur>() {
+            private Node graphic;
+            private CustomCellController controller;
 
-            pwd.setCellValueFactory(new PropertyValueFactory<utilisateur,String>("mot_de_passe"));
+            {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomCell.fxml"));
+                    graphic = loader.load();
+                    controller = loader.getController();
+                } catch (IOException exc) {
+                    throw new RuntimeException(exc);
+                }
+            }
 
-            email.setCellValueFactory(new PropertyValueFactory<utilisateur,String>("email"));
-            
-            fullname.setCellValueFactory(new PropertyValueFactory<utilisateur,String>("prenom"));
-            
-            bday.setCellValueFactory(new PropertyValueFactory<utilisateur,String>("age"));
-            
-            state.setCellValueFactory(new PropertyValueFactory<utilisateur,String>("type"));
-            
-               
-                        
-        //Step 4: add data inside table
-           usertable.setItems(data);
-           
-      
-        // TODO
+            @Override
+            protected void updateItem(utilisateur item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    controller.getUsernameLabel().setText(item.getNom_user());
+                    controller.getNameLabel().setText(item.getPrenom());
+                    controller.getContactLabel().setText(item.getEmail());
+                    setText(null);
+                    setGraphic(graphic);
+                    setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                }
+            }
+        });
+
     }
 
+    // TODO
     @FXML
     private void addAction(ActionEvent event) {
     }
@@ -102,17 +94,15 @@ public class UserTableController implements Initializable {
 
     @FXML
     private void banAction(ActionEvent event) {
-        if(usertable.getSelectionModel().getSelectedItem()==null){
-             Alert alert = new Alert(Alert.AlertType.ERROR);
+        if (usertable.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de saisie !");
             alert.setContentText("Sélectionner un utilisateur tout d'abord!");
             alert.show();
-            
-        }else{
-            utilisateur u = usertable.getSelectionModel().getSelectedItem();
-            u.setType("bannis");
-            su.updateUtilisateur(u, u);
+
+        } else {
+
             usertable.refresh();
         }
     }

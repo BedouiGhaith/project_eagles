@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ListView?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxInterface.UserTableController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxInterface.UserTableController">
    <children>
-      <TableView fx:id="usertable" layoutX="27.0" layoutY="24.0" prefHeight="290.0" prefWidth="550.0">
-      </TableView>
+      <ListView fx:id="usertable" layoutX="27.0" layoutY="24.0" prefHeight="290.0" prefWidth="550.0">
+      </ListView>
       <Button fx:id="btnAdd" layoutX="372.0" layoutY="341.0" mnemonicParsing="false" onAction="#addAction" text="Ajouter" />
       <Button fx:id="btnModify" layoutX="449.0" layoutY="341.0" mnemonicParsing="false" onAction="#modifyAction" text="Modifier" />
       <Button fx:id="btnBan" layoutX="525.0" layoutY="341.0" mnemonicParsing="false" onAction="#banAction" text="Bannir" />
