@@ -57,6 +57,7 @@ public class ReactFXMLController implements Initializable {
                 serviceAvis sa = new serviceAvis();
 
                 try {
+                    
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("React");
                     ButtonType likeButton = new ButtonType("like ", ButtonBar.ButtonData.YES);
@@ -67,7 +68,7 @@ public class ReactFXMLController implements Initializable {
                         if (type == likeButton) {
                             try {
 
-                                sa.like(id_user, id_livre);
+                                //sa.like(id_user, id_livre);
                             } catch (Exception e) {
                                 JOptionPane.showMessageDialog(null, "id_livre ou id_user n'existe pas!", "error!", JOptionPane.ERROR_MESSAGE);
 
@@ -75,7 +76,7 @@ public class ReactFXMLController implements Initializable {
                         } else {
                             try {
 
-                                sa.dislike(id_user, id_livre);
+                               // sa.dislike(id_user, id_livre);
                             } catch (Exception e) {
                                 JOptionPane.showMessageDialog(null, "id_livre ou id_user n'existe pas!", "error!", JOptionPane.ERROR_MESSAGE);
 
@@ -104,7 +105,7 @@ public class ReactFXMLController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(homescene);
         window.show();
-        AjouterFXMLController ctc = loader.getController();
+        AvisFXMLController ctc = loader.getController();
         
     
     }

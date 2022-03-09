@@ -19,7 +19,7 @@ public interface Iavis {
    public void updateAvis(Avis a);
    public List<Avis> consulterAvis();
 
-    public int getTotalCom(int id_livre)throws SQLException;
+    public int getTotalCom(String titre,String auteur)throws SQLException;
     
  
 }

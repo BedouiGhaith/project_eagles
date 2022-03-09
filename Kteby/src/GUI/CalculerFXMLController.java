@@ -45,7 +45,7 @@ public class CalculerFXMLController implements Initializable {
     @FXML
     private void calculer(ActionEvent event) throws SQLException {
         int somcom=0;
-        somcom=sa.getTotalCom(Integer.valueOf(idLivre.getText())); 
+       // somcom=sa.getTotalCom(Integer.valueOf(titre.getText())); 
         //nbrcom.setText(Integer.valueOf(somcom.getText()));
         
             nbrcom.setText(Integer.valueOf(somcom).toString());
@@ -63,7 +63,7 @@ public class CalculerFXMLController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(homescene);
         window.show();
-        AjouterFXMLController ctc = loader.getController();
+       AvisFXMLController ctc = loader.getController();
         
     
     }

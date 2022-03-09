@@ -36,18 +36,6 @@ public class AvisFXMLController implements Initializable {
 
     Iavis sa = new serviceAvis();
 
-    @FXML
-    private TextField idAvis;
-    @FXML
-    private TextField idUser;
-    @FXML
-    private TextField idLivre;
-    @FXML
-    private TextField idComment;
-    @FXML
-    private Label lab_list;
-    @FXML
-    private Label nbrcom;
 
     /**
      * Initializes the controller class.
@@ -71,6 +59,7 @@ public class AvisFXMLController implements Initializable {
 
     }
 
+    @FXML
     private void goToModifier(ActionEvent event) throws SQLException, IOException {
         FXMLLoader loader = new FXMLLoader(getClass()
                 .getResource("modifierFXML.fxml"));
@@ -138,7 +127,7 @@ public class AvisFXMLController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(homescene);
         window.show();
-        CalculerFXMLController ctc = loader.getController();
+        ReactFXMLController ctc = loader.getController();
 
     
     }

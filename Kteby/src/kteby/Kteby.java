@@ -61,12 +61,22 @@ public class Kteby {
         /*sli.deleteLivre("na");*/
         
         //avis
-      Avis a = new Avis("grave",5 , 25);
-       Avis updated_avis = new Avis  ("grave ",5 , 25); 
+        Avis a = new Avis("zert",74);
+        utilisateur u =new utilisateur();
+        u.setId_user(6);
+        livre v = new livre();
+        v.setId_livre(3);
+
        
        serviceAvis  sa = new serviceAvis();
-       sa.ajouterAvis(a);  
-       System.out.println(sa.consulterAvis());
+       //sa.ajouterAvis(a,u,v);
+      // sa.updateAvis(a);
+      for(Avis av : sa.consulterAvis()){
+          System.out.println(av);
+      }
+      //sa.deleteAvis(a);
+      sa.dislike(a, u);
+      /* System.out.println(sa.consulterAvis());
        sa.updateAvis(updated_avis);
        sa.deleteAvis(updated_avis); 
        System.out.println(sa.getById(3));

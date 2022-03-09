@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Avis;
@@ -42,7 +43,12 @@ Iavis sa = new serviceAvis () ;
     
     @FXML
     private void delete(ActionEvent event) {
-         sa.deleteAvis(new Avis(Integer.valueOf(idAvis.getText())));
+        sa.deleteAvis(new Avis(Integer.valueOf(idAvis.getText())));
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succées");
+        alert.setHeaderText(null);
+        alert.setContentText("la suppression a été effectué avec succées");
+        alert.showAndWait();
     }
 
     @FXML
@@ -56,7 +62,7 @@ Iavis sa = new serviceAvis () ;
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(homescene);
         window.show();
-        AjouterFXMLController ctc = loader.getController();
+        AvisFXMLController ctc = loader.getController();
         
     
     }

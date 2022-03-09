@@ -5,81 +5,58 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author asus
  */
 public class Avis {
-    int id_Avis;
-    String commentaire ;
-    int id_user;
-    int id_livre;
 
-    public Avis(int id_Avis, String commentaire, int id_user, int id_livre) {
-        this.id_Avis = id_Avis;
-        this.commentaire = commentaire;
-        this.id_user = id_user;
-        this.id_livre = id_livre;
-    }
-
-    public Avis(int id_Avis, String commentaire) {
-        this.id_Avis = id_Avis;
-        this.commentaire = commentaire;
-    }
-
-    public Avis(int id_Avis) {
-        this.id_Avis = id_Avis;
-    }
+    private String commentaire;
     
+
+    private int id_avis;
 
     public Avis() {
     }
 
+    public Avis(int id_avis) {
+        this.id_avis = id_avis;
+    }
+
     
-    @Override
-    public String toString() {
-        return "Avis{" + "id_Avis=" + id_Avis + ", commentaire=" + commentaire + ", id_user=" + id_user + ", id_livre=" + id_livre + '}';
-    }
-
-    public Avis(String commentaire, int id_user, int id_livre) {
+    public Avis(String commentaire, int id_avis) {
         this.commentaire = commentaire;
-        this.id_user = id_user;
-        this.id_livre = id_livre;
-    }
-
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
-
-    public void setId_livre(int id_livre) {
-        this.id_livre = id_livre;
-    }
-
-    public int getId_user() {
-        return id_user;
-    }
-
-    public int getId_livre() {
-        return id_livre;
+        this.id_avis = id_avis;
     }
 
     public Avis(String commentaire) {
         this.commentaire = commentaire;
     }
+    
+    
 
-    public void setId_Avis(int id_Avis) {
-        this.id_Avis = id_Avis;
+    public String getCommentaire() {
+        return commentaire;
     }
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
 
-    public int getId_Avis() {
-        return id_Avis;
+    public int getId_avis() {
+        return id_avis;
     }
 
-    public String getCommentaire() {
-        return commentaire;
+    public void setId_avis(int id_avis) {
+        this.id_avis = id_avis;
     }
+
+    @Override
+    public String toString() {
+        return "Avis{" + "commentaire=" + commentaire + ", id_avis=" + id_avis + '}';
+    }
+
+
 }

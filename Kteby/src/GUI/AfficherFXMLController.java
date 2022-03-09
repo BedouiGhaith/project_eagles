@@ -23,6 +23,8 @@ import services.serviceAvis;
 
 /**
  * FXML Controller class
+import javafx.stage.Stage;
+import services.serviceAvis;
  *
  * @author Nour
  */
@@ -55,7 +57,7 @@ Iavis sa = new serviceAvis () ;
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(homescene);
         window.show();
-        AjouterFXMLController ctc = loader.getController();
+       AvisFXMLController ctc = loader.getController();
         
     
     }
