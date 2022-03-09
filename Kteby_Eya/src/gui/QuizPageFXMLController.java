@@ -46,8 +46,6 @@ public class QuizPageFXMLController implements Initializable {
     private RadioButton b1;
     @FXML
     private RadioButton c1;
-    @FXML
-    private RadioButton d1;
 
     /**
      * Initializes the controller class.
@@ -103,23 +101,19 @@ public class QuizPageFXMLController implements Initializable {
 
     @FXML
     private void gochoice1(ActionEvent event) {
-        value ="4 salles";
+        value ="Vieille";
     }
 
     @FXML
     private void gochoice2(ActionEvent event) {
-        value ="5 salles";
+        value ="Jeune";
     }
 
     @FXML
     private void gochoice3(ActionEvent event) {
-        value ="7 salles";
+        value ="Belle";
     }
 
-    @FXML
-    private void gochoice4(ActionEvent event) {
-         value ="8 salles";
-    }
 
     @FXML
     private void submitAction2(ActionEvent event) {
@@ -154,7 +148,17 @@ public class QuizPageFXMLController implements Initializable {
     }
 
     @FXML
-    private void backhome(ActionEvent event) {
+    private void backhome(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("EvalFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                EvalFXMLController ctc=loader.getController();
     }
     
 }

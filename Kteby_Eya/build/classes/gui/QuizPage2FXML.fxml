@@ -9,15 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="386.0" prefWidth="591.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.QuizPage2FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="386.0" prefWidth="591.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.QuizPage2FXMLController">
    <children>
       <ImageView fitHeight="391.0" fitWidth="591.0" pickOnBounds="true">
          <image>
             <Image url="@../images/bleu.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="27.0" layoutY="117.0" prefHeight="27.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="Quel est ce célèbre roman de Daniel Pennac ? La petite marchande…      " textFill="#2f2a2f" wrapText="true">
+      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="27.0" layoutY="117.0" prefHeight="27.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="Françoise Sagan a écrit : &quot;Bonjour ........&quot;" textFill="#2f2a2f" wrapText="true">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -25,17 +24,17 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="a1" focusTraversable="false" layoutX="48.0" layoutY="171.0" mnemonicParsing="false" onAction="#gochoice1" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="De prose">
+      <RadioButton fx:id="a1" focusTraversable="false" layoutX="48.0" layoutY="171.0" mnemonicParsing="false" onAction="#gochoice1" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="L'ambiance">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="b1" focusTraversable="false" layoutX="48.0" layoutY="201.0" mnemonicParsing="false" onAction="#gochoice2" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="D'allumettes   ">
+      <RadioButton fx:id="b1" focusTraversable="false" layoutX="48.0" layoutY="201.0" mnemonicParsing="false" onAction="#gochoice2" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Tristesse">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="c1" focusTraversable="false" layoutX="48.0" layoutY="235.0" mnemonicParsing="false" onAction="#gochoice3" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="De vermicelles">
+      <RadioButton fx:id="c1" focusTraversable="false" layoutX="48.0" layoutY="235.0" mnemonicParsing="false" onAction="#gochoice3" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Les copains">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

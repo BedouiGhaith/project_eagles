@@ -62,5 +62,10 @@
             <Font name="Calibri Bold" size="15.0" />
          </font>
       </Hyperlink>
+      <Hyperlink layoutX="11.0" layoutY="369.0" onAction="#gotoRate" text="Rate !" underline="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Hyperlink>
    </children>
 </AnchorPane>

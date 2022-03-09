@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox fx:id="hboxRate" prefHeight="49.0" prefWidth="193.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="star1" fitHeight="39.0" fitWidth="40.0" onMouseClicked="#give1" onMousePressed="#setRating" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8-add-to-favorites-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star2" fitHeight="39.0" fitWidth="40.0" onMouseClicked="#give2" onMousePressed="#setRating" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8-add-to-favorites-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star3" fitHeight="39.0" fitWidth="40.0" onMouseClicked="#give3" onMousePressed="#setRating" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8-add-to-favorites-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star5" fitHeight="39.0" fitWidth="40.0" onMouseClicked="#give5" onMousePressed="#setRating" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8-add-to-favorites-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star4" fitHeight="39.0" fitWidth="40.0" onMouseClicked="#give4" onMousePressed="#setRating" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8-add-to-favorites-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</HBox>

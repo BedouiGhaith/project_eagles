@@ -44,7 +44,7 @@ public class RatingFXMLController implements Initializable {
     ShowNotification sn = new ShowNotification();
     Ievaluation sev=new serviceEvaluation();
     int a  ; 
-@FXML
+    @FXML
     ImageView star1;
 
     @FXML

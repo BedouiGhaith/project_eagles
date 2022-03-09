@@ -17,7 +17,7 @@
             <Image url="@../images/bleu.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="26.0" layoutY="101.0" prefHeight="71.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="Par combien de salles la pierre philosophale se trouve protégée dans le premier tome ?" textFill="#2f2a2f" wrapText="true">
+      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="26.0" layoutY="101.0" prefHeight="71.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="Livre écrit par Jean Piat : &quot; La ............dame de la librairie&quot; en 1991." textFill="#2f2a2f" wrapText="true">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -25,22 +25,17 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="a1" focusTraversable="false" layoutX="47.0" layoutY="172.0" mnemonicParsing="false" onAction="#gochoice1" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="4 salles">
+      <RadioButton fx:id="a1" focusTraversable="false" layoutX="47.0" layoutY="172.0" mnemonicParsing="false" onAction="#gochoice1" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Vieille">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="b1" focusTraversable="false" layoutX="47.0" layoutY="202.0" mnemonicParsing="false" onAction="#gochoice2" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="5 salles">
+      <RadioButton fx:id="b1" focusTraversable="false" layoutX="47.0" layoutY="202.0" mnemonicParsing="false" onAction="#gochoice2" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Jeune">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="c1" focusTraversable="false" layoutX="47.0" layoutY="236.0" mnemonicParsing="false" onAction="#gochoice3" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="7 salles">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </RadioButton>
-      <RadioButton fx:id="d1" focusTraversable="false" layoutX="47.0" layoutY="267.0" mnemonicParsing="false" onAction="#gochoice4" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="8 salles">
+      <RadioButton fx:id="c1" focusTraversable="false" layoutX="47.0" layoutY="236.0" mnemonicParsing="false" onAction="#gochoice3" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Belle">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

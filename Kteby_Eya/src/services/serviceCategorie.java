@@ -43,10 +43,10 @@ Connection cnx = maConnexion.getInstance().getCnx();
     @Override
     public void deleteCategorie(categorie c) {
         try {
-            String sql = "DELETE FROM categorie WHERE id_categorie=?";
+            String sql = "DELETE FROM categorie WHERE nom_categorie=?";
 
             PreparedStatement statement = cnx.prepareStatement(sql);
-            statement.setInt(1, c.getId_categorie());
+            statement.setString(1, c.getNom_categorie());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -57,13 +57,16 @@ Connection cnx = maConnexion.getInstance().getCnx();
     }
 
     @Override
-    public void updateCategorie(categorie c) {
+    public void updateCategorie(String c,String s) {
         try {
-             String sql = "UPDATE categorie SET nom_categorie =? WHERE id_categorie=?";
-
+             String sql = "UPDATE categorie SET nom_categorie =? WHERE nom_categorie=?";
+             
             PreparedStatement ps = cnx.prepareStatement(sql);
-            ps.setString(1, c.getNom_categorie());
-            ps.setInt(2, c.getId_categorie());
+            ps.setString(1, s);
+            ps.setString(2, c);
+            System.out.println(sql);
+            System.out.println(c);
+            System.out.println(s);
             int rowsUpdated = ps.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("An existing category was updated successfully!");
@@ -172,6 +175,7 @@ Connection cnx = maConnexion.getInstance().getCnx();
     
      public int getTotalCategorie() throws SQLException{
         PreparedStatement reqSelectParam = cnx.prepareStatement("SELECT COUNT(id_categorie) FROM categorie ");
+        System.out.println(reqSelectParam);
         ResultSet res = reqSelectParam.executeQuery();
         int sumLiv = 0;
         while(res.next()){

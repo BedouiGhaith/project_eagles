@@ -63,17 +63,17 @@ Connection cnx = maConnexion.getInstance().getCnx();
 
     @FXML
     private void gochoice1(ActionEvent event) {
-         value ="De prose";
+         value ="L'ambiance";
     }
 
     @FXML
     private void gochoice2(ActionEvent event) {
-        value="D'allumettes";
+        value="Tristesse";
     }
 
     @FXML
     private void gochoice3(ActionEvent event) {
-        value="De vermicelles";
+        value="Les copains";
     } 
 
     @FXML

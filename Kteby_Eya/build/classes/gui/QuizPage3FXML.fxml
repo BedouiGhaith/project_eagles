@@ -9,15 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="387.0" prefWidth="603.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.QuizPage3FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="387.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.QuizPage3FXMLController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="603.0" pickOnBounds="true">
          <image>
             <Image url="@../images/bleu.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="30.0" layoutY="120.0" prefHeight="27.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="De quelle boisson est la première gorgée de Philippe Delerm ?" textFill="#2f2a2f" wrapText="true">
+      <Label fx:id="textQuestion" alignment="TOP_LEFT" focusTraversable="false" layoutX="30.0" layoutY="120.0" prefHeight="27.0" prefWidth="519.0" stylesheets="@../../../../../Desktop/Online-Quiz-Using-javafx-jdbc-master/src/application/Student/application.css" text="&quot; Le vieux qui ne voulait pas fêter.........&quot; est un livre écrit par Jonas Jonasson." textFill="#2f2a2f" wrapText="true">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -25,17 +24,17 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="a1" focusTraversable="false" layoutX="51.0" layoutY="174.0" mnemonicParsing="false" onAction="#gochoice1" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="La première gorgée d'eau">
+      <RadioButton fx:id="a1" focusTraversable="false" layoutX="51.0" layoutY="174.0" mnemonicParsing="false" onAction="#gochoice1" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Ses 100 ans">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="b1" focusTraversable="false" layoutX="51.0" layoutY="204.0" mnemonicParsing="false" onAction="#gochoice2" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="La première gorgée de bière">
+      <RadioButton fx:id="b1" focusTraversable="false" layoutX="51.0" layoutY="204.0" mnemonicParsing="false" onAction="#gochoice2" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Le 11 novembre">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </RadioButton>
-      <RadioButton fx:id="c1" focusTraversable="false" layoutX="51.0" layoutY="238.0" mnemonicParsing="false" onAction="#gochoice3" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="La première gorgée de champagne">
+      <RadioButton fx:id="c1" focusTraversable="false" layoutX="51.0" layoutY="238.0" mnemonicParsing="false" onAction="#gochoice3" onMouseReleased="#rbClicked" prefHeight="17.0" prefWidth="519.0" text="Son anniversaire">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

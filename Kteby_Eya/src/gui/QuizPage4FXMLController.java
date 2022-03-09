@@ -127,6 +127,20 @@ public class QuizPage4FXMLController implements Initializable {
     }
 
     @FXML
+    private void gotoQ5(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("QuizPage5FXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                EvalFXMLController ctc=loader.getController();
+    }
+
+    @FXML
     private void gotoQ3(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader
                         (getClass()
@@ -138,21 +152,8 @@ public class QuizPage4FXMLController implements Initializable {
                     window.setScene(homescene);
                     window.show();
                 EvalFXMLController ctc=loader.getController();
-    }
-
-    @FXML
-    private void backhome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader
-                        (getClass()
-                         .getResource("EvalFXML.fxml"));
-                                         Stage primaryStage=new Stage();
-                Parent root = loader.load();
-                Scene homescene=new Scene(root);
-                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-                    window.setScene(homescene);
-                    window.show();
-                EvalFXMLController ctc=loader.getController();
-                sn.showConfirm("Au revoir! ", " Merci de faire le Quiz ! ");
+        
+               
     }
     
 }

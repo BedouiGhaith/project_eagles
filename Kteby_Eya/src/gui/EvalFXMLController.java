@@ -123,6 +123,21 @@ public class EvalFXMLController implements Initializable {
                     window.show();
                 EvalFXMLController ctc=loader.getController();
     }
+
+    @FXML
+    private void gotoRate(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader
+                        (getClass()
+                         .getResource("RatingFXML.fxml"));
+                                         Stage primaryStage=new Stage();
+                Parent root = loader.load();
+                Scene homescene=new Scene(root);
+                    Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(homescene);
+                    window.show();
+                EvalFXMLController ctc=loader.getController();
+    }
+    
      
 }
 

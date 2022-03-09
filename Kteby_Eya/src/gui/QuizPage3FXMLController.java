@@ -63,17 +63,17 @@ public class QuizPage3FXMLController implements Initializable {
 
     @FXML
     private void gochoice1(ActionEvent event) {
-        value ="La première gorgée d'eau";
+        value ="Ses 100 ans";
     }
 
     @FXML
     private void gochoice2(ActionEvent event) {
-        value ="La première gorgée de bière";
+        value ="Le 11 novembre";
     }
 
     @FXML
     private void gochoice3(ActionEvent event) {
-        value ="La première gorgée de champagne";
+        value ="Son anniversaire";
     }
 
     @FXML

@@ -31,6 +31,9 @@ public class QuizPageFXMain extends Application {
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
+        
     }
 
     /**

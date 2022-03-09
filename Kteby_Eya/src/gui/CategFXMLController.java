@@ -63,7 +63,7 @@ public class CategFXMLController implements Initializable {
 
     @FXML
     private void updateAction(ActionEvent event) {
-        sc.updateCategorie(new categorie(Integer.valueOf(idCatg.getText()),nomCatg.getText()));
+        //sc.updateCategorie(new categorie(,);
         JOptionPane.showMessageDialog(null, "Catégorie modifiée avec succés !");
         sn.showInformation("Mise à jour réussie", "Catégorie modifiée");
     }
