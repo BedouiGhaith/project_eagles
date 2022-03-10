@@ -26,12 +26,11 @@ public class reclamation {
         this.response = response;
     }
 
-    /*public reclamation( int id_user,String titre, String description) {
-        this.id_user = id_user;
+    public reclamation( String titre, String description) {
         this.titre = titre;
         this.description = description;
     
-    }*/
+    }
 
    public reclamation(int id_reclamation, String titre, String description) {
         this.id_reclamation = id_reclamation;

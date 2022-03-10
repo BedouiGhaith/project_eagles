@@ -23,7 +23,8 @@ public interface Ievenement {
     public void updateEvenement(evenement e);
 
     public List<evenement> consulterEvenement();
-    public evenement getById(int id_event ) throws SQLException;
-    public boolean delay ( String newdt,int id_event)  throws SQLException ;
+    public evenement getById(int id_event) throws SQLException;
+   // public evenement getByName(String evnt_name ) throws SQLException;
+    public boolean delay ( Date newdt,int id_event)  throws SQLException ;
     
 }

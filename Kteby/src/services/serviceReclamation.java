@@ -26,15 +26,12 @@ public class serviceReclamation implements Ireclamation {
         
     @Override
     public void ajouterReclamation(reclamation e) {
-        String Req = "INSERT INTO `reclamation`(`id_user`,`titre`, `description`,`status`) VALUES (?,?,?,?)";
+        String Req = "INSERT INTO `reclamation`(`titre`, `description`) VALUES (?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
-            ps.setInt(1, e.getId_user());
-            ps.setString(2, e.getTitre());
-            ps.setString(3, e.getDescription());
-            ps.setInt(4, e.getStatus());
-            
-        
+            ps.setString(1, e.getTitre());
+            ps.setString(2, e.getDescription());
+      
             ps.execute();
             System.out.println(" Reclamation ajoutée avec succes");
         } catch (SQLException ex) {

@@ -27,14 +27,16 @@ public class serviceEvent implements Ievenement {
 
     @Override
     public void ajouterEvenement(evenement e) {
-        String Req = "INSERT INTO `evenement`(`evnt_name`, `description`, `evnt_date`, `id_club`) VALUES (?,?,?,?)";
+        String Req = "INSERT INTO `evenement`(`evnt_name`, `description`,`image`, `evnt_date`, `nom_club`) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(Req);
             ps.setString(1, e.getEvnt_name());
             ps.setString(2, e.getDescription());
-            ps.setString(3, e.getEvnt_date());
-            ps.setInt(4, e.getId_club());
+            ps.setString(3, e.getImage());
+            ps.setDate(4, e.getEvnt_date());
+            ps.setString(5, e.getNom_club());
             ps.execute();
+            
             System.out.println(" evenement ajoutée avec succes");
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -59,13 +61,13 @@ public class serviceEvent implements Ievenement {
     @Override
     public void updateEvenement(evenement e) {
         try {
-            String sql = "UPDATE evenement SET evnt_name=?, description=?, evnt_date=?, id_club=? WHERE id_event=?";
+            String sql = "UPDATE evenement SET evnt_name=?, description=?, evnt_date=?, nom_club=? WHERE id_event=?";
 
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, e.getEvnt_name());
             ps.setString(2, e.getDescription());
-            ps.setString(3, e.getEvnt_date());
-            ps.setInt(4, e.getId_club());
+            ps.setDate(3, e.getEvnt_date());
+            ps.setString(4, e.getNom_club());
             ps.setInt(5, e.getId_event());
             ps.execute();
 
@@ -87,7 +89,7 @@ public class serviceEvent implements Ievenement {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                evnt.add(new evenement(rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("id_club")));
+                evnt.add(new evenement(rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5)));
             }
 
         } catch (SQLException ex) {
@@ -96,31 +98,46 @@ public class serviceEvent implements Ievenement {
         return evnt;
     }
     
-    public evenement getById(int id_event ) throws SQLException {
+   public evenement getById(int id_event ) throws SQLException {
         Statement ste=cnx.createStatement();
         String query="SELECT * FROM `evenement`where id_event="+id_event;
         ResultSet rs=ste.executeQuery(query);
         while(rs.next())
         {
             evenement rec;
-            rec = new evenement (rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt("id_club"));
+            rec = new evenement (rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getDate("evnt_date"), rs.getString(5));
+            return rec;
+        }
+        return null;
+    }  
+    
+   /* public evenement getByName(String evnt_name ) throws SQLException {
+        Statement ste=cnx.createStatement();
+        String query="SELECT * FROM `evenement`where evnt_name="+evnt_name;
+        ResultSet rs=ste.executeQuery(query);
+        while(rs.next())
+        {
+            evenement rec;
+            rec = new evenement (rs.getInt("id_event"), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5));
             return rec;
         }
         return null;
     }   
-    
-    
+    */
     
     public Boolean exist(int id_event) throws SQLException {
         return getById(id_event)!=null;
     }
-    
-    
-    public boolean delay ( String newdt,int id_event)  throws SQLException  {
+    /*public Boolean exist(String evnt_name) throws SQLException {
+        return getByName(evnt_name)!=null;
+    }
+    */
+    @Override
+    public boolean delay ( Date newdt,int id_event)  throws SQLException  {
        if(exist(id_event))
         {
         Statement ste=cnx.createStatement();
-        String sql= "UPDATE evenement SET  evnt_date='"+newdt+"' where id_event="+id_event;
+        String sql= "UPDATE evenement SET  evnt_date='"+newdt+"' where id_event ="+id_event;
          ste.execute(sql);
     System.out.println("la date de l'evenement a modifié");
             return true; 

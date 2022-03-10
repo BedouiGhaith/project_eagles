@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="640.0" prefWidth="841.0" stylesheets="@../images/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReclamationFXMLController">
+   <children>
+      <Label layoutX="256.0" layoutY="355.0" text="Objet:" textFill="#1b0606">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="titreRec" layoutX="350.0" layoutY="352.0" prefHeight="31.0" prefWidth="245.0" promptText="Titre reclamation" />
+      <Label layoutX="248.0" layoutY="432.0" text="Description:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="descRec" layoutX="349.0" layoutY="408.0" prefHeight="74.0" prefWidth="245.0" promptText="Description" />
+      <Button layoutX="486.0" layoutY="519.0" mnemonicParsing="false" text="Annuler" />
+      <Button layoutX="366.0" layoutY="519.0" mnemonicParsing="false" onAction="#ajouterReclamation" text="Valider" />
+      <Label layoutX="319.0" layoutY="304.0" prefHeight="30.0" prefWidth="320.0" text="Ajouter votre Reclamation">
+         <font>
+            <Font name="Baskerville Old Face" size="29.0" />
+         </font>
+      </Label>
+      <VBox layoutX="-8.0" layoutY="-1.0" prefHeight="641.0" prefWidth="233.0" styleClass="secondary-color" stylesheets="@../../../../../Desktop/ESPRIT/Kteby/src/javaFxInterface/style.css">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/ESPRIT/Kteby/src/javaFxInterface/img/ic_more.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-home-64.png" />
+                           </image>
+                        </ImageView>
+                        <Label lineSpacing="20.0" prefHeight="21.0" prefWidth="101.0" text="Home" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-club-64%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <Label lineSpacing="20.0" prefHeight="21.0" prefWidth="101.0" text="Club" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-les-plaintes-48.png" />
+                           </image>
+                        </ImageView>
+                        <Label lineSpacing="20.0" prefHeight="27.0" prefWidth="119.0" text="Reclamation" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="304.0" prefWidth="187.0" />
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="206.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8-logout-58.png" />
+                     </image>
+                  </ImageView>
+                  <Label lineSpacing="20.0" prefHeight="21.0" prefWidth="101.0" text="Log Out" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+      </VBox>
+      <TextField layoutX="248.0" layoutY="14.0" prefHeight="34.0" prefWidth="224.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../../../../../Desktop/ESPRIT/Kteby_3/src/values/style.css">
+         <font>
+            <Font name="Cambria" size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="471.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="72.0" styleClass="search-button" stylesheets="@../../../../../Desktop/ESPRIT/Kteby_3/src/values/style.css" text="Search" textFill="WHITE" />
+      <ImageView fitHeight="207.0" fitWidth="616.0" layoutX="225.0" layoutY="55.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/arton105619.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

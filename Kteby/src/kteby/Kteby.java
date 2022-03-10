@@ -53,10 +53,10 @@ public class Kteby {
         
         
         //reclamation
-        reclamation re = new reclamation(1,"problem","livre qui manque",0,"");
-        reclamation re1 = new reclamation(1,"test","livre c'est pour les enfants",0,"");
+       // reclamation re = new reclamation(1,"problem","livre qui manque",0,"");
+        //reclamation re1 = new reclamation(1,"test","livre c'est pour les enfants",0,"");
 
-        reclamation updated_re = new reclamation(1,"warning","pas claire",0,"");
+        //reclamation updated_re = new reclamation(1,"warning","pas claire",0,"");
         
         Ireclamation sre = new serviceReclamation();
          //System.out.println(sre.Reponse("refusé",5));
@@ -78,12 +78,15 @@ public class Kteby {
         //1
         Ievenement sev = new serviceEvent();
         //2
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        java.util.Date myDate = new java.util.Date("2022/02/28");
-        evenement even = new evenement("enement", "Fans meet",myDate, 1);
-        //System.out.println(sre.getById(5));
-        //System.out.println(sev.delay("20/12/2021",8));
-        /*sev.ajouterEvenement(evn2);*/
+        java.util.Date mydate = new java.util.Date();
+        java.sql.Date sqldate = new Date(mydate.getTime());
+        //evenement evn= new evenement("eventHarry","fans meeting",sqldate,"eagles");
+        //SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        //java.util.Date myDate = new java.util.Date("2022/02/28");
+       //evenement even = new evenement("enement", "Fans meet",myDate, 1);
+        System.out.println(sre.getById(5));
+        System.out.println(sev.delay(sqldate,19));
+        //sev.ajouterEvenement(evn);
         //sev.ajouterEvenement(evn2);
         //System.out.println(sev.consulterEvenement());
        
