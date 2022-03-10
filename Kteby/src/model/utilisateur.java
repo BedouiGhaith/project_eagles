@@ -7,20 +7,28 @@ package model;
 
 import java.util.Date;
 
-
-
 /**
  *
  * @author asus
  */
 public class utilisateur {
-    int id_user ;
-    String nom_user ;
-    String mot_de_passe ;
-    String email ;
-    String prenom ;
-    Date age ;
-    String type ;
+
+    int id_user;
+    String nom_user;
+    String mot_de_passe;
+    String email;
+
+    public utilisateur(String nom_user) {
+        this.nom_user = nom_user;
+    }
+
+    public utilisateur(String nom_user, String email) {
+        this.nom_user = nom_user;
+        this.email = email;
+    }
+    String prenom;
+    Date age;
+    String type;
 
     public utilisateur(String nom_user, String mot_de_passe, String email, String prenom, Date age, String type) {
         this.nom_user = nom_user;
@@ -53,8 +61,6 @@ public class utilisateur {
     public String getType() {
         return type;
     }
-
-   
 
     public utilisateur() {
     }
@@ -106,5 +112,5 @@ public class utilisateur {
     public String getMot_de_passe() {
         return mot_de_passe;
     }
-    
+
 }

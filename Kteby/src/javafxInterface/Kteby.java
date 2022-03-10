@@ -5,17 +5,14 @@
  */
 package javafxInterface;
 
-import interfaces.Iutilisateur;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.utilisateur;
-import services.serviceUtilisateur;
+import javafx.stage.StageStyle;
+import services.UserSession;
 
 /**
  *
@@ -29,9 +26,12 @@ public class Kteby extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        
+        
 
-        Parent root = FXMLLoader.load(getClass().getResource("UserTable.fxml"));
-        Scene scene = new Scene(root);
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene scene = new Scene(root,700,500);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
     }
@@ -40,6 +40,7 @@ public class Kteby extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         launch(args);
         //users
         /* utilisateur u = new utilisateur("user", "00000000", "g@gmail.com", "ghaith", 25, "admin");

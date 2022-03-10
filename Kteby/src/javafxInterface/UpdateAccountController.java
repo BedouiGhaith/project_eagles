@@ -6,34 +6,23 @@ package javafxInterface;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import interfaces.Iutilisateur;
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Optional;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.utilisateur;
-import services.ServiceMail;
 import services.serviceUtilisateur;
 
 /**
@@ -41,33 +30,28 @@ import services.serviceUtilisateur;
  *
  * @author bedou
  */
-public class CreateAccountController implements Initializable {
+public class UpdateAccountController implements Initializable {
 
     Iutilisateur su = new serviceUtilisateur();
 
     @FXML
-    private TextField email;
-    @FXML
-    private TextField prenom;
-    @FXML
-    private TextField nom;
-    @FXML
     private TextField user;
     @FXML
-    private DatePicker datepicker;
+    private PasswordField mdp;
     @FXML
     private PasswordField cmdp;
     @FXML
-    private PasswordField mdp;
+    private TextField email;
+    @FXML
+    private TextField nom;
+    @FXML
+    private DatePicker datepicker;
     @FXML
     private FontAwesomeIcon undo;
     @FXML
     private FontAwesomeIcon exit;
     @FXML
-    private Button confirm1;
-    private TextField code;
-    @FXML
-    private AnchorPane linker;
+    private AnchorPane anchor;
 
     /**
      * Initializes the controller class.
@@ -75,6 +59,11 @@ public class CreateAccountController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        undo.setVisible(false);
+        user.setText(UserHolder.getInstance().getUser().getNom_user());
+        user.setEditable(false);
+        email.setText(UserHolder.getInstance().getUser().getEmail());
+        nom.setText(UserHolder.getInstance().getUser().getPrenom());
         datepicker.setDayCellFactory(param -> new DateCell() {
             @Override
             public void updateItem(LocalDate date, boolean empty) {
@@ -82,12 +71,15 @@ public class CreateAccountController implements Initializable {
                 setDisable(empty || date.compareTo(LocalDate.now()) > 0);
             }
         });
+        datepicker.setPromptText(UserHolder.getInstance().getUser().getAge().toString());
+
+        // TODO
     }
 
     @FXML
-    private void confirmerAction(ActionEvent event) throws IOException {
+    private void confirmerAction(ActionEvent event) {
 
-        if (email.getText().equals("") || prenom.getText().equals("") || nom.getText().equals("") || user.getText().equals("")
+        if (email.getText().equals("") || nom.getText().equals("") || user.getText().equals("")
                 || mdp.getText().equals("") || datepicker.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -101,35 +93,37 @@ public class CreateAccountController implements Initializable {
             alert.setContentText("Vérifier mot de passe!");
             alert.show();
         } else {
-            utilisateur u = new utilisateur(user.getText(), mdp.getText(), email.getText(), nom.getText() + " " + prenom.getText(),
-                    java.sql.Date.valueOf(datepicker.getValue().toString()), "lecteur");
-            UserHolder.getInstance().setUser(u);
-            linker.toFront();
-            Node node;
             try {
-                node = (Node) FXMLLoader.load(getClass().getResource("CodeVerif.fxml"));
-                linker.getChildren().setAll(node);
+                utilisateur newUser = new utilisateur(user.getText(), mdp.getText(), email.getText(), nom.getText(), java.sql.Date.valueOf(datepicker.getValue().toString()), "lecteur");
+                su.updateUtilisateur(newUser, newUser);
 
-            } catch (IOException ex) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Succés");
+                alert.setHeaderText("Succés");
+                alert.setContentText("Utilisateur modifié");
+                alert.show();
+                Stage stage = (Stage) anchor.getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Erreur!");
+                alert.setContentText("Erreur");
+                alert.show();
 
             }
-
         }
     }
 
     @FXML
-    private void undo(MouseEvent event) throws IOException {
-
-        Parent blah = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene scene = new Scene(blah);
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(scene);
-        appStage.show();
+    private void undo(MouseEvent event) {
+        Platform.exit();
     }
 
     @FXML
-    private void exit(ContextMenuEvent event) {
-        Platform.exit();
+    private void exit(MouseEvent event) {
+        Stage stage = (Stage) anchor.getScene().getWindow();
+        stage.close();
     }
 
 }

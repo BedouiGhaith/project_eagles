@@ -8,6 +8,8 @@ import interfaces.Iutilisateur;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,12 +17,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.utilisateur;
+import services.UserSession;
 import services.serviceUtilisateur;
 
 /**
@@ -35,19 +46,16 @@ public class UserTableController implements Initializable {
     @FXML
     private ListView<utilisateur> usertable;
     @FXML
-    private Button btnAdd;
-    @FXML
-    private Button btnModify;
-    @FXML
-    private Button btnBan;
-    @FXML
-    private Button btnReturn;
+    private Label user;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        user.setText("Bienvenue " + UserSession.getInstace().getUserName());
+
         final ObservableList<utilisateur> data = FXCollections.observableArrayList(su.consulterUtilisateur());
         usertable.setItems(data);
 
@@ -74,25 +82,61 @@ public class UserTableController implements Initializable {
                     controller.getUsernameLabel().setText(item.getNom_user());
                     controller.getNameLabel().setText(item.getPrenom());
                     controller.getContactLabel().setText(item.getEmail());
+                    controller.getBday().setText(item.getAge().toString());
+                    controller.getState().setText(item.getType());
+                    controller.getBtnBan().setOnAction(evt -> {
+                        utilisateur cell = getItem();
+                        int index = getIndex();
+                        System.out.print(cell.getNom_user());
+                        if (cell.getType().equals("admin")) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Erreur");
+                            alert.setHeaderText("Echec d'action!");
+                            alert.setContentText("Impossible de bannir un utilisateur admin!");
+                            alert.show();
+                        } else if (controller.getState().getText().equals("bannis")) {
+                            su.unbanUser(cell);
+                            controller.getState().setText("lecteur");
+
+                        } else if (controller.getState().getText().equals("lecteur")){
+                            su.banUser(cell);
+                            controller.getState().setText("bannis");
+
+                        }
+
+                    });
+                    controller.getBtnUpd().setOnAction(evt -> {
+
+                        try {
+                            utilisateur u = getItem();
+                            int index = getIndex();
+                            UserHolder.getInstance().setUser(u);
+                            Parent root;
+
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("UpdateAccount.fxml"));
+                            Scene scene = new Scene(fxmlLoader.load(), 400, 500);
+
+                            Stage stage = new Stage();
+
+                            stage.initStyle(StageStyle.UNDECORATED);
+                            stage.setScene(scene);
+                            stage.show();
+                        } catch (IOException ex) {
+                            Logger.getLogger(UserTableController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    });
                     setText(null);
                     setGraphic(graphic);
                     setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                 }
             }
-        });
+        }
+        );
 
     }
 
-    // TODO
-    @FXML
-    private void addAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void modifyAction(ActionEvent event) {
-    }
-
-    @FXML
     private void banAction(ActionEvent event) {
         if (usertable.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -105,10 +149,6 @@ public class UserTableController implements Initializable {
 
             usertable.refresh();
         }
-    }
-
-    @FXML
-    private void returnAction(ActionEvent event) {
     }
 
 }

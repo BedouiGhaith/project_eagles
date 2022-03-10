@@ -165,7 +165,7 @@ public class serviceUtilisateur implements Iutilisateur {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                    user.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7)));
+                user.add(new utilisateur(rs.getInt("id_user"), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate("age"), rs.getString(7)));
             }
 
         } catch (SQLException ex) {
@@ -178,7 +178,7 @@ public class serviceUtilisateur implements Iutilisateur {
     public utilisateur getUserByUsername(utilisateur u) {
         utilisateur user = new utilisateur();
 
-        String query = "SELECT * FROM utilisateur where " + " nom_utilisateur= " + u.getNom_user();
+        String query = "SELECT * FROM utilisateur where " + " nom_utilisateur= '" + u.getNom_user() + "'";
 
         try {
             Statement st = cnx.createStatement();
@@ -273,11 +273,11 @@ public class serviceUtilisateur implements Iutilisateur {
     }
 
     @Override
-    public List<utilisateur> login(String u,String p) {
+    public List<utilisateur> login(String u, String p) {
         List<utilisateur> user = new ArrayList<>();
 
-        String query = "SELECT * FROM utilisateur WHERE (nom_utilisateur = '"+u+"')";
-        
+        String query = "SELECT * FROM utilisateur WHERE (nom_utilisateur = '" + u + "')";
+
         System.out.println(query);
         try {
             Statement st = cnx.createStatement();
@@ -291,49 +291,107 @@ public class serviceUtilisateur implements Iutilisateur {
         }
         boolean b = false;
         try {
-            b = validatePassword(p,user.get(0).getMot_de_passe());
+            b = validatePassword(p, user.get(0).getMot_de_passe());
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidKeySpecException ex) {
             Logger.getLogger(serviceUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (b)
-        return user;
-        else{
+        if (b) {
+            return user;
+        } else {
             user.clear();
             return user;
         }
     }
+
     @Override
-    public java.sql.Date tosqldate(java.util.Date date){
-        
+    public java.sql.Date tosqldate(java.util.Date date) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         String formattedDate = simpleDateFormat.format(date);
-        
+
         System.out.println("Date: " + date);
 
         java.sql.Date date1 = java.sql.Date.valueOf(formattedDate);
 
         System.out.println("SQL Date: " + date1);
-        
+
         return date1;
     }
+
     @Override
-    public java.util.Date StringToDate(String s){
+    public java.util.Date StringToDate(String s) {
 
-    java.util.Date result = null;
-    try{
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-        result  = dateFormat.parse(s);
+        java.util.Date result = null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+            result = dateFormat.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+
+        }
+        return result;
     }
 
-    catch(ParseException e){
-        e.printStackTrace();
+    @Override
+    public void updatePassword(utilisateur u) {
+        try {
+            String sql = "UPDATE utilisateur SET mdp=? WHERE nom_utilisateur=?";
 
+            PreparedStatement statement = cnx.prepareStatement(sql);
+
+            statement.setString(1, generateStorngPasswordHash(u.getMot_de_passe()));
+            statement.setString(2, u.getNom_user());
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("An existing user was updated successfully!");
+            }
+        } catch (SQLException ex) {
+        } catch (NoSuchAlgorithmException ex) {
+
+        } catch (InvalidKeySpecException ex) {
+
+        }
     }
-    return result ;
+
+    @Override
+    public void banUser(utilisateur u) {
+        try {
+            String sql = "UPDATE utilisateur SET type=? WHERE nom_utilisateur=?";
+
+            PreparedStatement statement = cnx.prepareStatement(sql);
+
+            statement.setString(1, "bannis");
+            statement.setString(2, u.getNom_user());
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("An existing user was updated successfully!");
+            }
+        } catch (SQLException ex) {
+        }
+    }
+
+    @Override
+    public void unbanUser(utilisateur u) {
+        try {
+            String sql = "UPDATE utilisateur SET type=? WHERE nom_utilisateur=?";
+
+            PreparedStatement statement = cnx.prepareStatement(sql);
+
+            statement.setString(1, "lecteur");
+            statement.setString(2, u.getNom_user());
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("An existing user was updated successfully!");
+            }
+        } catch (SQLException ex) {
+        }
+    }
 }
 
-}
+
